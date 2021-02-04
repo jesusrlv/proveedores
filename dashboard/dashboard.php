@@ -127,7 +127,7 @@ include('/conn.php');
         <ul class="nav flex-column">
  
            <li class="nav-item">
-            <a class="nav-link active" href="dashboard.html">
+            <a class="nav-link active" href="dashboard.php">
               <!-- <span data-feather="home"></span> -->
               <i class="fas fa-laptop-house"></i> 
               Dashboard <span class="sr-only">(current)</span>
@@ -136,29 +136,45 @@ include('/conn.php');
           <hr style="color: dimgrey;">
           
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>bitácora</span>
+            <span>Requisitos</span>
             <a class="d-flex align-items-center text-muted" href="dashboard.php" aria-label="Add a new report">
               <span data-feather="plus-circle"></span>
             </a>
           </h6>
 
           <li class="nav-item">
-            <a class="nav-link" href="revision_bitacora.php">
+            <a class="nav-link" href="datos.php">
               <!-- <span data-feather="layers"></span> -->
                
-              <i class="fas fa-file-alt"></i> Revisión
+              <i class="fas fa-file-alt"></i> Datos
             </a>
           </li>
-         <li class="nav-item">
-            <a class="nav-link" href="agregar_bitacora.php">
+          <li class="nav-item">
+            <a class="nav-link" href="direccion.php">
               <!-- <span data-feather="layers"></span> -->
-              <i class="fas fa-file-upload"></i> Cargar documento
+               
+              <i class="fas fa-file-alt"></i> Dirección
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="datos_bancarios.php">
+              <!-- <span data-feather="layers"></span> -->
+               
+              <i class="fas fa-file-alt"></i> Datos bancarios
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="documentos.php">
+              <!-- <span data-feather="layers"></span> -->
+               
+              <i class="fas fa-file-alt"></i> Documentos
+            </a>
+          </li>
+         
           
         </ul>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Ajustes</span>
           <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
             <span data-feather="plus-circle"></span>
@@ -167,24 +183,22 @@ include('/conn.php');
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
             <a class="nav-link" href="agregar_trabajador.php">
-              <!-- <span data-feather="file-text"></span> -->
               <i class="fas fa-user-plus"></i> Agregar Trabajador
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="agregar_cliente.php">
-              <!-- <span data-feather="file-text"></span> -->
               <i class="fas fa-building"></i> Agregar Empresa
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="agregar_usuarios.php">
-              <!-- <span data-feather="file-text"></span> -->
               <i class="fas fa-user-plus"></i> Agregar Usuario
             </a>
           </li>
         </ul>
-      </div>
+      </div> -->
+    
     </nav>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="background-color:#eaeef4; height:100%;">
