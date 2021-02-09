@@ -55,6 +55,12 @@ include('/conn.php');
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/form-validation.css" rel="stylesheet">
+
+
+    <!-- Scripts -->
+    <script src="css/form-valdation.js"></script>
+
 
     <style>
       .bd-placeholder-img {
@@ -174,30 +180,6 @@ include('/conn.php');
           
         </ul>
 
-        <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Ajustes</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_trabajador.php">
-              <i class="fas fa-user-plus"></i> Agregar Trabajador
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_cliente.php">
-              <i class="fas fa-building"></i> Agregar Empresa
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_usuarios.php">
-              <i class="fas fa-user-plus"></i> Agregar Usuario
-            </a>
-          </li>
-        </ul>
-      </div> -->
     
     </nav>
 
@@ -230,103 +212,87 @@ include('/conn.php');
 
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
         <div class="container-fluid">
-          <h1 class="h1">BIENVENIDO AL PADRÓN DE PROVEEDORES</h1>
-          <p class="lead">INJUVENTUD</p>
+          <h1 class="h1">SECCIÓN 1</h1>
+          <p class="lead">Cuenta(s) bancaria(s)</p>
           <hr class="my-4">
           <!-- <p>Cargar documentos</p>
           <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a> -->
 
           
         <!-- interno -->
+        <div class="row">
+                <div class="col-md-12 order-md-1">
+            <h4 class="mb-3">Datos de proveedor</h4>
+            <form class="needs-validation" novalidate>
+                <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">Colonia</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Valid first name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Código postal</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Valid last name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">Número interior</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Valid first name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Número exterior</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Valid last name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Colonia</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Valid last name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Correo electrónico</label>
+                    <input type="email" class="form-control" id="lastName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Valid last name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Teléfono oficina</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Valid last name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Teléfono celular</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                    Valid last name is required.
+                    </div>
+                </div>
 
-        <div class="container-fluid">
-        <div class="row row-cols-1 row-cols-md-4">
-          <div class="col mb-3">
-            <div class="card text-dark bg-light mb-6" style="max-width: 36rem; height: 18rem; box-shadow: 4px -1px 0px -1px #005eff;">
-              <!-- <div class="card-header">Enero-Marzo 2020</div> -->
-              <div class="card-body">
-                <h5 class="card-title text-primary">Datos</h5>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Agregar datos de su empresa</p>
-                <a href="seccion1_tipo.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>
-                <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>
-                <hr>
-                <p class="card-text h4 text-center">Estatus</p>
-                <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi-emoji-smile" style="font-size: 3rem; color: cornflowerblue;"></i></p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col mb-3">
-            <div class="card text-dark bg-light mb-6" style="max-width: 36rem; height: 18rem; box-shadow: 4px -1px 0px -1px #005eff;">
-              <!-- <div class="card-header">Enero-Marzo 2020</div> -->
-              <div class="card-body">
-                <h5 class="card-title text-primary">Dirección</h5>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Dirección de su empresa</p>
-                <a href="seccion2.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>
-                <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>
-                <hr>
-                <p class="card-text h4 text-center">Estatus</p>
-                <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>
-              </div>
-            </div>
-          </div>
+                </div>
 
-          <div class="col mb-3">
-            <div class="card text-dark bg-light mb-6" style="max-width: 36rem; height: 18rem; box-shadow: 4px -1px 0px -1px #005eff;">
-              <!-- <div class="card-header">Enero-Marzo 2020</div> -->
-              <div class="card-body">
-                <h5 class="card-title text-primary">Datos bancarios</h5>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Agregar datos de su empresa</p>
-                <a href="seccion3_grid.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>
-                <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>
-                <hr>
-                <p class="card-text h4 text-center">Estatus</p>
-                <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>
-              </div>
+                
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 2 <i class="bi bi-skip-forward-fill"></i></button>
+                <a type="button" class="btn btn-danger btn-lg btn-block" href="dashboard.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
+            </form>
             </div>
-          </div>
 
-          <div class="col mb-3">
-            <div class="card text-dark bg-light mb-6" style="max-width: 36rem; height: 18rem; box-shadow: 4px -1px 0px -1px #005eff;">
-              <!-- <div class="card-header">Enero-Marzo 2020</div> -->
-              <div class="card-body">
-                <h5 class="card-title text-primary">Documentos</h5>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Agregar datos de su empresa</p>
-                <a href="seccion4.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>
-                <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>
-                <hr>
-                <p class="card-text h4 text-center">Estatus</p>
-                <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>
-              </div>
-            </div>
-          </div>
 
-          
         </div>
-      </div> <!-- container -->
-      <hr>
-
-      <div class="container">
-        <div class="row row-cols-1 row-cols-md-1">
-          <div class="col mb-12">
-            <div class="card text-white bg-primary mb-12" style="width: 100%; ">
-              <!-- <div class="card-header">Tabla 1</div> -->
-              <div class="card-body"><br>
-                <h1 class="card-title"><i class="bi bi-exclamation-circle"></i> DICTAMEN</h1>
-                <p class="card-text">El siguiente dictamen para pertenecer al padrón de proveedores del Instituto de la Juventud del Estado de Zacatecas es el siguiente:</p>
-
-                <p class="card-text h4 text-center">Estatus</p>
-                <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-smile-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-neutral-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-frown-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>
-                <!-- <p><a href="trimestre1.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->
-              </div>
-            </div>
-          </div>
-          </div>
-          </div>
         <!-- interno -->
 
 
