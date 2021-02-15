@@ -214,14 +214,15 @@ include('/conn.php');
         <div class="container-fluid">
           <h1 class="h1">SECCIÓN 3</h1>
           <p class="lead">Cuenta(s) bancaria(s) agregada(s)</p>
+          <a href="seccion3.php"></a>
           <hr class="my-4">
           <!-- <p>Cargar documentos</p>
           <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a> -->
 
           
         <!-- interno -->
-        <div class="container">
-            <table class="table table-responsive table-striped table-hover ">
+        <div class="container container-fluid">
+            <table class="table table-responsive table-striped table-hover" style="width:100%">
                 <thead>
                     <tr>
                     <th scope="col"># Cuenta</th>
@@ -234,10 +235,10 @@ include('/conn.php');
                 <tbody>
                     <tr>
                     <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <td>Jesus Rodolfo Leaños Villegas</td>
+                    <td>Banorte</td>
+                    <td>Zacatecas</td>
+                    <td>Pago de quincena doce del año 2021</td>
                     </tr>
                     <tr>
                     <th scope="row">2</th>
