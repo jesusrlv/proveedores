@@ -287,7 +287,7 @@ include('/conn.php');
                 
                 <hr class="mb-4">
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 2 <i class="bi bi-skip-forward-fill"></i></button>
-                <a type="button" class="btn btn-danger btn-lg btn-block" href="dashboard.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
+                <a type="button" class="btn btn-danger btn-lg btn-block" href="seccion3_grid.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
             </form>
             </div>
 

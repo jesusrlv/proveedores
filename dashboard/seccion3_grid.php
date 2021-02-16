@@ -214,7 +214,7 @@ include('/conn.php');
         <div class="container-fluid">
           <h1 class="h1">SECCIÓN 3</h1>
           <p class="lead">Cuenta(s) bancaria(s) agregada(s)</p>
-          <a href="seccion3.php"></a>
+          <a href="seccion3.php" class="btn btn-outline-primary"><i class="bi bi-journal-plus"></i> Agregar cuenta</a>
           <hr class="my-4">
           <!-- <p>Cargar documentos</p>
           <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a> -->
