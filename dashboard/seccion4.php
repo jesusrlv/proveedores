@@ -212,77 +212,180 @@ include('/conn.php');
 
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
         <div class="container-fluid">
-          <h1 class="h1">SECCIÓN 2</h1>
-          <p class="lead">Dirección</p>
+          <h1 class="h1">SECCIÓN 4</h1>
+          <p class="lead">Documentos</p>
           <hr class="my-4">
           <!-- <p>Cargar documentos</p>
           <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a> -->
 
-          
-        <!-- interno -->
+            <div class="alert alert-secondary" role="alert">
+                <a href=""><i class="bi bi-file-binary-fill"></i> Descargar Formato RCB-1</a>
+            </div>
+        <hr class="my-4">
+
         <div class="row">
                 <div class="col-md-12 order-md-1">
-            <h4 class="mb-3">Datos de proveedor</h4>
-            <form class="needs-validation" novalidate>
-                <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="firstName">Colonia</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                    Valid first name is required.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName">Código postal</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                    Valid last name is required.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="firstName">Número interior</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                    Valid first name is required.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName">Número exterior</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                    Valid last name is required.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName">Colonia</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                    Valid last name is required.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName">Correo electrónico</label>
-                    <input type="email" class="form-control" id="lastName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                    Valid last name is required.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName">Teléfono oficina</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                    Valid last name is required.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName">Teléfono celular</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                    Valid last name is required.
-                    </div>
-                </div>
+            <h4 class="mb-3">Documentos de proveedor</h4>
 
-                </div>
+       
+
+        <!-- box tool -->
+
+        <div class="box-body table-responsive no-padding">
+              <table class="table table-hover text-center">
+                <thead class="text-center align-middle">
+                  <th>#</th>
+                  <th>Nombre</th>
+                  <th>Cargar archivo</th>
+                  <th>Acción</th>
+                  <th>Status</th>
+                  <th>Descripción del archivo</th>
+                </thead>
+                <tr>
+                  <td>1</td>
+                  <td>Carta de aceptación</td>
+<!--                  <td><input type="file" id="exampleInputFile"></td>-->
+                 
+                 <script type="text/javascript">
+                
+                     function _(el) {
+  return document.getElementById(el);
+}
+
+function uploadFile() {
+  var file = _("file1").files[0];
+  // alert(file.name+" | "+file.size+" | "+file.type);
+  var formdata = new FormData();
+  formdata.append("file1", file);
+  var ajax = new XMLHttpRequest();
+  ajax.upload.addEventListener("progress", progressHandler, false);
+  ajax.addEventListener("load", completeHandler, false);
+  ajax.addEventListener("error", errorHandler, false);
+  ajax.addEventListener("abort", abortHandler, false);
+  ajax.open("POST", "file_upload_parser.php"); // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
+  //use file_upload_parser.php from above url
+  //ARCHIVO CON EL PROCEDIMIENTO PARA MOVER EL DOCUMENTO AL SERVIDOR
+  ajax.send(formdata);
+}
+
+function progressHandler(event) {
+  _("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
+  var percent = (event.loaded / event.total) * 100;
+  _("progressBar").value = Math.round(percent);
+  _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
+}
+
+function completeHandler(event) {
+  _("status").innerHTML = event.target.responseText;
+  _("progressBar").value = 0; //wil clear progress bar after successful upload
+}
+
+function errorHandler(event) {
+  _("status").innerHTML = "Upload Failed";
+}
+
+function abortHandler(event) {
+  _("status").innerHTML = "Upload Aborted";
+}
+                    
+                </script>
+                 
+                  <td><form id="upload_form" enctype="multipart/form-data" method="post">
+  <input type="file" name="file1" id="file1" onchange="uploadFile()"><br>
+  <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+  <h3 id="status"></h3>
+  <p id="loaded_n_total"></p>
+</form></td>
+                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
+                  <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Carta propuesta</td>
+                  <td><input type="file" id="exampleInputFile"></td>
+                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
+                 <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Credencial de elector</td>
+                  <td><input type="file" id="exampleInputFile"></td>
+                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
+                 <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>CURP</td>
+                  <td><input type="file" id="exampleInputFile"></td>
+                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
+                 <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Comprobante de domicilio</td>
+                  <td><input type="file" id="exampleInputFile"></td>
+                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
+                 <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Currículum Vitae</td>
+                  <td><input type="file" id="exampleInputFile"></td>
+                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
+                 <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Video</td>
+                  <td><input type="file" id="exampleInputFile"></td>
+                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
+                  <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+              </table>
+              
+              <div class="box-footer">
+                <!-- <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Calificar</button> -->
+              </div>
+              
+              <!-- <div class="modal fade" id="modal-default">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Cargar archivo</h4>
+              </div>
+              <div class="modal-body">
+                <p><label for="exampleInputFile">Seleeciona el documento</label>
+                  <input type="file" id="exampleInputFile">
+
+                  <p class="help-block">No tiene que exceder los 60Mb</p></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Guardar</button>
+              </div>
+            </div> -->
+            <!-- /.modal-content -->
+            
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+            </div>
+
+        <!-- box tool -->
+
+        <!-- interno -->
+        
+            
 
                 
                 <hr class="mb-4">

@@ -255,6 +255,9 @@ include('/conn.php');
                     </tr>
                 </tbody>
             </table>
+            <a type="button" class="btn btn-primary btn-lg btn-block" href="dashboard.php"><i class="bi bi-arrow-left-square-fill"></i> Regresar</a>
+
+
         </div>
         <!-- interno -->
 
