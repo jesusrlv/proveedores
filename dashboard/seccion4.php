@@ -44,7 +44,7 @@ include('/conn.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="">
-    <title>Dashboard | PROCYON</title>
+    <title>Dashboard | Proveedores</title>
 
     <link rel="icon" type="image/png" href="../img/icon.ico"/>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
@@ -225,7 +225,7 @@ include('/conn.php');
 
         <div class="row">
                 <div class="col-md-12 order-md-1">
-            <h4 class="mb-3">Documentos de proveedor</h4>
+            <h4 class="mb-3">Documentos del proveedor</h4>
 
        
 
@@ -243,7 +243,7 @@ include('/conn.php');
                 </thead>
                 <tr>
                   <td>1</td>
-                  <td>Carta de aceptación</td>
+                  <td>RCB-1</td>
 <!--                  <td><input type="file" id="exampleInputFile"></td>-->
                  
                  <script type="text/javascript">
@@ -302,7 +302,7 @@ function abortHandler(event) {
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>Carta propuesta</td>
+                  <td>Cédula de proveedores</td>
                   <td><input type="file" id="exampleInputFile"></td>
                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
                  <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
@@ -310,7 +310,7 @@ function abortHandler(event) {
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td>Credencial de elector</td>
+                  <td>Constancia situación fiscal</td>
                   <td><input type="file" id="exampleInputFile"></td>
                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
                  <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
@@ -318,7 +318,7 @@ function abortHandler(event) {
                 </tr>
                 <tr>
                   <td>4</td>
-                  <td>CURP</td>
+                  <td>Comprobante de domicilio</td>
                   <td><input type="file" id="exampleInputFile"></td>
                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
                  <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
@@ -326,7 +326,7 @@ function abortHandler(event) {
                 </tr>
                 <tr>
                   <td>5</td>
-                  <td>Comprobante de domicilio</td>
+                  <td>Carátula de estado de cuenta</td>
                   <td><input type="file" id="exampleInputFile"></td>
                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
                  <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
@@ -334,7 +334,7 @@ function abortHandler(event) {
                 </tr>
                 <tr>
                   <td>6</td>
-                  <td>Currículum Vitae</td>
+                  <td>INE</td>
                   <td><input type="file" id="exampleInputFile"></td>
                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
                  <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
@@ -342,7 +342,15 @@ function abortHandler(event) {
                 </tr>
                 <tr>
                   <td>7</td>
-                  <td>Video</td>
+                  <td>Formato D32 SAT</td>
+                  <td><input type="file" id="exampleInputFile"></td>
+                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
+                  <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Opinión de cumplimiento obligaciones estatales</td>
                   <td><input type="file" id="exampleInputFile"></td>
                   <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
                   <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
