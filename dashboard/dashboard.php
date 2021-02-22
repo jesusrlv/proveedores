@@ -44,7 +44,7 @@ include('/conn.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="">
-    <title>Dashboard | PROCYON</title>
+    <title>Dashboard | Proveedores</title>
 
     <link rel="icon" type="image/png" href="../img/icon.ico"/>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
@@ -143,33 +143,53 @@ include('/conn.php');
           </h6>
 
           <li class="nav-item">
-            <a class="nav-link" href="datos.php">
-              <!-- <span data-feather="layers"></span> -->
+            <a class="nav-link" href="#">
+               
+              <i class="fas fa-file-alt"></i> Formato RCB-1
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+               
+              <i class="fas fa-file-alt"></i> SAT
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+               
+              <i class="fas fa-file-alt"></i> FINANZAS
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+               
+              <i class="fas fa-file-alt"></i> Cédula proveedores
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="seccion1_tipo.php">
                
               <i class="fas fa-file-alt"></i> Datos
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="direccion.php">
-              <!-- <span data-feather="layers"></span> -->
                
               <i class="fas fa-file-alt"></i> Dirección
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="datos_bancarios.php">
-              <!-- <span data-feather="layers"></span> -->
                
               <i class="fas fa-file-alt"></i> Datos bancarios
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="documentos.php">
-              <!-- <span data-feather="layers"></span> -->
                
               <i class="fas fa-file-alt"></i> Documentos
             </a>
-          </li>
+          </li> -->
          
           
         </ul>

@@ -1,450 +1,245 @@
-<?php
-session_start();
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>INJUVENTUD | Premio Estatal de la Juventud</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
 
-// if (isset($_SESSION['usr'])) {
-//     if($_SESSION['perfil']==1){
-        // header('Location: javascript: history.go(-1)');
-    // }
-    // elseif($_SESSION['perfil']==2){
-        // header('Location: javascript: history.go(-1)');
-    // }
-    // elseif($_SESSION['perfil']==3){
-        // header('Location: javascript: history.go(-1)');
-    // }
-    // else{
-        // header('Location:prcd/sort.php');
-    // }
-    // Si esta identificado, en otras palabras existe la variable, le saludamos
-    // echo 'Hola ' . $_SESSION['usr'];
-// } else {
-    // En caso contrario redirigimos el visitante a otra página
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 
-    // echo 'Usuario no válido';
-    // header('Location: ../../autentificacion/');
-    // header('Location: prcd/sort.php');
-    // die();
-// }
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-green sidebar-mini">
+<div class="wrapper">
 
-include('prcd/conn.php');
+  <header class="main-header">
+   <?php
+      include("../../conn/conexion.php");
+        
+        session_start();
+        if(isset($_SESSION['usuario'])){
+            
+            $nombre=$_SESSION['nombre'];
+            $codigo=$_SESSION['codigo'];
+            $curp=$_SESSION['curp'];
 
-// variables de sesión
-
-    $usuario = $_SESSION['usr'];
-    $id = $_SESSION['id'];
-    $perfil = $_SESSION['perfil'];
-    $nombre = $_SESSION['nombre'];
-
-?>
-
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="generator" content="">
-    <title>Dashboard | Proveedores</title>
-
-    <link rel="icon" type="image/png" href="../img/icon.ico"/>
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
-    <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
-
-    <!-- íconos Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/form-validation.css" rel="stylesheet">
-
-
-    <!-- Scripts -->
-    <script src="css/form-valdation.js"></script>
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
         }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
-  </head>
-  <body>
-    <!-- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"> -->
-    <nav class="navbar navbar-light sticky-top flex-md-nowrap p-0 bg-light text-dark">
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 text-center text-white" href="#">
-    <!-- <img src="../img/logo.png" width="45" height="45" class="d-inline-block align-top" alt="" loading="lazy">   -->
-    <h5 class="text-center text-dark display-7" style="margin-left:3px;"><b>INJUVENTUD</b></h5>
+        
+      ?>
+   
+    <!-- Logo -->
+    <a href="#" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>I</b>NJ</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>IN</b>JUVENTUD</span>
     </a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <!-- <a href="" class="text-left">Inicio ></a> -->
-  <!-- <input class="form-control form-control-dark w-10" type="text" placeholder="Search" aria-label="Search" style="width:30%"> -->
-  
- 
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      
-        
-       
-        <a class="btn btn-outline-secondary" href="prcd/sort.php" role="button"><i class="fas fa-sign-out-alt"></i> Salir</a>    
-        
-      </li>
-  </ul>
-</nav>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
 
-<div class="container-fluid">
-  <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="sidebar-sticky pt-3">
-        
-        <ul class="navbar-nav px-3 text-center">
-            <li class="align-middle">
-                   <img src="../img/logo.png" width="35%" class="" alt="" loading="lazy">  
-      
-            </li>
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-center text-center align-items-center px-3 mt-4 mb-1 text-muted">
-
-          <span class="">
-          bienvenido<br><i class="fas fa-user"></i> 
-            <?php
-            
-              echo utf8_encode($nombre);
-            
-            ?>
-          </span>
-        </h6>
-<hr>
-        <ul class="nav flex-column">
- 
-           <li class="nav-item">
-            <a class="nav-link active" href="dashboard.php">
-              <!-- <span data-feather="home"></span> -->
-              <i class="fas fa-laptop-house"></i> 
-              Dashboard <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <hr style="color: dimgrey;">
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
           
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Requisitos</span>
-            <a class="d-flex align-items-center text-muted" href="dashboard.php" aria-label="Add a new report">
-              <span data-feather="plus-circle"></span>
+           
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../../dist/img/trabajemosJuntosJuventud.png" class="user-image" alt="User Image" style="background-color:white;">
+              <span class="hidden-xs">Perfil Usuario</span>
             </a>
-          </h6>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="../../dist/img/trabajemosJuntosJuventud.png" class="img-circle" alt="User Image" style="background-color:white;">
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-               
-              <i class="fas fa-file-alt"></i> Formato RCB-1
-            </a>
+                <p>
+                  <?php echo $nombre?> 
+                  <small><?php echo $curp ?></small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#"></a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#"></a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#"></a>
+                  </div>
+
+                </div>
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                </div>
+                <div class="pull-right">
+                  <a href="prcd/sort.php" class="btn btn-default btn-flat">Salir</a>
+                </div>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-               
-              <i class="fas fa-file-alt"></i> SAT
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-               
-              <i class="fas fa-file-alt"></i> FINANZAS
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-               
-              <i class="fas fa-file-alt"></i> Cédula proveedores
-            </a>
-          </li>
+          <!-- Control Sidebar Toggle Button -->
+<!--
          
-          
+-->
         </ul>
-
-    
+      </div>
     </nav>
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="background-color:#eaeef4; height:100%;">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 ">
-        <h1 class="h1">DASHBOARD</h1>
-        
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group mr-2">
-            <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Reporte EXCEL</button> -->
-          </div>
-         
-        </div>
-      </div>
-
-      <h4 class="text-primary" style="margin-top:-27px"> <?php
-                  date_default_timezone_set('America/Mexico_City');
-                  setlocale(LC_TIME, 'es_MX.UTF-8');
-                  $fecha_actual=strftime("%Y-%m-%d");
-                  $hora_actual=strftime("%H:%M:%S");
-
-                  echo 'Zacatecas, Zac., '.$hora_actual.', '. $fecha_actual;
-              ?></h4>
-
-      <!-- <hr style="color: dimgrey;"> -->
-      <h2></h2>
-    <div class="container-fluid ">
-
-
-      <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
-        <div class="container-fluid">
-          <h1 class="h1">SECCIÓN 4</h1>
-          <p class="lead">Documentos</p>
-          <hr class="my-4">
-          <!-- <p>Cargar documentos</p>
-          <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a> -->
-
-            <div class="alert alert-secondary" role="alert">
-                <a href=""><i class="bi bi-file-binary-fill"></i> Descargar Formato RCB-1</a>
-            </div>
-        <hr class="my-4">
-
-        <!-- ROW -->
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../../dist/img/trabajemosJuntosJuventud.png" class="img-circle" alt="User Image" style="background-color:white;">
           
-        <!-- ROW -->
-
-
-        <div class="row">
-                <div class="col-md-12 order-md-1">
-            <h4 class="mb-3">Documentos del proveedor</h4>
-
-       
-
-        <!-- box tool -->
-
-        <div class="box-body table-responsive no-padding">
-              <table class="table table-hover text-center">
-                <thead class="text-center align-middle">
-                  <th>#</th>
-                  <th>Nombre</th>
-                  <th>Cargar archivo</th>
-                  <th>Acción</th>
-                  <th>Status</th>
-                  <th>Descripción del archivo</th>
-                </thead>
-                <tr>
-                  <td>1</td>
-                  <td>RCB-1</td>
-<!--                  <td><input type="file" id="exampleInputFile"></td>-->
-                 
-                 <script type="text/javascript">
-                
-                     function _(el) {
-  return document.getElementById(el);
-}
-
-function uploadFile() {
-  var file = _("file1").files[0];
-  // alert(file.name+" | "+file.size+" | "+file.type);
-  var formdata = new FormData();
-  formdata.append("file1", file);
-  var ajax = new XMLHttpRequest();
-  ajax.upload.addEventListener("progress", progressHandler, false);
-  ajax.addEventListener("load", completeHandler, false);
-  ajax.addEventListener("error", errorHandler, false);
-  ajax.addEventListener("abort", abortHandler, false);
-  ajax.open("POST", "file_upload_parser.php"); // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
-  //use file_upload_parser.php from above url
-  //ARCHIVO CON EL PROCEDIMIENTO PARA MOVER EL DOCUMENTO AL SERVIDOR
-  ajax.send(formdata);
-}
-
-function progressHandler(event) {
-  _("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
-  var percent = (event.loaded / event.total) * 100;
-  _("progressBar").value = Math.round(percent);
-  _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
-}
-
-function completeHandler(event) {
-  _("status").innerHTML = event.target.responseText;
-  _("progressBar").value = 0; //wil clear progress bar after successful upload
-}
-
-function errorHandler(event) {
-  _("status").innerHTML = "Upload Failed";
-}
-
-function abortHandler(event) {
-  _("status").innerHTML = "Upload Aborted";
-}
-                    
-                </script>
-                 
-                  <td><form id="upload_form" enctype="multipart/form-data" method="post">
-  <input type="file" name="file1" id="file1" onchange="uploadFile()"><br>
-  <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status"></h3>
-  <p id="loaded_n_total"></p>
-</form></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                  <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Cédula de proveedores</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                 <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Constancia situación fiscal</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                 <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Comprobante de domicilio</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                 <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Carátula de estado de cuenta</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                 <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>INE</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                 <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Formato D32 SAT</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                  <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>Opinión de cumplimiento obligaciones estatales</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                  <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-              </table>
-              
-              <div class="box-footer">
-                <!-- <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Calificar</button> -->
-              </div>
-              
-              <!-- <div class="modal fade" id="modal-default">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Cargar archivo</h4>
-              </div>
-              <div class="modal-body">
-                <p><label for="exampleInputFile">Seleeciona el documento</label>
-                  <input type="file" id="exampleInputFile">
-
-                  <p class="help-block">No tiene que exceder los 60Mb</p></p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Guardar</button>
-              </div>
-            </div> -->
-            <!-- /.modal-content -->
-            
-          </div>
-          <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
-            </div>
+        <div class="pull-left info">
+          <p>NAVEGADOR USUARIO</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> En línea</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <!-- <input type="text" name="q" class="form-control" placeholder="Buscar..."> -->
+          <span class="input-group-btn">
+                <!-- <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button> -->
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">NAVEGACIÓN PRINCIPAL</li>
 
-        <!-- box tool -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-power-off"></i>
+            <span>Sistema</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="flot.php"><i class="fa fa-info-circle"></i> Información General</a></li>
+            <li><a href="usr_cargar.php" class="active"><i class="fa fa-cloud-upload"></i> Subir Archivos</a></li>
+            <li><a href="usr_reload.php" class="active"><i class="fa fa-cloud-upload"></i> Editar Archivos</a></li>
+            <li><a href="usr_repositorio.php"><i class="fa fa-folder-open-o"></i> Repositorio</a></li>
 
-        <!-- interno -->
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Tutoriales</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/UI/general.html"><i class="fa fa-youtube-play"></i> Video tutorial</a></li>
+
+          </ul>
+        </li>
         
+         
+         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>Documentación</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-file-pdf-o"></i> Documento #1</a></li>
+            <li><a href="#"><i class="fa fa-file-pdf-o"></i> Documento #2</a></li>
+            <li><a href="#"><i class="fa fa-file-pdf-o"></i> Documento #3</a></li>
+
+          </ul>
+        </li>
+        
+         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-warning"></i> <span>Privacidad</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-thin"></i>  Aviso de privacidad</a></li>
             
 
-                
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 2 <i class="bi bi-skip-forward-fill"></i></button>
-                <a type="button" class="btn btn-danger btn-lg btn-block" href="dashboard.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
-            </form>
-            </div>
+          </ul>
+        </li>
 
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
 
-        </div>
-        <!-- interno -->
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Cargar archivos
+        <small>sección para subir documentos</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-th-large"></i> Inicio</a></li>
+        <li><a href="#">Sistema</a></li>
+        <li class="active">Subir Archivos</li>
+      </ol>
+    </section>
 
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          
+          <!-- /.box -->
 
-        </div>
-      </div>
-
-      <!-- card -->
-      
-      <!-- card -->
-
-      
-
-      </div>
-
-      <!-- ROW -->
-
-
-
-      <!-- ROW -->
-    </main>
-  </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="css/bootstrap.bundle.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-        <script src="css/dashboard.js"></script></body>
-</html>
-
-<!-- 
-
-https://startbootstrap.com/theme/sb-admin-pro-angular
-
-https://startbootstrap.com/themes/admin-dashboard
- -->
-
-
-<!-- CODIGO -->
-
-<div class="row">
+          
+          <!-- /.box -->
+        
+        <!-- /.col -->
+        
+      <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
@@ -525,7 +320,7 @@ function abortHandler(event) {
                   <td><form id="upload_form" enctype="multipart/form-data" method="post">
   
   <?php
-    include('prcd/conn.php');
+    include('../../conn/conexion.php');
     // $query="SELECT * FROM archivos WHERE id_usr='$curp'";
     $query="SELECT * FROM archivos WHERE codigo_usr='$codigo'";
 
@@ -1349,3 +1144,225 @@ function abortHandler9(event) {
           <!-- /.box -->
         </div>
       </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>ZACATECAS</b>, ZAC.
+    </div>
+    <strong>Gobierno del Estado de Zacatecas &copy; 2016-2021 <a href="http://www.zacatecas.gob.mx">GODEZAC</a>.</strong> INJUVENTUD
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane" id="control-sidebar-home-tab">
+        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                <p>Will be 23 on April 24th</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-user bg-yellow"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+
+                <p>New phone +1(800)555-1234</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+
+                <p>nora@example.com</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-file-code-o bg-green"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+
+                <p>Execution time 5 seconds</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+        <h3 class="control-sidebar-heading">Tasks Progress</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Custom Template Design
+                <span class="label label-danger pull-right">70%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Update Resume
+                <span class="label label-success pull-right">95%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Laravel Integration
+                <span class="label label-warning pull-right">50%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Back End Framework
+                <span class="label label-primary pull-right">68%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Stats tab content -->
+      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+        <form method="post">
+          <h3 class="control-sidebar-heading">General Settings</h3>
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Report panel usage
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Some information about this general settings option
+            </p>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Allow mail redirect
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Other sets of options are available
+            </p>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Expose author name in posts
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Allow the user to show his name in blog posts
+            </p>
+          </div>
+          <!-- /.form-group -->
+
+          <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Show me as online
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Turn off notifications
+              <input type="checkbox" class="pull-right">
+            </label>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Delete chat history
+              <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+            </label>
+          </div>
+          <!-- /.form-group -->
+        </form>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Slimscroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+</body>
+</html>

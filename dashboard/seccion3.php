@@ -44,7 +44,7 @@ include('/conn.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="generator" content="">
-    <title>Dashboard | PROCYON</title>
+    <title>Dashboard | Proveedores</title>
 
     <link rel="icon" type="image/png" href="../img/icon.ico"/>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
@@ -52,6 +52,7 @@ include('/conn.php');
 
     <!-- íconos Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -60,6 +61,10 @@ include('/conn.php');
 
     <!-- Scripts -->
     <script src="css/form-valdation.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
 
 
     <style>
@@ -80,6 +85,7 @@ include('/conn.php');
     </style>
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   </head>
   <body>
     <!-- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"> -->
@@ -149,31 +155,27 @@ include('/conn.php');
           </h6>
 
           <li class="nav-item">
-            <a class="nav-link" href="datos.php">
-              <!-- <span data-feather="layers"></span> -->
+            <a class="nav-link" href="#">
                
-              <i class="fas fa-file-alt"></i> Datos
+              <i class="fas fa-file-alt"></i> Formato RCB-1
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="direccion.php">
-              <!-- <span data-feather="layers"></span> -->
+            <a class="nav-link" href="#">
                
-              <i class="fas fa-file-alt"></i> Dirección
+              <i class="fas fa-file-alt"></i> SAT
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="datos_bancarios.php">
-              <!-- <span data-feather="layers"></span> -->
+            <a class="nav-link" href="#">
                
-              <i class="fas fa-file-alt"></i> Datos bancarios
+              <i class="fas fa-file-alt"></i> FINANZAS
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="documentos.php">
-              <!-- <span data-feather="layers"></span> -->
+            <a class="nav-link" href="#">
                
-              <i class="fas fa-file-alt"></i> Documentos
+              <i class="fas fa-file-alt"></i> Cédula proveedores
             </a>
           </li>
          
@@ -212,7 +214,7 @@ include('/conn.php');
 
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
         <div class="container-fluid">
-          <h1 class="h1">SECCIÓN 1</h1>
+          <h1 class="h1">SECCIÓN 3</h1>
           <p class="lead">Cuenta(s) bancaria(s)</p>
           <hr class="my-4">
           <!-- <p>Cargar documentos</p>
@@ -222,39 +224,39 @@ include('/conn.php');
         <!-- interno -->
         <div class="row">
                 <div class="col-md-12 order-md-1">
-            <h4 class="mb-3">Datos de proveedor</h4>
+            <h4 class="mb-3">Agregar cuenta bancaria</h4>
             <form class="needs-validation" novalidate>
                 <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="firstName">Colonia</label>
+                    <label for="firstName">Número de cuenta <span class="badge badge-pill badge-primary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">?</span></label>
                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="lastName">Código postal</label>
+                    <label for="lastName">Clave interbancaria (CLABE)<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button></label>
                     <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="firstName">Número interior</label>
+                    <label for="firstName">Nombre del banco</label>
                     <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="lastName">Número exterior</label>
+                    <label for="lastName">Sucursal</label>
                     <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="lastName">Colonia</label>
+                    <label for="lastName">Concepto</label>
                     <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
