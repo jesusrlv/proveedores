@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-02-2021 a las 22:29:44
+-- Tiempo de generación: 08-03-2021 a las 22:34:45
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.1
 
@@ -99,6 +99,7 @@ CREATE TABLE `menu` (
 
 CREATE TABLE `usr` (
   `id` int(11) NOT NULL,
+  `nombre` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `usr` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `pwd` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `perfil` int(11) NOT NULL
