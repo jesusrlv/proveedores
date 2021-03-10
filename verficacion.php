@@ -1,11 +1,11 @@
 <?php 
-require('config.php');
+require('conn.php');
 sleep(1);
 if (isset($_POST)) {
     $username = (string)$_POST['username'];
  
-    $result = $connexion->query(
-        'SELECT * FROM users WHERE username = "'.strtolower($username).'"'
+    $result = $conn->query(
+        'SELECT * FROM usr WHERE usuario = "'.strtolower($username).'"'
     );
  
     if ($result->num_rows > 0) {
@@ -15,4 +15,3 @@ if (isset($_POST)) {
     }
 }
 
-?>

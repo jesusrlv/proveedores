@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <?php
-        include('/dashboard/prcd/conn.php')
+        require('dashboard/prcd/conn.php');
     ?>
   
 
@@ -12,24 +12,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/signin.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
   <!-- script validate -->
-  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.js"></script> -->
   <script type="text/javascript">
   $(document).ready(function() {	
       $('#username').on('blur', function() {
-          $('#result-username').html('<img src="images/loader.gif" />').fadeOut(1000);
+          $('#result-username').html('<img src="dashboard/img/loader.gif" />').fadeOut(1000);
   
           var username = $(this).val();		
           var dataString = 'username='+username;
   
           $.ajax({
               type: "POST",
-              url: "verificacion.php",
+              url: "verficacion.php",
               data: dataString,
               success: function(data) {
                   $('#result-username').fadeIn(1000).html(data);
@@ -39,8 +43,6 @@
   });    
   </script>
   <!-- script validate -->
-
-  
 
 </head>
 
@@ -54,7 +56,7 @@ background-size: cover;">
   <hr>
   <h1 class="h4 mb-3 font-weight-normal">Ingresar</h1>
   <label for="inputEmail" class="sr-only">Usuario</label>
-  <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" name="usr" required autofocus>
+  <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" name="usuario" required autofocus>
   <label for="inputPassword" class="sr-only">Contraseña</label>
   <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" name="pwd" required>
   <div class="checkbox mb-3">
@@ -73,15 +75,12 @@ background-size: cover;">
 </form>
 
 
-
-
-
 </body>
-
 
 </html>
 
 <!--MODAL-->
+
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -95,28 +94,53 @@ background-size: cover;">
       <div class="modal-body">
         <h4>Formulario</h4>
 
-        <form>
+        <form action="#" method="POST">
           <div class="form-group">
             <label for="exampleInputEmail1">Nombre completo</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo" required>
             <small id="emailHelp" class="form-text text-muted">Se generará un usuario para ingresar a la plataforma</small>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail2">Correo electrónico</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <small id="emailHelp" class="form-text text-muted">Este será el usuario para acceder a la plataforma y se enviará un correo con tus datos.</small>
+            <!-- <input type="text" class="form-control" id="username" name="username" placeholder="Correo electrónico" required> -->
+            <input type="text" class="form-control" id="username" name="username" placeholder="Introduce tu nombre...">
+            <small class="form-text text-muted">Este será el usuario para acceder a la plataforma y se enviará un correo con tus datos.</small>
+          
+          <!-- div de usuario repetido -->
+            <p><div id="result-username"></div></p>
+          <!-- div de usuario repetido -->
+          
           </div>
+
+          <div class="row">
+        <div class="col-lg-12">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Bloque de anuncios adaptable -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6676636635558550"
+                 data-ad-slot="8523024962"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
           <div class="form-group">
             <label for="exampleInputPassword1">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="cla1">
+            <input type="password" class="form-control" id="exampleInputPassword1" name="cla1" required>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword2">Teclear nuevamente la contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword2" name="cla2">
+            <input type="password" class="form-control" id="exampleInputPassword2" name="cla2" required>
           </div>
           
           <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
+
+
 
       </div>
       <div class="modal-footer">
@@ -189,4 +213,3 @@ background-size: cover;">
     });
   });
 </script>
-
