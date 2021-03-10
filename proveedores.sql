@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-03-2021 a las 22:34:45
+-- Tiempo de generación: 10-03-2021 a las 22:52:26
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.1
 
@@ -21,6 +21,21 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `proveedores`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `banco`
+--
+
+CREATE TABLE `banco` (
+  `id` int(11) NOT NULL,
+  `banco` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `no_cuenta` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `no_clabe` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `sucursal` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `concepto` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -100,14 +115,27 @@ CREATE TABLE `menu` (
 CREATE TABLE `usr` (
   `id` int(11) NOT NULL,
   `nombre` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  `usr` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `usuario` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `pwd` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `perfil` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Volcado de datos para la tabla `usr`
+--
+
+INSERT INTO `usr` (`id`, `nombre`, `usuario`, `pwd`, `perfil`) VALUES
+(1, 'uno', 'jesusrlv@correo.com', '123456789', 1);
+
+--
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `banco`
+--
+ALTER TABLE `banco`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `datos`
@@ -144,6 +172,12 @@ ALTER TABLE `usr`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `banco`
+--
+ALTER TABLE `banco`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `datos`
 --
 ALTER TABLE `datos`
@@ -171,7 +205,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de la tabla `usr`
 --
 ALTER TABLE `usr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
