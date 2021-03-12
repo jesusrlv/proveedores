@@ -19,8 +19,12 @@
   <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
   <!-- script validate -->
+  <script src="dashboard/prcd/validacion_pwd.js"></script>
+  <link href="dashboard/css/CheckPassword.css" rel="stylesheet" />
+
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
   <!-- <script src="https://code.jquery.com/jquery-3.2.1.js"></script> -->
   <script type="text/javascript">
@@ -44,10 +48,25 @@
   </script>
   <!-- script validate -->
 
+  <!-- script visual -->
+<script>
+ function myFunction() {
+  var x = document.getElementById("exampleInputPassword1");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+} 
+</script>
+  <!-- script visual -->
+
 </head>
 
 <body class="text-center" style="background-image: url(img/fondo.jpg); background-repeat: no-repeat;background-attachment: fixed;  
 background-size: cover;">
+
+
 
 <!-- <form class="form-signin" action="dashboard.html" method="POST" name="envio"> -->
 <form class="form-signin" action="prcd/proceso_validacion.php" name="envio" method="POST">
@@ -92,7 +111,7 @@ background-size: cover;">
         </button>
       </div>
       <div class="modal-body">
-        <h4>Formulario</h4>
+        <h4><i class="bi bi-file-earmark-person"></i> Formulario</h4>
 
         <form action="#" method="POST">
           <div class="form-group">
@@ -103,7 +122,7 @@ background-size: cover;">
           <div class="form-group">
             <label for="exampleInputEmail2">Correo electrónico</label>
             <!-- <input type="text" class="form-control" id="username" name="username" placeholder="Correo electrónico" required> -->
-            <input type="text" class="form-control" id="username" name="username" placeholder="Introduce tu nombre...">
+            <input type="email" class="form-control" id="username" name="username" placeholder="Introduce tu correo electrónico..." required>
             <small class="form-text text-muted">Este será el usuario para acceder a la plataforma y se enviará un correo con tus datos.</small>
           
           <!-- div de usuario repetido -->
@@ -130,21 +149,25 @@ background-size: cover;">
 
           <div class="form-group">
             <label for="exampleInputPassword1">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="cla1" required>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+            <p><input type="checkbox" onclick="myFunction()"> Mostrar contraseña </p>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="exampleInputPassword2">Teclear nuevamente la contraseña</label>
             <input type="password" class="form-control" id="exampleInputPassword2" name="cla2" required>
-          </div>
+          </div> -->
+
+          <!-- mensaje del Js para confirmar -->
+          <div id="strengthMessage"></div>
           
-          <button type="submit" class="btn btn-primary">Registrar</button>
+          <button type="submit" class="btn btn-primary" id="boton_submit"><i class="bi bi-person-plus-fill"></i> Registrar</button>
         </form>
 
 
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="bi bi-x-square-fill"></i> Cerrar</button>
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
@@ -152,64 +175,3 @@ background-size: cover;">
 </div>
 
 <!--MODAL-->
-
-<script type="text/javascript">
-  function validar_clave(e) {
-
-    var caract_invalido = " ";
-    var caract_longitud = 6;
-    var cla1 = $('#register-form #password').val();
-    var cla2 = $('#register-form #confirm-password').val();
-    if (cla1 == '' || cla2 == '') {
-      alert('Debes introducir tu clave en los dos campos.');
-      //document.registro
-      e.preventDefault();
-      return false;
-    }
-    if (cla1.length < caract_longitud) {
-      alert('Tu clave debe constar de ' + caract_longitud + ' carácteres.');
-      //document.registro
-      e.preventDefault();
-      return false;
-    }
-    if (cla1.indexOf(caract_invalido) > -1) {
-      alert("Las claves no pueden contener espacios");
-      //document.registro
-      e.preventDefault();
-      return false;
-    } else {
-      if (cla1 != cla2) {
-        alert("Las claves introducidas no son iguales");
-        //document.registro
-        e.preventDefault();
-        return false;
-      } else {
-        alert('Contraseña correcta');
-        //$('#register-form').trigger('submit');
-        return true;
-      }
-    }
-  }
-
-  $(function() {
-
-    $('#login-form-link').click(function(e) {
-      $("#login-form").delay(100).fadeIn(100);
-      $("#register-form").fadeOut(100);
-      $('#register-form-link').removeClass('active');
-      $(this).addClass('active');
-      e.preventDefault();
-    });
-    $('#register-form-link').click(function(e) {
-      $("#register-form").delay(100).fadeIn(100);
-      $("#login-form").fadeOut(100);
-      $('#login-form-link').removeClass('active');
-      $(this).addClass('active');
-      e.preventDefault();
-    });
-
-    $('#register-form').submit(function(e) {
-      validar_clave(e);
-    });
-  });
-</script>
