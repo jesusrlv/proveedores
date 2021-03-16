@@ -69,7 +69,7 @@ background-size: cover;">
 
 
 <!-- <form class="form-signin" action="dashboard.html" method="POST" name="envio"> -->
-<form class="form-signin" action="prcd/proceso_validacion.php" name="envio" method="POST">
+<form class="form-signin" action="dashboard/prcd/proceso_validacion.php" name="envio" method="POST">
   <img class="mb-4" src="img/logo.png" alt="" width="180px" height="180px">
   <h3>Padrón de proveedores</h3>
   <hr>
