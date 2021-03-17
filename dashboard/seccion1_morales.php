@@ -25,7 +25,7 @@ session_start();
     // die();
 // }
 
-include('/conn.php');
+include('prcd/conn.php');
 
 // variables de sesión
 
@@ -35,6 +35,38 @@ include('/conn.php');
     $nombre = $_SESSION['nombre'];
 
 ?>
+
+<!-- íconos bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
+
+<!-- script validate RFC -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {	
+      $('#rfc').on('blur', function() {
+          $('#result-username').html('<div class="spinner-border text-success" role="status"><span class="sr-only">Loading...</span></div>').fadeOut(1000);
+  
+          var rfc = $(this).val();		
+          var dataString = 'rfc='+rfc;
+  
+          $.ajax({
+              type: "POST",
+              url: "/prcd/verificacion_rfc.php",
+              data: dataString,
+              success: function(data) {
+                  $('#result-username').fadeIn(1000).html(data);
+              }
+          });
+      });              
+  });    
+  </script>
+  <!-- script validate RFC -->
 
 <!doctype html>
 <html lang="es">
@@ -49,6 +81,8 @@ include('/conn.php');
     <link rel="icon" type="image/png" href="../img/icon.ico"/>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <!-- íconos Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -218,32 +252,32 @@ include('/conn.php');
         <div class="row">
                 <div class="col-md-12 order-md-1">
             <h4 class="mb-3">Personas morales</h4>
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" method="POST" action="#">
                 <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">RFC</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="rfc" name="rfc" placeholder="" value="" onblur="ValidaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Razón social</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="razon" name="razon" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="firstName">Denominación social</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="denominacion" name="denominacion" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Acta constitutiva</label>
-                    <input type="file" class="form-control" id="inputGroupFile02">
+                    <input type="file" class="form-control" id="acta" name="acta">
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
@@ -251,9 +285,36 @@ include('/conn.php');
 
                 </div>
 
+                <!-- div de usuario repetido -->
+                <p><div id="result-username"></div></p>
+                <!-- div de usuario repetido -->
+                
+                <!-- div de RFC validez -->
+                <p><div id="result-rfc"></div></p>
+                <!-- div de u RFC validez -->
+
+                <div class="row">
+                 <div class="col-lg-12">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Bloque de anuncios adaptable -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-6676636635558550"
+                        data-ad-slot="8523024962"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                  </div>
+                </div>
+
+                
+
+<!-- <input name="rfc" type="text" class="txtbox" id="rfc" size="24" onblur="ValidaRfc(this.value)" />  -->
                 
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 1 <i class="bi bi-skip-forward-fill"></i></button>
+                <button class="btn btn-primary btn-lg btn-block" id="boton_submit" type="submit">Terminar Sección 1 <i class="bi bi-skip-forward-fill"></i></button>
                 <a type="button" class="btn btn-danger btn-lg btn-block" href="seccion1_tipo.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
             </form>
             </div>
@@ -291,3 +352,33 @@ https://startbootstrap.com/theme/sb-admin-pro-angular
 
 https://startbootstrap.com/themes/admin-dashboard
  -->
+
+ <script language="JavaScript">
+
+function ValidaRfc(rfcStr) {
+	var strCorrecta;
+	strCorrecta = rfcStr;	
+	if (rfcStr.length == 12){
+	var valid = '^(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))';
+	}else{
+	var valid = '^(([A-Z]|[a-z]|\s){1})(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))';
+	}
+	var validRfc=new RegExp(valid);
+	var matchArray=strCorrecta.match(validRfc);
+	if (matchArray==null) {
+		// alert('Cadena incorrectas');
+    // $('#result-rfc')
+    document.getElementById('result-rfc').innerHTML='<div class="alert alert-danger"><strong><i class="bi bi-exclamation-triangle-fill"></i> ERROR. </strong> Cadena RFC incorrecta.</div><style>#boton_submit{display:none;}</style>';
+
+		return false;
+	}
+	else
+	{
+		// alert('Cadena correcta:' + strCorrecta);
+    document.getElementById('result-rfc').innerHTML='<div class="alert alert-success"><strong><i class="bi bi-info-circle-fill"></i> CORRECTO. </strong> Cadena RFC correcta.</div>';
+		return true;
+	}
+	
+}
+
+</script>

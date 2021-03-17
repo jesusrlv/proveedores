@@ -13,8 +13,8 @@
 include('conn.php');
 
 $nombre = $_POST['nombre'];
-$usuario = $_POST['usurario'];
-$pwd = $_POST['pwd'];
+$usuario = $_POST['username'];
+$pwd = $_POST['password'];
 $hash_pwd = md5($pwd);
 $perfil = 1;
 
@@ -28,7 +28,7 @@ if($resultado){
         'Proceso exitoso',
         'Usuario agregado',
         'success'
-      ).then(function(){window.location=history.go(-1);}
+      ).then(function(){location.href='../../index.php';}
     
       
     

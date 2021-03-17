@@ -26,7 +26,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.js"></script> -->
   <script type="text/javascript">
   $(document).ready(function() {	
       $('#username').on('blur', function() {
@@ -113,7 +112,7 @@ background-size: cover;">
       <div class="modal-body">
         <h4><i class="bi bi-file-earmark-person"></i> Formulario</h4>
 
-        <form action="#" method="POST">
+        <form action="dashboard/prcd/agregar_usr.php" method="POST">
           <div class="form-group">
             <label for="exampleInputEmail1">Nombre completo</label>
             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo" required>
