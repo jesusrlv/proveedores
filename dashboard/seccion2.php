@@ -219,32 +219,32 @@ include('prcd/conn.php');
         <div class="row">
                 <div class="col-md-12 order-md-1">
             <h4 class="mb-3">Datos de proveedor</h4>
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" action="prcd/proceso_seccion_2.php" method="POST">
                 <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">Colonia</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="colonia" name="colonia" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Código postal</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="cp" name="cp" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="firstName">Número interior</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="num_int" name="num_int" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Número exterior</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="num_ext" name="num_ext" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
@@ -258,21 +258,21 @@ include('prcd/conn.php');
                 </div> -->
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Correo electrónico</label>
-                    <input type="email" class="form-control" id="lastName" placeholder="" value="" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Teléfono oficina</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="tel_of" name="tel_of" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Teléfono celular</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="tel_cel" name="tel_cel" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>

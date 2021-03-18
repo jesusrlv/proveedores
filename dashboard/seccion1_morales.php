@@ -252,7 +252,7 @@ include('prcd/conn.php');
         <div class="row">
                 <div class="col-md-12 order-md-1">
             <h4 class="mb-3">Personas morales</h4>
-            <form class="needs-validation" method="POST" action="#">
+            <form class="needs-validation" method="POST" action="prcd/proceso_seccion_1_morales.php">
                 <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">RFC</label>

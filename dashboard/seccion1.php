@@ -219,32 +219,32 @@ include('prcd/conn.php');
         <div class="row">
                 <div class="col-md-12 order-md-1">
             <h4 class="mb-3">Personas físicas</h4>
-            <form class="needs-validation" novalidate>
+            <form action="prcd/proceso_seccion_1.php" class="needs-validation" method="POST">
                 <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">Apellido(s)</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Nombre(s)</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="firstName">CURP</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="curp" name="curp" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">RFC</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="rfc" name="rfc" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>

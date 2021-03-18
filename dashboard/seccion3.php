@@ -225,70 +225,50 @@ include('prcd/conn.php');
         <div class="row">
                 <div class="col-md-12 order-md-1">
             <h4 class="mb-3">Agregar cuenta bancaria</h4>
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" action="prcd/proceso_seccion_3.php" method="POST">
                 <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="firstName">Número de cuenta <span class="badge badge-pill badge-primary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">?</span></label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <label for="firstName">Número de cuenta </label>
+                    <input type="text" class="form-control" id="no_cuenta" name="no_cuenta" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="lastName">Clave interbancaria (CLABE)<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button></label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <label for="lastName">Clave interbancaria (CLABE)</label>
+                    <input type="text" class="form-control" id="clabe" name="clabe" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="firstName">Nombre del banco</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="banco" name="banco" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Sucursal</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="sucursal" name="sucursal" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Concepto</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="concepto" name="concepto" placeholder="" value="" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName">Correo electrónico</label>
-                    <input type="email" class="form-control" id="lastName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                    Valid last name is required.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName">Teléfono oficina</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                    Valid last name is required.
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName">Teléfono celular</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                    Valid last name is required.
-                    </div>
-                </div>
+                
 
                 </div>
 
                 
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 2 <i class="bi bi-skip-forward-fill"></i></button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 3 <i class="bi bi-skip-forward-fill"></i></button>
                 <a type="button" class="btn btn-danger btn-lg btn-block" href="seccion3_grid.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
             </form>
             </div>

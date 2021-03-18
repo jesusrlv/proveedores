@@ -220,232 +220,8 @@ include('prcd/conn.php');
         <hr class="my-4">
 
         <!-- ROW -->
-          
-        <!-- ROW -->
-
-
         <div class="row">
-                <div class="col-md-12 order-md-1">
-            <h4 class="mb-3">Documentos del proveedor</h4>
-
-       
-
-        <!-- box tool -->
-
-        <div class="box-body table-responsive no-padding">
-              <table class="table table-hover text-center">
-                <thead class="text-center align-middle">
-                  <th>#</th>
-                  <th>Nombre</th>
-                  <th>Cargar archivo</th>
-                  <th>Acción</th>
-                  <th>Status</th>
-                  <th>Descripción del archivo</th>
-                </thead>
-                <tr>
-                  <td>1</td>
-                  <td>RCB-1</td>
-<!--                  <td><input type="file" id="exampleInputFile"></td>-->
-                 
-                 <script type="text/javascript">
-                
-                     function _(el) {
-  return document.getElementById(el);
-}
-
-function uploadFile() {
-  var file = _("file1").files[0];
-  // alert(file.name+" | "+file.size+" | "+file.type);
-  var formdata = new FormData();
-  formdata.append("file1", file);
-  var ajax = new XMLHttpRequest();
-  ajax.upload.addEventListener("progress", progressHandler, false);
-  ajax.addEventListener("load", completeHandler, false);
-  ajax.addEventListener("error", errorHandler, false);
-  ajax.addEventListener("abort", abortHandler, false);
-  ajax.open("POST", "file_upload_parser.php"); // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
-  //use file_upload_parser.php from above url
-  //ARCHIVO CON EL PROCEDIMIENTO PARA MOVER EL DOCUMENTO AL SERVIDOR
-  ajax.send(formdata);
-}
-
-function progressHandler(event) {
-  _("loaded_n_total").innerHTML = "Uploaded " + event.loaded + " bytes of " + event.total;
-  var percent = (event.loaded / event.total) * 100;
-  _("progressBar").value = Math.round(percent);
-  _("status").innerHTML = Math.round(percent) + "% uploaded... please wait";
-}
-
-function completeHandler(event) {
-  _("status").innerHTML = event.target.responseText;
-  _("progressBar").value = 0; //wil clear progress bar after successful upload
-}
-
-function errorHandler(event) {
-  _("status").innerHTML = "Upload Failed";
-}
-
-function abortHandler(event) {
-  _("status").innerHTML = "Upload Aborted";
-}
-                    
-                </script>
-                 
-                  <td><form id="upload_form" enctype="multipart/form-data" method="post">
-  <input type="file" name="file1" id="file1" onchange="uploadFile()"><br>
-  <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status"></h3>
-  <p id="loaded_n_total"></p>
-</form></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                  <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Cédula de proveedores</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                 <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Constancia situación fiscal</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                 <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Comprobante de domicilio</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                 <td><span class="label label-success"><span class="badge badge-pill badge-warning"><i class="bi bi-check-circle-fill"></i> Pendiente</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Carátula de estado de cuenta</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                 <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>INE</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                 <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Formato D32 SAT</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                  <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>Opinión de cumplimiento obligaciones estatales</td>
-                  <td><input type="file" id="exampleInputFile"></td>
-                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Cargar</button></td>
-                  <td><span class="label label-success"><span class="badge badge-pill badge-primary"><i class="bi bi-check-circle-fill"></i> Cargado</span></span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-              </table>
-              
-              <div class="box-footer">
-                <!-- <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Calificar</button> -->
-              </div>
-              
-              <!-- <div class="modal fade" id="modal-default">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Cargar archivo</h4>
-              </div>
-              <div class="modal-body">
-                <p><label for="exampleInputFile">Seleeciona el documento</label>
-                  <input type="file" id="exampleInputFile">
-
-                  <p class="help-block">No tiene que exceder los 60Mb</p></p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Guardar</button>
-              </div>
-            </div> -->
-            <!-- /.modal-content -->
-            
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-            </div>
-
-        <!-- box tool -->
-
-        <!-- interno -->
-        
-            
-
-                
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 2 <i class="bi bi-skip-forward-fill"></i></button>
-                <a type="button" class="btn btn-danger btn-lg btn-block" href="dashboard.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
-            </form>
-            </div>
-
-
-        </div>
-        <!-- interno -->
-
-
-        </div>
-      </div>
-
-      <!-- card -->
-      
-      <!-- card -->
-
-      
-
-      </div>
-
-      <!-- ROW -->
-
-
-
-      <!-- ROW -->
-    </main>
-  </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="css/bootstrap.bundle.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-        <script src="css/dashboard.js"></script></body>
-</html>
-
-<!-- 
-
-https://startbootstrap.com/theme/sb-admin-pro-angular
-
-https://startbootstrap.com/themes/admin-dashboard
- -->
-
-
-<!-- CODIGO -->
-
-<div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12">
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Lista de archivos a cargar</h3>
@@ -463,17 +239,17 @@ https://startbootstrap.com/themes/admin-dashboard
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
-                <tr>
+                <thead>
                   <th>#</th>
                   <th>Nombre</th>
                   <th>Cargar archivo</th>
 <!--                  <th>Acción</th>-->
                   <th>Status</th>
                   <th>Descripción del archivo</th>
-                </tr>
+                </thead>
                 <tr>
                   <td>1</td>
-                  <td>Carta de propuesta por la institución educativa</td>
+                  <td>RCB-1</td>
 <!--                  <td><input type="file" id="exampleInputFile"></td>-->
                  
                  <script type="text/javascript">
@@ -527,7 +303,7 @@ function abortHandler(event) {
   <?php
     include('prcd/conn.php');
     // $query="SELECT * FROM archivos WHERE id_usr='$curp'";
-    $query="SELECT * FROM archivos WHERE codigo_usr='$codigo'";
+    $query="SELECT * FROM documentos WHERE id_ext='$id'";
 
     $resultado= $conn->query($query);
     $row=$resultado->fetch_assoc();
@@ -578,7 +354,7 @@ function abortHandler(event) {
                 
                 <tr>
                   <td>2</td>
-                  <td>Currículum Vitae</td>
+                  <td>Cédula de proveedores</td>
                   
 
                   <script type="text/javascript">
@@ -676,7 +452,7 @@ function abortHandler2(event) {
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td>Semblanza de trayectoria</td>
+                  <td>Constancia fiscal</td>
                   <script type="text/javascript">
                 
                      function _(el3) {
@@ -770,7 +546,7 @@ function abortHandler3(event) {
                 </tr>
                 <tr>
                   <td>4</td>
-                  <td>Material bibliográfico</td>
+                  <td>Comprobante de domicilio</td>
                   <script type="text/javascript">
                 
                      function _(el4) {
@@ -859,7 +635,7 @@ function abortHandler4(event) {
                 </tr>
                 <tr>
                   <td>5</td>
-                  <td>Video-capsula de 30 segundos</td>
+                  <td>Carátula de estado de cuenta bancaria</td>
                   <script type="text/javascript">
                 
                      function _(el5) {
@@ -950,7 +726,7 @@ function abortHandler5(event) {
                 </tr>
                 <tr>
                   <td>6</td>
-                  <td>Acta de nacimiento</td>
+                  <td>INE</td>
                   <script type="text/javascript">
                 
                      function _(el6) {
@@ -1039,9 +815,11 @@ function abortHandler6(event) {
                     
                   <td>Documento escaneado (PDF) o imagen (JPG).</td>
                 </tr>
+                
+                
                 <tr>
                   <td>7</td>
-                  <td>Credencial de elector</td>
+                  <td>Formato D-32</td>
                   <script type="text/javascript">
                 
                      function _(el7) {
@@ -1131,7 +909,7 @@ function abortHandler7(event) {
                 
                 <tr>
                   <td>8</td>
-                  <td>Comprobante de domicilio</td>
+                  <td>Opinión fiscal estatal</td>
                   <script type="text/javascript">
                 
                      function _(el8) {
@@ -1164,7 +942,7 @@ function progressHandler8(event) {
 function completeHandler8(event) {
   _("status8").innerHTML = event.target.responseText;
   _("progressBar8").value = 0; //wil clear progress bar after successful upload
-   _("file8").style.display='none';
+    _("file8").style.display='none';
     _("progressBar8").style.display='none';
 }
 
@@ -1194,21 +972,21 @@ function abortHandler8(event) {
   <p id="loaded_n_total8"></p>';
         }
         else{
-            echo "<h3>Archivo cargado en tu sistema</h3>".$variable8;
+            echo "<h3>Archivo cargado en tu sistema</h3>".$variable7;
         }
     
     ?>
  
  <!--
-  <input type="file" name="file8" id="file8" onchange="uploadFile8()"><br>
-  <progress id="progressBar8" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status8"></h3>
-  <p id="loaded_n_total8"></p>
+  <input type="file" name="file7" id="file7" onchange="uploadFile7()"><br>
+  <progress id="progressBar7" value="0" max="100" style="width:300px;"></progress>
+  <h3 id="status7"></h3>
+  <p id="loaded_n_total7"></p>
 -->
 </form></td>
 <!--                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>-->
                   <?php           
-            if(empty($variable8)){
+            if(empty($variable7)){
             echo '<td><span class="label label-warning">No Cargado</span></td>';
             }
             else{
@@ -1217,97 +995,7 @@ function abortHandler8(event) {
     
                     ?> 
                   <td>Documento escaneado (PDF) o imagen (JPG).</td>
-                </tr>
-                
-                <tr>
-                  <td>9</td>
-                  <td>CURP</td>
-                  <script type="text/javascript">
-                
-                     function _(el9) {
-  return document.getElementById(el9);
-}
-
-function uploadFile9() {
-  var file = _("file9").files[0];
-  // alert(file.name+" | "+file.size+" | "+file.type);
-  var formdata = new FormData();
-  formdata.append("file9", file);
-  var ajax = new XMLHttpRequest();
-  ajax.upload.addEventListener("progress", progressHandler9, false);
-  ajax.addEventListener("load", completeHandler9, false);
-  ajax.addEventListener("error", errorHandler9, false);
-  ajax.addEventListener("abort", abortHandler9, false);
-  ajax.open("POST", "prcd/subir_archivo9.php"); // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
-  //use file_upload_parser.php from above url
-  //ARCHIVO CON EL PROCEDIMIENTO PARA MOVER EL DOCUMENTO AL SERVIDOR
-  ajax.send(formdata);
-}
-
-function progressHandler9(event) {
-  _("loaded_n_total9").innerHTML = "Subido " + event.loaded + " bytes de " + event.total;
-  var percent = (event.loaded / event.total) * 100;
-  _("progressBar9").value = Math.round(percent);
-  _("status9").innerHTML = Math.round(percent) + "% subido... espere un momento";
-}
-
-function completeHandler9(event) {
-  _("status9").innerHTML = event.target.responseText;
-  _("progressBar9").value = 0; //wil clear progress bar after successful upload
-    _("file9").style.display='none';
-    _("progressBar9").style.display='none';
-}
-
-function errorHandler9(event) {
-  _("status9").innerHTML = "Fallo en la subida";
-}
-
-function abortHandler9(event) {
-  _("status9").innerHTML = "Fallo en la subida";
-}
-                    
-                </script>
-                 
-                  <td><form id="upload_form9" enctype="multipart/form-data" method="post">
-<?php
-//    include('../../conn/conexion.php');
-//    $query="SELECT * FROM archivos WHERE id_usr='$curp'";
-//    $resultado= $conn->query($query);
-//    $row=$resultado->fetch_assoc();
-     $variable9= $row['link9'];             
-        
-        if(empty($variable9)){
-            
-            echo '<input type="file" name="file9" id="file9" onchange="uploadFile9()"><br>
-  <progress id="progressBar9" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status9"></h3>
-  <p id="loaded_n_total9"></p>';
-        }
-        else{
-            echo "<h3>Archivo cargado en tu sistema</h3>".$variable9;
-        }
-    
-    ?>
-
- <!--
-  <input type="file" name="file9" id="file9" onchange="uploadFile9()"><br>
-  <progress id="progressBar9" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status9"></h3>
-  <p id="loaded_n_total9"></p>
--->
-</form></td>
-<!--                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>-->
-                  <?php           
-            if(empty($variable9)){
-            echo '<td><span class="label label-warning">No Cargado</span></td>';
-            }
-            else{
-            echo '<td><span class="label label-success">Cargado</span></td>';
-            }
-    
-                    ?> 
-                  <td>Documento escaneado (PDF) o imagen (JPG).</td>
-                </tr>
+                </tr>               
                 
                 
               </table>
@@ -1349,3 +1037,59 @@ function abortHandler9(event) {
           <!-- /.box -->
         </div>
       </div>
+        <!-- ROW -->
+
+
+        
+        
+            
+
+                
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 4 <i class="bi bi-skip-forward-fill"></i></button>
+                <a type="button" class="btn btn-danger btn-lg btn-block" href="dashboard.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
+            </form>
+            </div>
+
+
+        </div>
+        <!-- interno -->
+
+
+        </div>
+      </div>
+
+      <!-- card -->
+      
+      <!-- card -->
+
+      
+
+      </div>
+
+      <!-- ROW -->
+
+
+
+      <!-- ROW -->
+    </main>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="css/bootstrap.bundle.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script src="css/dashboard.js"></script></body>
+</html>
+
+<!-- 
+
+https://startbootstrap.com/theme/sb-admin-pro-angular
+
+https://startbootstrap.com/themes/admin-dashboard
+ -->
+
+
+<!-- aquiiiiiii -->
+<!-- CODIGO -->
+
