@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-03-2021 a las 22:52:26
+-- Tiempo de generación: 18-03-2021 a las 23:16:02
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.1
 
@@ -34,8 +34,17 @@ CREATE TABLE `banco` (
   `no_cuenta` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `no_clabe` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `sucursal` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `concepto` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+  `concepto` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `id_ext` int(11) NOT NULL,
+  `validacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `banco`
+--
+
+INSERT INTO `banco` (`id`, `banco`, `no_cuenta`, `no_clabe`, `sucursal`, `concepto`, `id_ext`, `validacion`) VALUES
+(1, 'banorte', '1', '1', '1', 'tahona', 12, 0);
 
 -- --------------------------------------------------------
 
@@ -53,8 +62,21 @@ CREATE TABLE `datos` (
   `moral_razon` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `moral_denominacion` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `moral_archivo_acta` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-  `tipo_usr` int(11) NOT NULL
+  `tipo_usr` int(11) NOT NULL,
+  `validacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `datos`
+--
+
+INSERT INTO `datos` (`id`, `id_ext`, `fisc_apellido`, `fisc_nombre`, `fisc_curp`, `rfc`, `moral_razon`, `moral_denominacion`, `moral_archivo_acta`, `tipo_usr`, `validacion`) VALUES
+(1, 1, 'leañso', 'jesus', 'LEVJ810924', 'LEVJ810924', '', '', '', 1, 0),
+(2, 0, '', '', '', '', '', '', '', 1, 0),
+(3, 0, '', '', '', '', '', '', '', 1, 0),
+(4, 0, 'LeaÃ±os', 'Villegas', 'LEVJ810924HZSXLS04', 'LEV', '', '', '', 1, 0),
+(5, 12, 'LeaÃ±os', 'Villegas', 'LEVJ810924HZSXLS04', 'LEV', '', '', '', 1, 0),
+(6, 12, '', '', '', 'LEVJ8109248K3', 'red', 'red', '2882.pdf', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -71,8 +93,16 @@ CREATE TABLE `direccion` (
   `n_ext` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `tel_of` int(11) NOT NULL,
-  `tel_cel` int(11) NOT NULL
+  `tel_cel` int(11) NOT NULL,
+  `validacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `direccion`
+--
+
+INSERT INTO `direccion` (`id`, `id_ext`, `colonia`, `cp`, `n_int`, `n_ext`, `email`, `tel_of`, `tel_cel`, `validacion`) VALUES
+(1, 12, 'xss', 999999, '99999', '99999', 'jesusrlvrojo@gmail.com', 99999, 99999, 0);
 
 -- --------------------------------------------------------
 
@@ -90,7 +120,9 @@ CREATE TABLE `documentos` (
   `caratula_edo_cuenta` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `ine` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `formato_d32` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `opinion_estatal` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+  `opinion_estatal` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `observaciones` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `validacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -125,7 +157,10 @@ CREATE TABLE `usr` (
 --
 
 INSERT INTO `usr` (`id`, `nombre`, `usuario`, `pwd`, `perfil`) VALUES
-(1, 'uno', 'jesusrlv@correo.com', '123456789', 1);
+(1, 'uno', 'jesusrlv@correo.com', '123456789', 1),
+(2, 'Rodolfo LeaÃ±os', '', 'd41d8cd98f00b204e9800998ecf8427e', 1),
+(6, 'Rodolfo LeaÃ±os', 'jesusrl@gmail.com.mx', '9a0c3013dbacdda1873e4a153346dc5c', 1),
+(12, 'JesusRLV', 'jesusr@gmail.com', '18a9f76e9e5f5d1237a02a27a3246a1c', 1);
 
 --
 -- Índices para tablas volcadas
@@ -175,19 +210,19 @@ ALTER TABLE `usr`
 -- AUTO_INCREMENT de la tabla `banco`
 --
 ALTER TABLE `banco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `datos`
 --
 ALTER TABLE `datos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `documentos`
@@ -205,7 +240,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de la tabla `usr`
 --
 ALTER TABLE `usr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
