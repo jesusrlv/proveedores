@@ -26,6 +26,7 @@ session_start();
 // }
 
 include('prcd/conn.php');
+include('prcd/qwery.php');
 
 // variables de sesión
 
@@ -211,9 +212,7 @@ include('prcd/conn.php');
           <h1 class="h1">SECCIÓN 4</h1>
           <p class="lead">Documentos</p>
           <hr class="my-4">
-          <!-- <p>Cargar documentos</p>
-          <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a> -->
-
+          
             <div class="alert alert-secondary" role="alert">
                 <a href=""><i class="bi bi-file-binary-fill"></i> Descargar Formato RCB-1</a>
             </div>
@@ -228,10 +227,8 @@ include('prcd/conn.php');
 
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
-<!--                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">-->
 
                   <div class="input-group-btn">
-<!--                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>-->
                   </div>
                 </div>
               </div>
@@ -243,14 +240,12 @@ include('prcd/conn.php');
                   <th>#</th>
                   <th>Nombre</th>
                   <th>Cargar archivo</th>
-<!--                  <th>Acción</th>-->
-                  <th>Status</th>
+                  <!-- <th>Status</th> -->
                   <th>Descripción del archivo</th>
                 </thead>
                 <tr>
                   <td>1</td>
                   <td>RCB-1</td>
-<!--                  <td><input type="file" id="exampleInputFile"></td>-->
                  
                  <script type="text/javascript">
                 
@@ -301,53 +296,32 @@ function abortHandler(event) {
                   <td><form id="upload_form" enctype="multipart/form-data" method="post">
   
   <?php
-    include('prcd/conn.php');
-    // $query="SELECT * FROM archivos WHERE id_usr='$curp'";
-    $query="SELECT * FROM documentos WHERE id_ext='$id'";
-
-    $resultado= $conn->query($query);
-    $row=$resultado->fetch_assoc();
-     $variable= $row['link1'];             
-        
-        if(empty($variable)){
+          if (!$row) {
             
             echo '<input type="file" name="file1" id="file1" onchange="uploadFile()"><br>
   <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status"></h3>
+  <h4 id="status"></h4>
   <p id="loaded_n_total"></p>';
         }
         else{
-            echo "<h3>Archivo cargado en tu sistema</h3>".$variable;
+            echo '<div class="alert alert-secondary h3" role="alert">
+            <i class="bi bi-file-earmark-check-fill"></i> Archivo cargado en tu sistema
+          </div>';
         }
     
     ?>
-  
-<!--
-  <input type="file" name="file1" id="file1" onchange="uploadFile()"><br>
-  <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status"></h3>
-  <p id="loaded_n_total"></p>
--->
-  
- 
+
 </form></td>
-<!--                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>-->
-                  
-                  
+                             
                   <?php           
-            if(empty($variable)){
-            echo '<td><span class="label label-warning">No Cargado</span></td>';
-            }
-            else{
-            echo '<td><span class="label label-success">Cargado</span></td>';
-            }
+            // if(empty($variable)){
+            // echo '<td><span class="label label-warning">No Cargado</span></td>';
+            // }
+            // else{
+            // echo '<td><span class="label label-success">Cargado</span></td>';
+            // }
     
                     ?>
-                  
-<!--
-                  <td><span class="label label-success">Cargado</span></td>
-                  
--->
                   
                   <td>Emitida en el presente año en papel membretado por alguna institución, organismo, dependencia, agrupación, o bien proponerse a sí mismo. En ella se enumerarán los méritos del candidato(a) y deberá ser dirigida a él o la titular del Instituto de la Juventud del Estado de Zacatecas, precisando la modalidad y categoría en la que solicita su registro. Formato libre.</td>
                 </tr>
@@ -406,13 +380,9 @@ function abortHandler2(event) {
                   <td><form id="upload_form2" enctype="multipart/form-data" method="post">
                   
                   <?php
-//    include('../../conn/conexion.php');
-//    $query="SELECT * FROM archivos WHERE id_usr='$curp'";
-//    $resultado= $conn->query($query);
-//    $row=$resultado->fetch_assoc();
-     $variable2= $row['link2'];             
-        
-        if(empty($variable2)){
+
+// Carga de archivos 2
+          if (!$row2) {
             
             echo '<input type="file" name="file2" id="file2" onchange="uploadFile2()"><br>
   <progress id="progressBar2" value="0" max="100" style="width:300px;"></progress>
@@ -420,27 +390,23 @@ function abortHandler2(event) {
   <p id="loaded_n_total2"></p>';
         }
         else{
-            echo "<h3>Archivo cargado en tu sistema</h3>".$variable2;
+          echo '<div class="alert alert-secondary h3" role="alert">
+          <i class="bi bi-file-earmark-check-fill"></i> Archivo cargado en tu sistema
+        </div>';
         }
     
     ?>
                   
-<!--
-  <input type="file" name="file2" id="file2" onchange="uploadFile2()"><br>
-  <progress id="progressBar2" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status2"></h3>
-  <p id="loaded_n_total2"></p>
--->
+
 </form></td>
-<!--                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>-->
                  
                   <?php           
-            if(empty($variable2)){
-            echo '<td><span class="label label-warning">No Cargado</span></td>';
-            }
-            else{
-            echo '<td><span class="label label-success">Cargado</span></td>';
-            }
+            // if(empty($variable2)){
+            // echo '<td><span class="label label-warning">No Cargado</span></td>';
+            // }
+            // else{
+            // echo '<td><span class="label label-success">Cargado</span></td>';
+            // }
     
                     ?> 
     
@@ -503,42 +469,30 @@ function abortHandler3(event) {
                   
                   
         <?php
-//    include('../../conn/conexion.php');
-//    $query="SELECT * FROM archivos WHERE id_usr='$curp'";
-//    $resultado= $conn->query($query);
-//    $row=$resultado->fetch_assoc();
-     $variable3= $row['link3'];             
-        
-        if(empty($variable3)){
-            
+             
+        if (!$row3) {            
             echo '<input type="file" name="file3" id="file3" onchange="uploadFile3()"><br>
   <progress id="progressBar3" value="0" max="100" style="width:300px;"></progress>
   <h3 id="status3"></h3>
   <p id="loaded_n_total3"></p>';
         }
         else{
-            echo "<h3>Archivo cargado en tu sistema</h3>".$variable3;
+          echo '<div class="alert alert-secondary h3" role="alert">
+          <i class="bi bi-file-earmark-check-fill"></i> Archivo cargado en tu sistema
+        </div>';
         }
     
     ?>
-<!--
-  <input type="file" name="file3" id="file3" onchange="uploadFile3()"><br>
-  <progress id="progressBar3" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status3"></h3>
-  <p id="loaded_n_total3"></p>
--->
+
 </form></td>
-<!--
-                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>
-                  
--->
+
                   <?php           
-            if(empty($variable3)){
-            echo '<td><span class="label label-warning">No Cargado</span></td>';
-            }
-            else{
-            echo '<td><span class="label label-success">Cargado</span></td>';
-            }
+            // if(empty($variable3)){
+            // echo '<td><span class="label label-warning">No Cargado</span></td>';
+            // }
+            // else{
+            // echo '<td><span class="label label-success">Cargado</span></td>';
+            // }
     
                     ?>
                      
@@ -596,13 +550,9 @@ function abortHandler4(event) {
                   <td><form id="upload_form4" enctype="multipart/form-data" method="post">
                   
 <?php
-//    include('../../conn/conexion.php');
-//    $query="SELECT * FROM archivos WHERE id_usr='$curp'";
-//    $resultado= $conn->query($query);
-//    $row=$resultado->fetch_assoc();
-     $variable4= $row['link4'];             
+
         
-        if(empty($variable4)){
+     if (!$row4) {
             
             echo '<input type="file" name="file4" id="file4" onchange="uploadFile4()"><br>
   <progress id="progressBar4" value="0" max="100" style="width:300px;"></progress>
@@ -610,25 +560,21 @@ function abortHandler4(event) {
   <p id="loaded_n_total4"></p>';
         }
         else{
-            echo "<h3>Archivo cargado en tu sistema</h3>".$variable4;
+          echo '<div class="alert alert-secondary h3" role="alert">
+          <i class="bi bi-file-earmark-check-fill"></i> Archivo cargado en tu sistema
+        </div>';
         }
     
     ?>
-<!--
-  <input type="file" name="file4" id="file4" onchange="uploadFile4()"><br>
-  <progress id="progressBar4" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status4"></h3>
-  <p id="loaded_n_total4"></p>
--->
+
 </form></td>
-<!--                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>-->
                   <?php           
-            if(empty($variable4)){
-            echo '<td><span class="label label-warning">No Cargado</span></td>';
-            }
-            else{
-            echo '<td><span class="label label-success">Cargado</span></td>';
-            }
+            // if(empty($variable4)){
+            // echo '<td><span class="label label-warning">No Cargado</span></td>';
+            // }
+            // else{
+            // echo '<td><span class="label label-success">Cargado</span></td>';
+            // }
     
                     ?> 
                   <td>Copia o duplicado de materiales bibliográficos, audiovisuales, gráficos y otros que demuestren los motivos por los cuales se considera que él o la candidata (a) puede merecer el premio.</td>
@@ -683,14 +629,9 @@ function abortHandler5(event) {
                 </script>
                  
                   <td><form id="upload_form5" enctype="multipart/form-data" method="post">
-<?php
-//    include('../../conn/conexion.php');
-//    $query="SELECT * FROM archivos WHERE id_usr='$curp'";
-//    $resultado= $conn->query($query);
-//    $row=$resultado->fetch_assoc();
-     $variable5= $row['link5'];             
+<?php           
         
-        if(empty($variable5)){
+        if (!$row5) {
             
             echo '<input type="file" name="file5" id="file5" onchange="uploadFile5()"><br>
   <progress id="progressBar5" value="0" max="100" style="width:300px;"></progress>
@@ -698,27 +639,22 @@ function abortHandler5(event) {
   <p id="loaded_n_total5"></p>';
         }
         else{
-            echo "<h3>Archivo cargado en tu sistema</h3>".$variable5;
+          echo '<div class="alert alert-secondary h3" role="alert">
+          <i class="bi bi-file-earmark-check-fill"></i> Archivo cargado en tu sistema
+        </div>';
         }
     
     ?>
  
- <!--
-  <input type="file" name="file5" id="file5" onchange="uploadFile5()"><br>
-  <progress id="progressBar5" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status5"></h3>
-  <p id="loaded_n_total5"></p>
--->
 </form></td>
-<!--                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>-->
                   
                   <?php           
-            if(empty($variable5)){
-            echo '<td><span class="label label-warning">No Cargado</span></td>';
-            }
-            else{
-            echo '<td><span class="label label-success">Cargado</span></td>';
-            }
+            // if(empty($variable5)){
+            // echo '<td><span class="label label-warning">No Cargado</span></td>';
+            // }
+            // else{
+            // echo '<td><span class="label label-success">Cargado</span></td>';
+            // }
     
                     ?> 
                     
@@ -775,41 +711,31 @@ function abortHandler6(event) {
                  
                   <td><form id="upload_form6" enctype="multipart/form-data" method="post">
 <?php
-//    include('../../conn/conexion.php');
-//    $query="SELECT * FROM archivos WHERE id_usr='$curp'";
-//    $resultado= $conn->query($query);
-//    $row=$resultado->fetch_assoc();
-     $variable6= $row['link6'];             
+       
         
-        if(empty($variable6)){
-            
+       if (!$row6) {            
             echo '<input type="file" name="file6" id="file6" onchange="uploadFile6()"><br>
   <progress id="progressBar6" value="0" max="100" style="width:300px;"></progress>
   <h3 id="status6"></h3>
   <p id="loaded_n_total6"></p>';
         }
         else{
-            echo "<h3>Archivo cargado en tu sistema</h3>".$variable6;
+          echo '<div class="alert alert-secondary h3" role="alert">
+          <i class="bi bi-file-earmark-check-fill"></i> Archivo cargado en tu sistema
+        </div>';
         }
     
     ?>
 
- <!--
-  <input type="file" name="file6" id="file6" onchange="uploadFile6()"><br>
-  <progress id="progressBar6" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status6"></h3>
-  <p id="loaded_n_total6"></p>
--->
 </form></td>
-<!--                 <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>-->
                   
                   <?php           
-            if(empty($variable6)){
-            echo '<td><span class="label label-warning">No Cargado</span></td>';
-            }
-            else{
-            echo '<td><span class="label label-success">Cargado</span></td>';
-            }
+            // if(empty($variable6)){
+            // echo '<td><span class="label label-warning">No Cargado</span></td>';
+            // }
+            // else{
+            // echo '<td><span class="label label-success">Cargado</span></td>';
+            // }
     
                     ?> 
                     
@@ -867,14 +793,9 @@ function abortHandler7(event) {
                 </script>
                  
                   <td><form id="upload_form7" enctype="multipart/form-data" method="post">
-<?php
-//    include('../../conn/conexion.php');
-//    $query="SELECT * FROM archivos WHERE id_usr='$curp'";
-//    $resultado= $conn->query($query);
-//    $row=$resultado->fetch_assoc();
-     $variable7= $row['link7'];             
+<?php     
         
-        if(empty($variable7)){
+        if (!$row7) {
             
             echo '<input type="file" name="file7" id="file7" onchange="uploadFile7()"><br>
   <progress id="progressBar7" value="0" max="100" style="width:300px;"></progress>
@@ -882,26 +803,22 @@ function abortHandler7(event) {
   <p id="loaded_n_total7"></p>';
         }
         else{
-            echo "<h3>Archivo cargado en tu sistema</h3>".$variable7;
+          echo '<div class="alert alert-secondary h3" role="alert">
+          <i class="bi bi-file-earmark-check-fill"></i> Archivo cargado en tu sistema
+        </div>';
         }
     
     ?>
  
- <!--
-  <input type="file" name="file7" id="file7" onchange="uploadFile7()"><br>
-  <progress id="progressBar7" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status7"></h3>
-  <p id="loaded_n_total7"></p>
--->
+ 
 </form></td>
-<!--                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>-->
                   <?php           
-            if(empty($variable7)){
-            echo '<td><span class="label label-warning">No Cargado</span></td>';
-            }
-            else{
-            echo '<td><span class="label label-success">Cargado</span></td>';
-            }
+            // if(empty($variable7)){
+            // echo '<td><span class="label label-warning">No Cargado</span></td>';
+            // }
+            // else{
+            // echo '<td><span class="label label-success">Cargado</span></td>';
+            // }
     
                     ?> 
                   <td>Documento escaneado (PDF) o imagen (JPG).</td>
@@ -958,40 +875,32 @@ function abortHandler8(event) {
                  
                   <td><form id="upload_form8" enctype="multipart/form-data" method="post">
 <?php
-//    include('../../conn/conexion.php');
-//    $query="SELECT * FROM archivos WHERE id_usr='$curp'";
-//    $resultado= $conn->query($query);
-//    $row=$resultado->fetch_assoc();
-     $variable8= $row['link8'];             
+
         
-        if(empty($variable8)){
-            
+          if (!$row8) {            
             echo '<input type="file" name="file8" id="file8" onchange="uploadFile8()"><br>
   <progress id="progressBar8" value="0" max="100" style="width:300px;"></progress>
   <h3 id="status8"></h3>
   <p id="loaded_n_total8"></p>';
         }
         else{
-            echo "<h3>Archivo cargado en tu sistema</h3>".$variable7;
+          echo '<div class="alert alert-secondary h3" role="alert">
+          <i class="bi bi-file-earmark-check-fill"></i> Archivo cargado en tu sistema
+        </div>';
         }
     
     ?>
  
- <!--
-  <input type="file" name="file7" id="file7" onchange="uploadFile7()"><br>
-  <progress id="progressBar7" value="0" max="100" style="width:300px;"></progress>
-  <h3 id="status7"></h3>
-  <p id="loaded_n_total7"></p>
--->
-</form></td>
-<!--                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-cloud-upload"></i> Guardar</button></td>-->
+ 
+</form>
+</td>
                   <?php           
-            if(empty($variable7)){
-            echo '<td><span class="label label-warning">No Cargado</span></td>';
-            }
-            else{
-            echo '<td><span class="label label-success">Cargado</span></td>';
-            }
+            // if(empty($variable8)){
+            // echo '<td><span class="label label-warning">No Cargado</span></td>';
+            // }
+            // else{
+            // echo '<td><span class="label label-success">Cargado</span></td>';
+            // }
     
                     ?> 
                   <td>Documento escaneado (PDF) o imagen (JPG).</td>
@@ -1046,8 +955,8 @@ function abortHandler8(event) {
 
                 
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 4 <i class="bi bi-skip-forward-fill"></i></button>
-                <a type="button" class="btn btn-danger btn-lg btn-block" href="dashboard.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
+                <!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 4 <i class="bi bi-skip-forward-fill"></i></button> -->
+                <a type="button" class="btn btn-primary btn-lg btn-block" href="dashboard.php"><i class="bi bi-backspace-fill"></i> Regresar</a>
             </form>
             </div>
 

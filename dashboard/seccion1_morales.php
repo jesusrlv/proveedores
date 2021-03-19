@@ -57,7 +57,7 @@ include('prcd/conn.php');
   
           $.ajax({
               type: "POST",
-              url: "/prcd/verificacion_rfc.php",
+              url: "verificacion_rfc.php",
               data: dataString,
               success: function(data) {
                   $('#result-username').fadeIn(1000).html(data);

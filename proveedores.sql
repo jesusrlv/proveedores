@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-03-2021 a las 23:16:02
+-- Tiempo de generación: 19-03-2021 a las 23:08:26
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.1
 
@@ -107,6 +107,37 @@ INSERT INTO `direccion` (`id`, `id_ext`, `colonia`, `cp`, `n_int`, `n_ext`, `ema
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `docs`
+--
+
+CREATE TABLE `docs` (
+  `id` int(11) NOT NULL,
+  `id_ext` int(11) NOT NULL,
+  `ruta` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `tipo_doc` int(11) NOT NULL,
+  `validacion` int(11) NOT NULL,
+  `observaciones` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_agregado` datetime NOT NULL,
+  `fecha_actualizado` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `docs`
+--
+
+INSERT INTO `docs` (`id`, `id_ext`, `ruta`, `tipo_doc`, `validacion`, `observaciones`, `fecha_agregado`, `fecha_actualizado`) VALUES
+(15, 12, '../archivos/archivo1_12.pdf', 1, 0, '', '2021-03-19 14:08:04', '0000-00-00 00:00:00'),
+(16, 12, '../archivos/archivo2_12.pdf', 2, 0, '', '2021-03-19 14:08:07', '0000-00-00 00:00:00'),
+(18, 12, '../archivos/archivo4_12.pdf', 4, 0, '', '2021-03-19 14:08:13', '0000-00-00 00:00:00'),
+(19, 12, '../archivos/archivo5_12.pdf', 5, 0, '', '2021-03-19 14:08:15', '0000-00-00 00:00:00'),
+(20, 12, '../archivos/archivo6_12.pdf', 6, 0, '', '2021-03-19 14:08:18', '0000-00-00 00:00:00'),
+(22, 12, '../archivos/archivo8_12.pdf', 8, 0, '', '2021-03-19 14:08:23', '0000-00-00 00:00:00'),
+(23, 12, '../archivos/archivo3_12.pdf', 3, 0, '', '2021-03-19 15:32:11', '0000-00-00 00:00:00'),
+(24, 12, '../archivos/archivo7_12.pdf', 7, 0, '', '2021-03-19 15:43:23', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `documentos`
 --
 
@@ -185,6 +216,12 @@ ALTER TABLE `direccion`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `docs`
+--
+ALTER TABLE `docs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `documentos`
 --
 ALTER TABLE `documentos`
@@ -223,6 +260,12 @@ ALTER TABLE `datos`
 --
 ALTER TABLE `direccion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `docs`
+--
+ALTER TABLE `docs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `documentos`

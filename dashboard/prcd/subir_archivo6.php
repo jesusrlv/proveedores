@@ -1,11 +1,14 @@
 <?php    
     session_start();
-    $codigo=$_SESSION['codigo'];
+    date_default_timezone_set('America/Mexico_City');
+                  setlocale(LC_TIME, 'es_MX.UTF-8');
+   
     $id=$_SESSION['id'];
-    $curp=$_SESSION['curp'];
-    
+    $tipo_doc = 6;
+    $fecha_sistema = strftime("%Y-%m-%d,%H:%M:%S");
     $link= 'archivo6';
-    $fileName = $_FILES["file6"]["name"]; // The file name
+
+$fileName = $_FILES["file6"]["name"]; // The file name
 $fileTmpLoc = $_FILES["file6"]["tmp_name"]; // File in the PHP tmp folder
 $fileType = $_FILES["file6"]["type"]; // The type of file it is
 $fileSize = $_FILES["file6"]["size"]; // File size in bytes
@@ -15,17 +18,17 @@ if (!$fileTmpLoc) { // if file not chosen
     exit();
 }
 
-//move_uploaded_file($_FILES['archivo']['tmp_name'],"archivos/" . $codigo . '_' . $_FILES['archivo']['name']);
+$archivo_ext=$_FILES['file6']['name'];
+$extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
 
-//move_uploaded_file($_FILES["file1"]["tmp_name"],"archivos/". $codigo .'_'.$_FILES['file1']['name'])
-//    //echo "$fileName upload is complete";
-
-if(move_uploaded_file($_FILES["file6"]["tmp_name"],"../archivos/". $link .'_'. $codigo .'_'.$_FILES['file6']['name'])){
+    if(move_uploaded_file($_FILES["file6"]["tmp_name"],"../archivos/". $link .'_'. $id .'.'.$extension)){
     echo "$fileName carga completa";
     
-    $ruta_pptx = "archivos/". $link .'_'. $codigo .'_'.$_FILES['file6']['name'];
-    include('../../../conn/conexion.php');
-    $sqlinsert= "UPDATE archivos SET link6='$ruta_pptx' WHERE id_usr='$curp'";
+    $ruta = "../archivos/". $link .'_'. $id .'.'.$extension;
+    include('conn.php');
+    // $sqlinsert= "UPDATE documentos SET link4='$ruta_pptx' WHERE id_usr='$curp'";
+    $sqlinsert= "INSERT INTO docs(id_ext,ruta,tipo_doc,fecha_agregado) 
+    VALUES('$id','$ruta','$tipo_doc','$fecha_sistema')";
     $resultado2= $conn->query($sqlinsert);
 
     
