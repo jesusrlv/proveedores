@@ -206,52 +206,109 @@ include('prcd/conn.php');
     <div class="container-fluid ">
 
 
-      <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
+      
+
+        
+
+
+            <!-- here -->
+
+            <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
         <div class="container-fluid">
           <h1 class="h1">SECCIÓN 3</h1>
           <p class="lead">Cuenta(s) bancaria(s) agregada(s)</p>
           <a href="seccion3.php" class="btn btn-outline-primary"><i class="bi bi-journal-plus"></i> Agregar cuenta</a>
-          <hr class="my-4">
-          <!-- <p>Cargar documentos</p>
-          <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a> -->
 
+          <hr class="my-4">
           
-        <!-- interno -->
-        <div class="container container-fluid">
-            <table class="table table-responsive table-striped table-hover" style="width:100%">
-                <thead>
+           
+        <hr class="my-4">
+
+        <!-- ROW -->
+        <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Lista de cuentas vigentes</h3>
+
+              <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+
+                  <div class="input-group-btn">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+              <thead class="text-center">
                     <tr>
+                    <th scope="col">#</th>
+                    <th scope="col"># Banco</th>
                     <th scope="col"># Cuenta</th>
                     <th scope="col"># CLABE</th>
-                    <th scope="col">Nombre del banco</th>
                     <th scope="col">Sucursal</th>
                     <th scope="col">Concepto</th>
+                    <th scope="col">Validación</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Jesus Rodolfo Leaños Villegas</td>
-                    <td>Banorte</td>
-                    <td>Zacatecas</td>
-                    <td>Pago de quincena doce del año 2021</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-            <a type="button" class="btn btn-primary btn-lg btn-block" href="dashboard.php"><i class="bi bi-arrow-left-square-fill"></i> Regresar</a>
+
+                <?php
+                $tabla="SELECT * FROM banco WHERE id_ext = '$id' ORDER BY id ASC";
+                $resultadotabla = $conn->query($tabla);
+                $numero=0;
+            while($row = $resultadotabla->fetch_assoc()){
+                $numero++;
+                
+                echo '<tr>';
+                    echo '<td><center>'.$numero.'</center></td>';
+                    echo '<td><center>'.$row['banco'].'</center></td>';
+                    echo '<td><center>'.$row['no_cuenta'].'</center></td>';
+                    echo '<td><center>'.$row['no_clabe'].'</center></td>';
+                    echo '<td><center>'.$row['sucursal'].'</center></td>';
+                    echo '<td><center>'.$row['concepto'].'</center></td>';
+                    if($row['validacion']==0){
+                      echo '<td><center><span class="badge badge-warning text-center"><i class="bi bi-exclamation-circle-fill"></i> En validación</span></center></td>';
+                    }
+                    elseif($row['validacion']==1){
+                      echo '<td><center><span class="badge badge-primary text-center"><i class="bi bi-check-square-fill"></i> Validado</span></center></td>';
+                    }
+                    elseif($row['validacion']==2){
+                      echo '<td><center><span class="badge badge-danger text-center"><i class="bi bi-x-circle-fill"></i> No Validado</span></center></td>';
+                    }
+                    
+                    
+                    echo '<td><center><i class="bi bi-pencil-square"></i> Editar</center></td>';
+                    echo '<td><center><i class="bi bi-trash-fill"></i> Eliminar</center></td>';
+                    
+                echo '</tr>';
+            
+            }
+
+            ?>
+
+                </table>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+        <!-- ROW -->
+
+
+        
+        
+            
+
+                
+                <hr class="mb-4">
+                <!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 4 <i class="bi bi-skip-forward-fill"></i></button> -->
+                <a type="button" class="btn btn-primary btn-lg btn-block" href="dashboard.php"><i class="bi bi-arrow-left-square-fill"></i> Regresar</a>
+          
+            </div>
 
 
         </div>
@@ -261,11 +318,13 @@ include('prcd/conn.php');
         </div>
       </div>
 
-      <!-- card -->
-      
-      <!-- card -->
+            <!-- here -->
 
+      </div>
+
+      <!-- card -->
       
+      <!-- card -->
 
       </div>
 

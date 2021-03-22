@@ -18,7 +18,25 @@ $acta = $_POST['acta'];
 
 $rfc = $_POST['rfc'];
 $id_ext = $_SESSION['id'];
+$link= 'acta_personas_morales';
 $tipo_usr = 2;
+
+$fileName = $_FILES["acta"]["name"]; // The file name
+$fileTmpLoc = $_FILES["acta"]["tmp_name"]; // File in the PHP tmp folder
+$fileType = $_FILES["acta"]["type"]; // The type of file it is
+$fileSize = $_FILES["acta"]["size"]; // File size in bytes
+$fileErrorMsg = $_FILES["acta"]["error"]; // 0 for false... and 1 for true
+if (!$fileTmpLoc) { // if file not chosen
+    echo "ERROR: Please browse for a file before clicking the upload button.";
+    exit();
+}
+
+
+$archivo_ext=$_FILES['acta']['name'];
+$extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
+
+    if(move_uploaded_file($_FILES["acta"]["tmp_name"],"../archivos/files_morales". $link .'_'. $id .'.'.$extension)){
+    echo "$fileName carga completa";
 
 $sql="INSERT INTO datos(rfc,moral_razon,moral_denominacion,moral_archivo_acta,id_ext,tipo_usr) 
 VALUES('$rfc','$razon','$denominacion','$acta','$id_ext','$tipo_usr')";
@@ -48,6 +66,10 @@ else{
     
     );</script>";
 
+}
+
+} else {
+  echo "move_uploaded_file function failed";
 }
 
 ?>

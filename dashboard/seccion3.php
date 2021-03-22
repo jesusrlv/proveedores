@@ -236,14 +236,14 @@ include('prcd/conn.php');
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Clave interbancaria (CLABE)</label>
-                    <input type="text" class="form-control" id="clabe" name="clabe" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="clabe" name="clabe" placeholder="" value="" onblur="ValidaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="firstName">Nombre del banco</label>
-                    <input type="text" class="form-control" id="banco" name="banco" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="banco" name="banco" placeholder="" value="" onblur="ValidaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
