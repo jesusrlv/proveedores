@@ -1,15 +1,14 @@
 <?php 
-require('conn2.php');
+require('prcd/conn2.php');
 sleep(1);
 if (isset($_POST)) {
-    $rfc = (string)$_POST['rfc'];
+    $username = (string)$_POST['username'];
  
     $result = $conn->query(
-        'SELECT * FROM datos WHERE rfc = "'.strtolower($rfc).'"'
+        'SELECT * FROM datos WHERE rfc = "'.strtolower($username).'"'
     );
  
-    // if ($result->num_rows > 0) {
-    if ($result) {
+    if ($result->num_rows > 0) {
         echo '<div class="alert alert-danger"><strong>Oh no!</strong> Nombre de usuario no disponible.</div>
         
         <style>
@@ -20,4 +19,3 @@ if (isset($_POST)) {
         echo '<div class="alert alert-success"><strong>Enhorabuena!</strong> Usuario disponible.</div>';
     }
 }
-

@@ -130,21 +130,7 @@ background-size: cover;">
           
           </div>
 
-          <div class="row">
-        <div class="col-lg-12">
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- Bloque de anuncios adaptable -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-6676636635558550"
-                 data-ad-slot="8523024962"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-    </div>
+          
 
           <div class="form-group">
             <label for="exampleInputPassword1">Contraseña</label>

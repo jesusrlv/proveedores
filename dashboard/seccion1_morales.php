@@ -25,7 +25,7 @@ session_start();
     // die();
 // }
 
-include('prcd/conn.php');
+include('prcd/conn2.php');
 
 // variables de sesión
 
@@ -42,22 +42,22 @@ include('prcd/conn.php');
 
 <!-- script validate RFC -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
   $(document).ready(function() {	
-      $('#rfc').on('blur', function() {
-          $('#result-username').html('<div class="spinner-border text-success" role="status"><span class="sr-only">Loading...</span></div>').fadeOut(1000);
+      $('#username').on('blur', function() {
+          $('#result-username').html('<img src="img/loader.gif" />').fadeOut(1000);
   
-          var rfc = $(this).val();		
-          var dataString = 'rfc='+rfc;
+          var username = $(this).val();		
+          var dataString = 'username='+username;
   
           $.ajax({
               type: "POST",
-              url: "verificacion_rfc.php",
+              url: "verificacionrfc.php",
               data: dataString,
               success: function(data) {
                   $('#result-username').fadeIn(1000).html(data);
@@ -66,7 +66,7 @@ include('prcd/conn.php');
       });              
   });    
   </script>
-  <!-- script validate RFC -->
+  <!-- script validate -->
 
 <!doctype html>
 <html lang="es">
@@ -93,7 +93,7 @@ include('prcd/conn.php');
 
 
     <!-- Scripts -->
-    <script src="css/form-valdation.js"></script>
+    <script src="css/form-validation.js"></script>
 
 
     <style>
@@ -252,11 +252,12 @@ include('prcd/conn.php');
         <div class="row">
                 <div class="col-md-12 order-md-1">
             <h4 class="mb-3">Personas morales</h4>
-            <form class="needs-validation" method="POST" action="prcd/proceso_seccion_1_morales.php" enctype="multipart/form-data">
+            <form class="needs-validation" method="POST" action="prcd/proceso_seccion_1_morales.php" enctype="multipart/form-data" name="envio_morales">
                 <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">RFC</label>
-                    <input type="text" class="form-control" id="rfc" name="rfc" placeholder="" value="" onblur="ValidaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="" value="" onblur="ValidaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+                    <!-- <input type="text" class="form-control" id="username" name="username" placeholder="" value="" onblur="ValidaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();" required> -->
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <header>
         <link rel="shortcut icon" href="../../../img/mini_logo_cigo.ico" />  
@@ -9,12 +12,12 @@
 </header>
 
 <?php
-session_start();
+
 include('conn.php');
 
 $razon = $_POST['razon'];
 $denominacion = $_POST['denominacion'];
-$acta = $_POST['acta'];
+// $acta = $_POST['acta'];
 
 $rfc = $_POST['rfc'];
 $id_ext = $_SESSION['id'];
@@ -35,11 +38,12 @@ if (!$fileTmpLoc) { // if file not chosen
 $archivo_ext=$_FILES['acta']['name'];
 $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
 
-    if(move_uploaded_file($_FILES["acta"]["tmp_name"],"../archivos/files_morales". $link .'_'. $id .'.'.$extension)){
+    if(move_uploaded_file($_FILES["acta"]["tmp_name"],"../archivos/files_morales". $link .'_'. $id_ext .'.'.$extension)){
     echo "$fileName carga completa";
+    $ruta = "../archivos/". $link .'_'. $id_ext .'.'.$extension;
 
 $sql="INSERT INTO datos(rfc,moral_razon,moral_denominacion,moral_archivo_acta,id_ext,tipo_usr) 
-VALUES('$rfc','$razon','$denominacion','$acta','$id_ext','$tipo_usr')";
+VALUES('$rfc','$razon','$denominacion','$ruta','$id_ext','$tipo_usr')";
 $resultado= $conn->query($sql);
 
 if($resultado){
