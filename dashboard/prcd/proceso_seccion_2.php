@@ -21,11 +21,12 @@ $num_ext = $_POST['num_ext'];
 $email = $_POST['email'];
 $tel_of = $_POST['tel_of'];
 $tel_cel = $_POST['tel_cel'];
+$validacion = 1;
 
 $tipo_usr = 1;
 
-$sql="INSERT INTO direccion(id_ext,colonia,cp,n_int,n_ext,email,tel_of,tel_cel) 
-VALUES('$id_ext','$colonia','$cp','$num_int','$num_ext','$email','$tel_of','$tel_cel')";
+$sql="INSERT INTO direccion(id_ext,colonia,cp,n_int,n_ext,email,tel_of,tel_cel,validacion) 
+VALUES('$id_ext','$colonia','$cp','$num_int','$num_ext','$email','$tel_of','$tel_cel'.'$validacion')";
 $resultado= $conn->query($sql);
 
 if($resultado){

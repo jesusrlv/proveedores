@@ -7,6 +7,7 @@
     $tipo_doc = 9;
     $fecha_sistema = strftime("%Y-%m-%d,%H:%M:%S");
     $link= 'archivo9';
+    $validacion = 1;
     
 $fileName = $_FILES["file9"]["name"]; // The file name
 $fileTmpLoc = $_FILES["file9"]["tmp_name"]; // File in the PHP tmp folder
@@ -27,8 +28,8 @@ $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
     $ruta = "../archivos/". $link .'_'. $id .'.'.$extension;
     include('conn.php');
     // $sqlinsert= "UPDATE documentos SET link4='$ruta_pptx' WHERE id_usr='$curp'";
-    $sqlinsert= "INSERT INTO docs(id_ext,ruta,tipo_doc,fecha_agregado) 
-    VALUES('$id','$ruta','$tipo_doc','$fecha_sistema')";
+    $sqlinsert= "INSERT INTO docs(id_ext,ruta,tipo_doc,fecha_agregado,validacion) 
+    VALUES('$id','$ruta','$tipo_doc','$fecha_sistema','$validacion')";
     $resultado2= $conn->query($sqlinsert);
 
     

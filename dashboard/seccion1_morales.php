@@ -256,7 +256,7 @@ include('prcd/conn2.php');
                 <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">RFC</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="" value="" onblur="ValidaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+                    <input type="text" class="form-control" id="rfc" name="rfc" placeholder="" value="" onblur="ValidaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                     <!-- <input type="text" class="form-control" id="username" name="username" placeholder="" value="" onblur="ValidaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();" required> -->
                     <div class="invalid-feedback">
                     Valid first name is required.

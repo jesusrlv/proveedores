@@ -22,6 +22,7 @@ $denominacion = $_POST['denominacion'];
 $rfc = $_POST['rfc'];
 $id_ext = $_SESSION['id'];
 $link= 'acta_personas_morales';
+$validacion = 1;
 $tipo_usr = 2;
 
 $fileName = $_FILES["acta"]["name"]; // The file name
@@ -42,8 +43,8 @@ $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
     echo "$fileName carga completa";
     $ruta = "../archivos/". $link .'_'. $id_ext .'.'.$extension;
 
-$sql="INSERT INTO datos(rfc,moral_razon,moral_denominacion,moral_archivo_acta,id_ext,tipo_usr) 
-VALUES('$rfc','$razon','$denominacion','$ruta','$id_ext','$tipo_usr')";
+$sql="INSERT INTO datos(rfc,moral_razon,moral_denominacion,moral_archivo_acta,id_ext,tipo_usr,validacion) 
+VALUES('$rfc','$razon','$denominacion','$ruta','$id_ext','$tipo_usr','$validacion')";
 $resultado= $conn->query($sql);
 
 if($resultado){

@@ -18,9 +18,10 @@ $curp = $_POST['curp'];
 $rfc = $_POST['rfc'];
 $id_ext = $_SESSION['id'];
 $tipo_usr = 1;
+$validacion = 1;
 
-$sql="INSERT INTO datos(fisc_apellido,fisc_nombre,fisc_curp,rfc,id_ext,tipo_usr) 
-VALUES('$apellido','$nombre','$curp','$rfc','$id_ext','$tipo_usr')";
+$sql="INSERT INTO datos(fisc_apellido,fisc_nombre,fisc_curp,rfc,id_ext,tipo_usr,validacion) 
+VALUES('$apellido','$nombre','$curp','$rfc','$id_ext','$tipo_usr','$validacion')";
 $resultado= $conn->query($sql);
 
 if($resultado){
