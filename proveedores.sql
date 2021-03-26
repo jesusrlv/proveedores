@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-03-2021 a las 23:08:26
+-- Tiempo de generación: 26-03-2021 a las 22:58:20
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.1
 
@@ -44,7 +44,9 @@ CREATE TABLE `banco` (
 --
 
 INSERT INTO `banco` (`id`, `banco`, `no_cuenta`, `no_clabe`, `sucursal`, `concepto`, `id_ext`, `validacion`) VALUES
-(1, 'banorte', '1', '1', '1', 'tahona', 12, 0);
+(1, 'banorte', '1', '1', '1', 'tahona', 12, 2),
+(2, 'BANORTE', '123456789', 'A1W32E4E', '1', 'pago en banco', 12, 2),
+(3, 'BANREGIO', '123456789', 'QQA133ED4', 'tahona', 'Zacatecas', 12, 2);
 
 -- --------------------------------------------------------
 
@@ -58,7 +60,7 @@ CREATE TABLE `datos` (
   `fisc_apellido` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `fisc_nombre` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
   `fisc_curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `rfc` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `rfc` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `moral_razon` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `moral_denominacion` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `moral_archivo_acta` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
@@ -75,8 +77,7 @@ INSERT INTO `datos` (`id`, `id_ext`, `fisc_apellido`, `fisc_nombre`, `fisc_curp`
 (2, 0, '', '', '', '', '', '', '', 1, 0),
 (3, 0, '', '', '', '', '', '', '', 1, 0),
 (4, 0, 'LeaÃ±os', 'Villegas', 'LEVJ810924HZSXLS04', 'LEV', '', '', '', 1, 0),
-(5, 12, 'LeaÃ±os', 'Villegas', 'LEVJ810924HZSXLS04', 'LEV', '', '', '', 1, 0),
-(6, 12, '', '', '', 'LEVJ8109248K3', 'red', 'red', '2882.pdf', 2, 0);
+(20, 12, '', '', '', 'LEVJ8109248K3', 'X', 'x', '../archivos/acta_personas_morales_12.pdf', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -102,7 +103,7 @@ CREATE TABLE `direccion` (
 --
 
 INSERT INTO `direccion` (`id`, `id_ext`, `colonia`, `cp`, `n_int`, `n_ext`, `email`, `tel_of`, `tel_cel`, `validacion`) VALUES
-(1, 12, 'xss', 999999, '99999', '99999', 'jesusrlvrojo@gmail.com', 99999, 99999, 0);
+(1, 12, 'xss', 999999, '99999', '99999', 'jesusrlvrojo@gmail.com', 99999, 99999, 1);
 
 -- --------------------------------------------------------
 
@@ -126,14 +127,14 @@ CREATE TABLE `docs` (
 --
 
 INSERT INTO `docs` (`id`, `id_ext`, `ruta`, `tipo_doc`, `validacion`, `observaciones`, `fecha_agregado`, `fecha_actualizado`) VALUES
-(15, 12, '../archivos/archivo1_12.pdf', 1, 0, '', '2021-03-19 14:08:04', '0000-00-00 00:00:00'),
-(16, 12, '../archivos/archivo2_12.pdf', 2, 0, '', '2021-03-19 14:08:07', '0000-00-00 00:00:00'),
-(18, 12, '../archivos/archivo4_12.pdf', 4, 0, '', '2021-03-19 14:08:13', '0000-00-00 00:00:00'),
-(19, 12, '../archivos/archivo5_12.pdf', 5, 0, '', '2021-03-19 14:08:15', '0000-00-00 00:00:00'),
-(20, 12, '../archivos/archivo6_12.pdf', 6, 0, '', '2021-03-19 14:08:18', '0000-00-00 00:00:00'),
-(22, 12, '../archivos/archivo8_12.pdf', 8, 0, '', '2021-03-19 14:08:23', '0000-00-00 00:00:00'),
-(23, 12, '../archivos/archivo3_12.pdf', 3, 0, '', '2021-03-19 15:32:11', '0000-00-00 00:00:00'),
-(24, 12, '../archivos/archivo7_12.pdf', 7, 0, '', '2021-03-19 15:43:23', '0000-00-00 00:00:00');
+(25, 12, '../archivos/archivo3_12.pdf', 3, 0, '', '2021-03-25 15:55:50', '0000-00-00 00:00:00'),
+(26, 12, '../archivos/archivo4_12.pdf', 4, 0, '', '2021-03-25 15:55:55', '0000-00-00 00:00:00'),
+(27, 12, '../archivos/archivo5_12.pdf', 5, 1, '', '2021-03-25 15:55:59', '0000-00-00 00:00:00'),
+(28, 12, '../archivos/archivo6_12.pdf', 6, 1, '', '2021-03-25 15:56:03', '0000-00-00 00:00:00'),
+(29, 12, '../archivos/archivo7_12.pdf', 7, 1, '', '2021-03-25 15:56:06', '0000-00-00 00:00:00'),
+(30, 12, '../archivos/archivo1_12.pdf', 1, 1, '', '2021-03-25 15:56:40', '0000-00-00 00:00:00'),
+(31, 12, '../archivos/archivo2_12.pdf', 2, 1, '', '2021-03-25 15:56:43', '0000-00-00 00:00:00'),
+(32, 12, '../archivos/archivo8_12.pdf', 8, 1, '', '2021-03-25 16:06:04', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -193,6 +194,22 @@ INSERT INTO `usr` (`id`, `nombre`, `usuario`, `pwd`, `perfil`) VALUES
 (6, 'Rodolfo LeaÃ±os', 'jesusrl@gmail.com.mx', '9a0c3013dbacdda1873e4a153346dc5c', 1),
 (12, 'JesusRLV', 'jesusr@gmail.com', '18a9f76e9e5f5d1237a02a27a3246a1c', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `validacion`
+--
+
+CREATE TABLE `validacion` (
+  `id` int(11) NOT NULL,
+  `id_ext` int(11) NOT NULL,
+  `datos` int(11) NOT NULL,
+  `direccion` int(11) NOT NULL,
+  `banco` int(11) NOT NULL,
+  `documentos` int(11) NOT NULL,
+  `observaciones` varchar(700) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Índices para tablas volcadas
 --
@@ -240,6 +257,12 @@ ALTER TABLE `usr`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `validacion`
+--
+ALTER TABLE `validacion`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -247,13 +270,13 @@ ALTER TABLE `usr`
 -- AUTO_INCREMENT de la tabla `banco`
 --
 ALTER TABLE `banco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `datos`
 --
 ALTER TABLE `datos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion`
@@ -265,7 +288,7 @@ ALTER TABLE `direccion`
 -- AUTO_INCREMENT de la tabla `docs`
 --
 ALTER TABLE `docs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `documentos`
@@ -284,6 +307,12 @@ ALTER TABLE `menu`
 --
 ALTER TABLE `usr`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `validacion`
+--
+ALTER TABLE `validacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
