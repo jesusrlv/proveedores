@@ -61,6 +61,9 @@ include('prcd/conn.php');
     <!-- Scripts -->
     <script src="css/form-valdation.js"></script>
 
+ <!-- bundle para swal -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 
     <style>
       .bd-placeholder-img {
@@ -282,8 +285,30 @@ include('prcd/conn.php');
 
                 
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 2 <i class="bi bi-skip-forward-fill"></i></button>
-                <a type="button" class="btn btn-danger btn-lg btn-block" href="dashboard.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
+                <!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 2 <i class="bi bi-skip-forward-fill"></i></button>
+                <a type="button" class="btn btn-danger btn-lg btn-block" href="dashboard.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a> -->
+
+                <p><button class="btn btn-primary btn-lg btn-block" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-check-square-fill"></i> Terminar Sección 2</button></p>
+              
+              <!-- modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
+                          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                        </div>
+                        <div class="modal-body text-center">
+                          <strong>Vas a terminar el proceso de la Sección 2, ¿quieres continuar?</strong>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
+                          <button type="submit" class="btn btn-danger">Continuar <i class="bi bi-caret-right-fill"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="dashboard.php"><i class="bi bi-house-fill"></i> Regresar</a>
             </form>
             </div>
 

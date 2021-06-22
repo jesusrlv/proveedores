@@ -36,6 +36,10 @@
             $x = $x + $row4['validacion'];
         }
      
+    //VALIDACIONES DASHBOARD
     
+    $cuenta = "SELECT * FROM validacion where id_ext='$id'";
+    $resultado5= $conn->query($cuenta);
+    $row_validacion = $resultado5->fetch_assoc();
 
     ?>

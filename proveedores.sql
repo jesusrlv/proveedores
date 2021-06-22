@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-03-2021 a las 22:58:20
+-- Tiempo de generación: 22-06-2021 a las 22:58:03
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.1
 
@@ -46,7 +46,9 @@ CREATE TABLE `banco` (
 INSERT INTO `banco` (`id`, `banco`, `no_cuenta`, `no_clabe`, `sucursal`, `concepto`, `id_ext`, `validacion`) VALUES
 (1, 'banorte', '1', '1', '1', 'tahona', 12, 2),
 (2, 'BANORTE', '123456789', 'A1W32E4E', '1', 'pago en banco', 12, 2),
-(3, 'BANREGIO', '123456789', 'QQA133ED4', 'tahona', 'Zacatecas', 12, 2);
+(3, 'BANREGIO', '123456789', 'QQA133ED4', 'tahona', 'Zacatecas', 12, 2),
+(4, '2', '1', '1', '2', 'uno', 13, 1),
+(5, 'BANORTE', '61762826354372828', '8384784573', 'tahona', 'pago en banco', 13, 2);
 
 -- --------------------------------------------------------
 
@@ -192,7 +194,8 @@ INSERT INTO `usr` (`id`, `nombre`, `usuario`, `pwd`, `perfil`) VALUES
 (1, 'uno', 'jesusrlv@correo.com', '123456789', 1),
 (2, 'Rodolfo LeaÃ±os', '', 'd41d8cd98f00b204e9800998ecf8427e', 1),
 (6, 'Rodolfo LeaÃ±os', 'jesusrl@gmail.com.mx', '9a0c3013dbacdda1873e4a153346dc5c', 1),
-(12, 'JesusRLV', 'jesusr@gmail.com', '18a9f76e9e5f5d1237a02a27a3246a1c', 1);
+(12, 'JesusRLV', 'jesusr@gmail.com', '18a9f76e9e5f5d1237a02a27a3246a1c', 1),
+(13, 'Proveedor 1', 'jesusrlv_rojo@hotmail.com', '123456789qwerty', 1);
 
 -- --------------------------------------------------------
 
@@ -203,10 +206,8 @@ INSERT INTO `usr` (`id`, `nombre`, `usuario`, `pwd`, `perfil`) VALUES
 CREATE TABLE `validacion` (
   `id` int(11) NOT NULL,
   `id_ext` int(11) NOT NULL,
-  `datos` int(11) NOT NULL,
-  `direccion` int(11) NOT NULL,
-  `banco` int(11) NOT NULL,
-  `documentos` int(11) NOT NULL,
+  `tipo` int(11) NOT NULL COMMENT '1 para datos, 2 para dirección, 3 para cuentas, 4 para documentos',
+  `validacion` int(11) NOT NULL COMMENT '0 para no validado, 1 en revisión, 2 validado',
   `observaciones` varchar(700) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -270,7 +271,7 @@ ALTER TABLE `validacion`
 -- AUTO_INCREMENT de la tabla `banco`
 --
 ALTER TABLE `banco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `datos`
@@ -306,7 +307,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de la tabla `usr`
 --
 ALTER TABLE `usr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `validacion`

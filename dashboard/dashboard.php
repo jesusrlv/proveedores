@@ -265,6 +265,8 @@ include('prcd/conn.php');
         
         include('prcd/qwery_validacion_dashboard.php');
         // echo $x;
+
+        
         ?>
         <!-- consulta de validación -->
 
@@ -358,20 +360,22 @@ include('prcd/conn.php');
               <div class="card-body">
                 <h5 class="card-title text-primary">Datos bancarios</h5>
                 <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Agregar datos de su empresa</p>
+                <p class="card-text">Agregar datos bancarios de su empresa</p>
                 <?php
-                  if($c == 0){
-                    echo '<a href="seccion3_grid.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
-                  }
-                  elseif($c > 0){
-                    echo '<a href="" ></a>';
-                  }
+                  // if($c1 == 0){
+                  //   echo '<a href="seccion3_grid.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
+                  // }
+                  // elseif($c1 > 0){
+                  //   echo '<a href="" ></a>';
+                  // }
                   
                 ?>
+                <a href="seccion3_grid.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Cuentas bancarias</a>
+
 
                 
 
-                <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>
+                <!-- <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a> -->
                 <hr>
                 <p class="card-text h4 text-center">Estatus</p>
 
@@ -379,12 +383,13 @@ include('prcd/conn.php');
                   if($c == 0){
                     echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
                   }
-                  elseif($c==1){
+                  elseif($c == 1){
                     echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
                   }
-                  if($c == 2){
+                  elseif($c == 2){
                     echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
                   }
+
                 ?>
 
                 <!-- <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p> -->

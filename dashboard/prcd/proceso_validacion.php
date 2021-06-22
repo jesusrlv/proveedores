@@ -11,8 +11,8 @@ include('conn.php');
 session_start();
 
 $usuario=$_POST['usuario'];
-$pass=$_POST['pwd'];
-$pwd = md5($pass);
+// $pass=$_POST['pwd'];
+$pwd = $_POST['pwd'];
 
 //use PHPMailer\PHPMailer\PHPMailer;
 //use PHPMailer\PHPMailer\Exception;

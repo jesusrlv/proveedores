@@ -15,12 +15,13 @@ include('conn.php');
 $nombre = $_POST['nombre'];
 $usuario = $_POST['username'];
 $pwd = $_POST['password'];
-$hash_pwd = md5($pwd);
+// $hash_pwd = md5($pwd);
 $perfil = 1;
 
 $sql="INSERT INTO usr(nombre,usuario,pwd,perfil) 
-VALUES('$nombre','$usuario','$hash_pwd','$perfil')";
+VALUES('$nombre','$usuario','$pwd','$perfil')";
 $resultado= $conn->query($sql);
+
 
 if($resultado){
 

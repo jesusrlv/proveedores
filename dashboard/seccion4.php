@@ -54,6 +54,10 @@ include('prcd/qwery.php');
     <!-- íconos Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
+    <!-- bundle para swal -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/form-validation.css" rel="stylesheet">
@@ -955,8 +959,31 @@ function abortHandler8(event) {
 
                 
                 <hr class="mb-4">
-                <!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 4 <i class="bi bi-skip-forward-fill"></i></button> -->
-                <a type="button" class="btn btn-primary btn-lg btn-block" href="dashboard.php"><i class="bi bi-backspace-fill"></i> Regresar</a>
+                <!-- <button class="btn btn-primary btn-lg btn-block" type="submit"><i class="bi bi-check-square-fill"></i> Terminar Sección 4</button> -->
+                <p><button class="btn btn-primary btn-lg btn-block" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-check-square-fill"></i> Terminar Sección 4</button></p>
+              <form action="" method="">
+                <!-- modal -->
+                <!-- <div class="modal-dialog modal-dialog-centered"> -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
+                            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                          </div>
+                          <div class="modal-body text-center">
+                            <strong>Vas a terminar el proceso de la Sección 4, ¿quieres continuar?</strong>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
+                            <button type="submit" class="btn btn-danger">Continuar <i class="bi bi-caret-right-fill"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <!-- </div> -->
+
+                <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="dashboard.php"><i class="bi bi-house-fill"></i> Regresar</a>
             </form>
             </div>
 
