@@ -38,8 +38,32 @@
      
     //VALIDACIONES DASHBOARD
     
-    $cuenta = "SELECT * FROM validacion where id_ext='$id'";
-    $resultado5= $conn->query($cuenta);
-    $row_validacion = $resultado5->fetch_assoc();
+    $cuenta1 = "SELECT * FROM validacion WHERE id_ext = $id AND tipo = 1";
+    $resultado5= $conn->query($cuenta1);
+    $row_validacion1 = $resultado5->fetch_assoc();
+
+    $uno = $row_validacion1['validacion'];
+    
+    $cuenta2 = "SELECT * FROM validacion WHERE id_ext='$id' AND tipo = 2";
+    $resultado6= $conn->query($cuenta2);
+    $row_validacion2 = $resultado6->fetch_assoc();
+
+    $dos = $row_validacion2['validacion'];
+    
+    $cuenta3 = "SELECT * FROM validacion WHERE id_ext='$id' AND tipo = 3";
+    $resultado7= $conn->query($cuenta3);
+    $row_validacion3 = $resultado7->fetch_assoc();
+
+    $tres = $row_validacion3['validacion'];
+    
+    $cuenta4 = "SELECT * FROM validacion WHERE id_ext='$id' AND tipo = 4";
+    $resultado8= $conn->query($cuenta4);
+    $row_validacion4 = $resultado8->fetch_assoc();
+
+    $cuatro = $row_validacion4['validacion'];
+
+    $suma_validacion = $uno + $dos + $tres + $cuatro;
+
+
 
     ?>

@@ -80,7 +80,7 @@ include('prcd/conn.php');
     <nav class="navbar navbar-light sticky-top flex-md-nowrap p-0 bg-light text-dark">
         <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 text-center text-white" href="#">
     <!-- <img src="../img/logo.png" width="45" height="45" class="d-inline-block align-top" alt="" loading="lazy">   -->
-    <h5 class="text-center text-dark display-7" style="margin-left:3px;"><b>INJUVENTUD</b></h5>
+    <h5 class="text-center text-secondary display-7" style="margin-left:3px;"><b>INJUVENTUD</b></h5>
     </a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -223,7 +223,7 @@ include('prcd/conn.php');
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="background-color:#eaeef4; height:100%;">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 ">
-        <h1 class="h1">DASHBOARD</h1>
+        <h1 class="h1 text-secondary">DASHBOARD</h1>
         
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
@@ -250,8 +250,8 @@ include('prcd/conn.php');
 
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
         <div class="container-fluid">
-          <h1 class="h1">BIENVENIDO AL PADRÓN DE PROVEEDORES</h1>
-          <p class="lead">INJUVENTUD</p>
+          <h1 class="h1 text-secondary">BIENVENIDO AL PADRÓN DE PROVEEDORES</h1>
+          <p class="lead text-secondary">INJUVENTUD</p>
           <hr class="my-4">
           <!-- <p>Cargar documentos</p>
           <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a> -->
@@ -282,30 +282,30 @@ include('prcd/conn.php');
                 <p class="card-text">Agregar datos de su empresa</p>
                 
                 <?php
-                  if($a == 0){
+                  if($uno == 0){
                     echo '<a href="seccion1_tipo.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
                   }
-                  elseif($a > 0){
-                    echo '<a href="" ></a>';
+                  elseif($uno > 0){
+                    echo '<a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>';
                   }
                   
                 ?>
 
                 
                 
-                <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>
+                
                 <hr>
-                <p class="card-text h4 text-center">Estatus</p>
+                <p class="card-text h4 text-center text-secondary">Estatus</p>
 
                 <?php
-                  if($a == 0){
-                    echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
+                  if($uno == 0){
+                    echo '<p class="card-text h5 text-center text-light"><span class="badge bg-danger">Sin información</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
                   }
-                  elseif($a==1){
-                    echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
+                  elseif($uno==1){
+                    echo '<p class="card-text h5 text-center text-light"><span class="badge bg-warning">En revisión</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
                   }
-                  if($a == 2){
-                    echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
+                  if($uno == 2){
+                    echo '<p class="card-text h5 text-center text-light"><span class="badge bg-primary">Completado</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
                   }
                 ?>
 
@@ -322,29 +322,29 @@ include('prcd/conn.php');
                 <p class="card-text">Dirección de su empresa</p>
                 
                 <?php
-                  if($b == 0){
+                  if($dos == 0){
                     echo '<a href="seccion2.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
                   }
-                  elseif($b > 0){
-                    echo '<a href="" ></a>';
+                  elseif($dos > 0){
+                    echo '<a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>';
                   }
                   
                 ?>
                 
                 
-                <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>
+                
                 <hr>
-                <p class="card-text h4 text-center">Estatus</p>
+                <p class="card-text h4 text-center text-secondary">Estatus</p>
 
                 <?php
-                  if($b == 0){
-                    echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
+                  if($dos == 0){
+                    echo '<p class="card-text h5 text-center text-light"><span class="badge bg-danger">Sin información</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
                   }
-                  elseif($b==1){
-                    echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
+                  elseif($dos==1){
+                    echo '<p class="card-text h5 text-center text-light"><span class="badge bg-warning">En revisión</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
                   }
-                  if($b == 2){
-                    echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
+                  if($dos == 2){
+                    echo '<p class="card-text h5 text-center text-light"><span class="badge bg-primary">Completado</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
                   }
                 ?>
                 <!-- <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p> -->
@@ -377,17 +377,17 @@ include('prcd/conn.php');
 
                 <!-- <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a> -->
                 <hr>
-                <p class="card-text h4 text-center">Estatus</p>
+                <p class="card-text h4 text-center text-secondary">Estatus</p>
 
                 <?php
-                  if($c == 0){
-                    echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
+                  if($tres == 0){
+                    echo '<p class="card-text h5 text-center text-light"><span class="badge bg-danger">Sin información</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
                   }
-                  elseif($c == 1){
-                    echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
+                  elseif($tres == 1){
+                    echo '<p class="card-text h5 text-center text-light"><span class="badge bg-warning">En revisión</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
                   }
-                  elseif($c == 2){
-                    echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
+                  elseif($tres == 2){
+                    echo '<p class="card-text h5 text-center text-light"><span class="badge bg-primary">Completado</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
                   }
 
                 ?>
@@ -406,11 +406,17 @@ include('prcd/conn.php');
                 <p class="card-text">Agregar datos de su empresa</p>
                 
                 <?php
-                  if($x < 8){
-                    echo '<a href="seccion4.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
+                  // if($x < 8){
+                  //   echo '<a href="seccion4.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
+                  // }
+                  // elseif($x >= 8){
+                  //   echo '<a href="" ></a>';
+                  // }
+                  if($cuatro == 0){
+                    echo '<a href="seccion1_tipo.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
                   }
-                  elseif($x >= 8){
-                    echo '<a href="" ></a>';
+                  elseif($cuatro > 0){
+                    echo '<a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>';
                   }
                   
                 ?>
@@ -419,20 +425,30 @@ include('prcd/conn.php');
                 
                 
                 
-                <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>
+                <!-- <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a> -->
                 <hr>
-                <p class="card-text h4 text-center">Estatus</p>
+                <p class="card-text h4 text-center text-secondary">Estatus</p>
                 
                 <?php
-                if($x==0){
-                echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
-                }
-                elseif($x > 0 AND $x <= 8){
-                echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
-                }
-                if($x > 8){
-                echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
+                // if($x==0){
+                // echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
+                // }
+                // elseif($x > 0 AND $x <= 8){
+                // echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
+                // }
+                // if($x > 8){
+                // echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
 
+                // }
+
+                if($cuatro == 0){
+                  echo '<p class="card-text h5 text-center text-light"><span class="badge bg-danger">Sin información</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
+                }
+                elseif($cuatro==1){
+                  echo '<p class="card-text h5 text-center text-light"><span class="badge bg-warning">En revisión</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
+                }
+                if($cuatro == 2){
+                  echo '<p class="card-text h5 text-center text-light"><span class="badge bg-primary">Completado</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
                 }
                 ?>
 
@@ -448,11 +464,24 @@ include('prcd/conn.php');
       <div class="container">
         <div class="row row-cols-1 row-cols-md-1">
           <div class="col mb-12">
-            <div class="card text-white bg-primary mb-12" style="width: 100%; ">
+
+            <!-- <div class="card text-white bg-primary mb-12" style="width: 100%; "> -->
+            <?php
+              if ($suma_validacion > 7){
+                echo '<div class="card text-white bg-primary mb-12" style="width: 100%; ">';
+              }
+              else {
+                echo '<div class="card text-white bg-danger mb-12" style="width: 100%; ">';
+              }
+            ?>
+
+
               <!-- <div class="card-header">Tabla 1</div> -->
               <div class="card-body"><br>
                 <h1 class="card-title"><i class="bi bi-exclamation-circle"></i> DICTAMEN</h1>
                 <p class="card-text">El siguiente dictamen para pertenecer al padrón de proveedores del Instituto de la Juventud del Estado de Zacatecas es el siguiente:</p>
+
+                <p><?php echo $suma_validacion ?></p>
 
                 <p class="card-text h4 text-center">Estatus</p>
                 <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-smile-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-neutral-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-frown-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>
