@@ -75,34 +75,31 @@ include('prcd/conn.php');
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
   </head>
-  <body>
-    <!-- <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"> -->
-    <nav class="navbar navbar-light sticky-top flex-md-nowrap p-0 bg-light text-dark">
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 text-center text-white" href="#">
-    <!-- <img src="../img/logo.png" width="45" height="45" class="d-inline-block align-top" alt="" loading="lazy">   -->
-    <h5 class="text-center text-secondary display-7" style="margin-left:3px;"><b>INJUVENTUD</b></h5>
-    </a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <!-- <a href="" class="text-left">Inicio ></a> -->
-  <!-- <input class="form-control form-control-dark w-10" type="text" placeholder="Search" aria-label="Search" style="width:30%"> -->
-  
- 
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      
+
+  <nav class="navbar navbar-light sticky-top flex-md-nowrap p-0 bg-dark text-dark">
+     
+     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     
+   </nav> 
+   
+  <body class="bg-secondary">
+     
+     <!-- <nav class="navbar navbar-light sticky-top flex-md-nowrap p-0 bg-dark text-dark">
+     
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         
-       
-        <a class="btn btn-outline-secondary" href="prcd/sort.php" role="button"><i class="fas fa-sign-out-alt"></i> Salir</a>    
-        
-      </li>
-  </ul>
-</nav>
+      </nav>  -->
 
 <div class="container-fluid">
+
+  
+
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
       <div class="sidebar-sticky pt-3">
         
         <ul class="navbar-nav px-3 text-center">
@@ -112,9 +109,9 @@ include('prcd/conn.php');
             </li>
         </ul>
 
-        <h6 class="sidebar-heading d-flex justify-content-center text-center align-items-center px-3 mt-4 mb-1 text-muted">
+        <h6 class="sidebar-heading d-flex justify-content-center text-center align-items-center px-3 mt-4 mb-1 text-muted text-light">
 
-          <span class="">
+          <span class="text-light">
           bienvenido<br><i class="fas fa-user"></i> 
             <?php
             
@@ -123,7 +120,7 @@ include('prcd/conn.php');
             ?>
           </span>
         </h6>
-<hr>
+          <hr>
         <ul class="nav flex-column">
  
            <li class="nav-item">
@@ -143,88 +140,39 @@ include('prcd/conn.php');
           </h6>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link text-light" href="#">
                
               <i class="fas fa-file-alt"></i> Formato RCB-1
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link text-light" href="#">
                
               <i class="fas fa-file-alt"></i> SAT
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link text-light" href="#">
                
               <i class="fas fa-file-alt"></i> FINANZAS
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link text-light" href="#">
                
               <i class="fas fa-file-alt"></i> Cédula proveedores
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="seccion1_tipo.php">
-               
-              <i class="fas fa-file-alt"></i> Datos
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="direccion.php">
-               
-              <i class="fas fa-file-alt"></i> Dirección
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="datos_bancarios.php">
-               
-              <i class="fas fa-file-alt"></i> Datos bancarios
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="documentos.php">
-               
-              <i class="fas fa-file-alt"></i> Documentos
-            </a>
-          </li> -->
-         
           
         </ul>
-
-        <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Ajustes</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_trabajador.php">
-              <i class="fas fa-user-plus"></i> Agregar Trabajador
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_cliente.php">
-              <i class="fas fa-building"></i> Agregar Empresa
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="agregar_usuarios.php">
-              <i class="fas fa-user-plus"></i> Agregar Usuario
-            </a>
-          </li>
-        </ul>
-      </div> -->
     
     </nav>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="background-color:#eaeef4; height:100%;">
+    <!-- <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4" style="background-color:#eaeef4; height:100%;"> -->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 bg-secondary" style="background-color:#eaeef4; height:100%;">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 ">
-        <h1 class="h1 text-secondary">DASHBOARD</h1>
         
+       
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
             <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Reporte PDF</button>
@@ -234,30 +182,27 @@ include('prcd/conn.php');
         </div>
       </div>
 
-      <h4 class="text-primary" style="margin-top:-27px"> <?php
-                  date_default_timezone_set('America/Mexico_City');
-                  setlocale(LC_TIME, 'es_MX.UTF-8');
-                  $fecha_actual=strftime("%Y-%m-%d");
-                  $hora_actual=strftime("%H:%M:%S");
+      <h4 class="lead text-light" style="margin-top:-27px"> <?php
+                  // date_default_timezone_set('America/Mexico_City');
+                  // setlocale(LC_TIME, 'es_MX.UTF-8');
+                  // $fecha_actual=strftime("%Y-%m-%d");
+                  // $hora_actual=strftime("%H:%M:%S");
 
-                  echo 'Zacatecas, Zac., '.$hora_actual.', '. $fecha_actual;
+                  // echo 'Zacatecas, Zac., '.$hora_actual.', '. $fecha_actual;
               ?></h4>
 
       <!-- <hr style="color: dimgrey;"> -->
       <h2></h2>
     <div class="container-fluid ">
+   
 
 
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
         <div class="container-fluid">
-          <h1 class="h1 text-secondary">BIENVENIDO AL PADRÓN DE PROVEEDORES</h1>
-          <p class="lead text-secondary">INJUVENTUD</p>
+        
+          <h1 class="h1 text-secondary text-center">BIENVENIDO AL PADRÓN DE PROVEEDORES</h1>
+          <p class="lead text-secondary text-center">INJUVENTUD</p>
           <hr class="my-4">
-          <!-- <p>Cargar documentos</p>
-          <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a> -->
-
-          
-        <!-- interno -->
 
         <!-- consulta de validación -->
         
@@ -413,7 +358,7 @@ include('prcd/conn.php');
                   //   echo '<a href="" ></a>';
                   // }
                   if($cuatro == 0){
-                    echo '<a href="seccion1_tipo.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
+                    echo '<a href="seccion4.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
                   }
                   elseif($cuatro > 0){
                     echo '<a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>';
@@ -478,13 +423,24 @@ include('prcd/conn.php');
 
               <!-- <div class="card-header">Tabla 1</div> -->
               <div class="card-body"><br>
-                <h1 class="card-title"><i class="bi bi-exclamation-circle"></i> DICTAMEN</h1>
-                <p class="card-text">El siguiente dictamen para pertenecer al padrón de proveedores del Instituto de la Juventud del Estado de Zacatecas es el siguiente:</p>
-
-                <p><?php echo $suma_validacion ?></p>
-
+                <h1 class="card-title text-center"><i class="bi bi-exclamation-circle"></i> DICTAMEN</h1>
+                <p class="card-text">El siguiente dictamen para pertenecer al padrón de proveedores del <strong>Instituto de la Juventud del Estado de Zacatecas</strong> es el siguiente:</p>
+                  
+                  <div class="alert alert-danger" role="alert">
+                    <p><?php echo $suma_validacion ?></p>
+                  </div>
+                
                 <p class="card-text h4 text-center">Estatus</p>
-                <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-smile-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-neutral-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-frown-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>
+                  <?php
+                    if($suma_validacion == 8){
+                        echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
+                    }
+                    else{
+                      echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
+                    }
+                  ?>
+
+                <!-- <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-smile-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-neutral-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-frown-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p> -->
                 <!-- <p><a href="trimestre1.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->
               </div>
             </div>

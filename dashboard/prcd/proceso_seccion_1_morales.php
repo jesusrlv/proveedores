@@ -24,6 +24,7 @@ $id_ext = $_SESSION['id'];
 $link= 'acta_personas_morales';
 $validacion = 1;
 $tipo_usr = 2;
+$tipo_seccion = 1;
 
 $fileName = $_FILES["acta"]["name"]; // The file name
 $fileTmpLoc = $_FILES["acta"]["tmp_name"]; // File in the PHP tmp folder
@@ -46,6 +47,11 @@ $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
 $sql="INSERT INTO datos(rfc,moral_razon,moral_denominacion,moral_archivo_acta,id_ext,tipo_usr,validacion) 
 VALUES('$rfc','$razon','$denominacion','$ruta','$id_ext','$tipo_usr','$validacion')";
 $resultado= $conn->query($sql);
+
+$sql2 = "INSERT INTO validacion(id_ext,tipo,validacion)
+VALUES('$id_ext','$tipo_seccion','$validacion')";
+$resultado2= $conn->query($sql2);
+
 
 if($resultado){
 

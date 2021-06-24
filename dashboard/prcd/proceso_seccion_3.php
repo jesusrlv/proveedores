@@ -19,12 +19,18 @@ $clabe = $_POST['clabe'];
 $banco = $_POST['banco'];
 $sucursal = $_POST['sucursal'];
 $concepto = $_POST['concepto'];
-$validacion = 1;
+$validacion = 0;
+
+$tipo_seccion = 3;
 
 
 $sql="INSERT INTO banco(id_ext,banco,no_cuenta,no_clabe,sucursal,concepto,validacion) 
 VALUES('$id_ext','$banco','$no_cuenta','$clabe','$sucursal','$concepto','$validacion')";
 $resultado= $conn->query($sql);
+
+$sql2 = "INSERT INTO validacion(id_ext,tipo,validacion)
+VALUES('$id_ext','$tipo_seccion','$validacion')";
+$resultado2= $conn->query($sql2);
 
 if($resultado){
 

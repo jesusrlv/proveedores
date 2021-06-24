@@ -19,10 +19,15 @@ $rfc = $_POST['rfc'];
 $id_ext = $_SESSION['id'];
 $tipo_usr = 1;
 $validacion = 1;
+$tipo_seccion = 1;
 
 $sql="INSERT INTO datos(fisc_apellido,fisc_nombre,fisc_curp,rfc,id_ext,tipo_usr,validacion) 
 VALUES('$apellido','$nombre','$curp','$rfc','$id_ext','$tipo_usr','$validacion')";
 $resultado= $conn->query($sql);
+
+$sql2 = "INSERT INTO validacion(id_ext,tipo,validacion)
+VALUES('$id_ext','$tipo_seccion','$validacion')";
+$resultado2= $conn->query($sql2);
 
 if($resultado){
 
