@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-06-2021 a las 22:58:03
+-- Tiempo de generación: 25-06-2021 a las 21:57:59
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.1
 
@@ -48,7 +48,13 @@ INSERT INTO `banco` (`id`, `banco`, `no_cuenta`, `no_clabe`, `sucursal`, `concep
 (2, 'BANORTE', '123456789', 'A1W32E4E', '1', 'pago en banco', 12, 2),
 (3, 'BANREGIO', '123456789', 'QQA133ED4', 'tahona', 'Zacatecas', 12, 2),
 (4, '2', '1', '1', '2', 'uno', 13, 1),
-(5, 'BANORTE', '61762826354372828', '8384784573', 'tahona', 'pago en banco', 13, 2);
+(5, 'BANORTE', '61762826354372828', '8384784573', 'tahona', 'pago en banco', 13, 2),
+(6, 'BANREGIO', '61762826354372828', 'A1W32E4E', '1', 'Zacatecas', 13, 1),
+(7, 'BANORTE', '123456789', '8384784573', '1', 'pago en banco', 13, 0),
+(8, 'BBVA BANCOMER', '5454332344555', '333224555', 'ZACATECAS', 'PAGO', 13, 0),
+(9, 'BANBAJÃO', '00987U654', '4567ER', 'TAHONA', 'PAGO EN LÃNEA', 1, 0),
+(10, 'BANBAJÃO', '5454332344555', '8384784573', 'ZACATECAS', 'Zacatecas', 1, 0),
+(11, 'BANORTE', '00987U654', 'QQA133ED4', 'TAHONA', 'PAGO EN LÃNEA', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -79,7 +85,11 @@ INSERT INTO `datos` (`id`, `id_ext`, `fisc_apellido`, `fisc_nombre`, `fisc_curp`
 (2, 0, '', '', '', '', '', '', '', 1, 0),
 (3, 0, '', '', '', '', '', '', '', 1, 0),
 (4, 0, 'LeaÃ±os', 'Villegas', 'LEVJ810924HZSXLS04', 'LEV', '', '', '', 1, 0),
-(20, 12, '', '', '', 'LEVJ8109248K3', 'X', 'x', '../archivos/acta_personas_morales_12.pdf', 2, 1);
+(20, 12, '', '', '', 'LEVJ8109248K3', 'X', 'x', '../archivos/acta_personas_morales_12.pdf', 2, 1),
+(21, 13, 'LeaÃ±os V', 'JESUS RODOLFO', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', '', '', '', 1, 1),
+(22, 13, 'LeaÃ±os V', 'JESÃšS RODOLFO', 'MACN090109MZSRRZA6', 'LEVJ8109248K3', '', '', '', 1, 1),
+(23, 13, 'LeaÃ±os V', 'JESÃšS RODOLFO LEAÃ‘OS VILLEGAS', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', '', '', '', 1, 1),
+(24, 13, 'LeaÃ±os', 'JESÃšS RODOLFO', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', '', '', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -105,7 +115,9 @@ CREATE TABLE `direccion` (
 --
 
 INSERT INTO `direccion` (`id`, `id_ext`, `colonia`, `cp`, `n_int`, `n_ext`, `email`, `tel_of`, `tel_cel`, `validacion`) VALUES
-(1, 12, 'xss', 999999, '99999', '99999', 'jesusrlvrojo@gmail.com', 99999, 99999, 1);
+(1, 12, 'xss', 999999, '99999', '99999', 'jesusrlvrojo@gmail.com', 99999, 99999, 1),
+(2, 13, 'xss', 999999, '99999', '99999', 'jesusrlvrojo@gmail.com', 99999, 99999, 1),
+(3, 13, 'xss', 999999, '99999', '99999', 'jesusrlvrojo@gmail.com', 99999, 99999, 1);
 
 -- --------------------------------------------------------
 
@@ -120,6 +132,7 @@ CREATE TABLE `docs` (
   `tipo_doc` int(11) NOT NULL,
   `validacion` int(11) NOT NULL,
   `observaciones` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `vigencia` datetime DEFAULT NULL,
   `fecha_agregado` datetime NOT NULL,
   `fecha_actualizado` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -128,15 +141,15 @@ CREATE TABLE `docs` (
 -- Volcado de datos para la tabla `docs`
 --
 
-INSERT INTO `docs` (`id`, `id_ext`, `ruta`, `tipo_doc`, `validacion`, `observaciones`, `fecha_agregado`, `fecha_actualizado`) VALUES
-(25, 12, '../archivos/archivo3_12.pdf', 3, 0, '', '2021-03-25 15:55:50', '0000-00-00 00:00:00'),
-(26, 12, '../archivos/archivo4_12.pdf', 4, 0, '', '2021-03-25 15:55:55', '0000-00-00 00:00:00'),
-(27, 12, '../archivos/archivo5_12.pdf', 5, 1, '', '2021-03-25 15:55:59', '0000-00-00 00:00:00'),
-(28, 12, '../archivos/archivo6_12.pdf', 6, 1, '', '2021-03-25 15:56:03', '0000-00-00 00:00:00'),
-(29, 12, '../archivos/archivo7_12.pdf', 7, 1, '', '2021-03-25 15:56:06', '0000-00-00 00:00:00'),
-(30, 12, '../archivos/archivo1_12.pdf', 1, 1, '', '2021-03-25 15:56:40', '0000-00-00 00:00:00'),
-(31, 12, '../archivos/archivo2_12.pdf', 2, 1, '', '2021-03-25 15:56:43', '0000-00-00 00:00:00'),
-(32, 12, '../archivos/archivo8_12.pdf', 8, 1, '', '2021-03-25 16:06:04', '0000-00-00 00:00:00');
+INSERT INTO `docs` (`id`, `id_ext`, `ruta`, `tipo_doc`, `validacion`, `observaciones`, `vigencia`, `fecha_agregado`, `fecha_actualizado`) VALUES
+(25, 12, '../archivos/archivo3_12.pdf', 3, 0, '', NULL, '2021-03-25 15:55:50', '0000-00-00 00:00:00'),
+(26, 12, '../archivos/archivo4_12.pdf', 4, 0, '', NULL, '2021-03-25 15:55:55', '0000-00-00 00:00:00'),
+(27, 12, '../archivos/archivo5_12.pdf', 5, 1, '', NULL, '2021-03-25 15:55:59', '0000-00-00 00:00:00'),
+(28, 12, '../archivos/archivo6_12.pdf', 6, 1, '', NULL, '2021-03-25 15:56:03', '0000-00-00 00:00:00'),
+(29, 12, '../archivos/archivo7_12.pdf', 7, 1, '', NULL, '2021-03-25 15:56:06', '0000-00-00 00:00:00'),
+(30, 12, '../archivos/archivo1_12.pdf', 1, 1, '', NULL, '2021-03-25 15:56:40', '0000-00-00 00:00:00'),
+(31, 12, '../archivos/archivo2_12.pdf', 2, 1, '', NULL, '2021-03-25 15:56:43', '0000-00-00 00:00:00'),
+(32, 12, '../archivos/archivo8_12.pdf', 8, 1, '', NULL, '2021-03-25 16:06:04', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -208,8 +221,24 @@ CREATE TABLE `validacion` (
   `id_ext` int(11) NOT NULL,
   `tipo` int(11) NOT NULL COMMENT '1 para datos, 2 para dirección, 3 para cuentas, 4 para documentos',
   `validacion` int(11) NOT NULL COMMENT '0 para no validado, 1 en revisión, 2 validado',
-  `observaciones` varchar(700) COLLATE utf8_unicode_ci NOT NULL
+  `observaciones` varchar(700) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `validacion`
+--
+
+INSERT INTO `validacion` (`id`, `id_ext`, `tipo`, `validacion`, `observaciones`) VALUES
+(1, 13, 3, 0, NULL),
+(4, 13, 4, 0, NULL),
+(6, 13, 1, 1, NULL),
+(7, 13, 1, 1, NULL),
+(11, 13, 2, 1, NULL),
+(12, 13, 3, 1, NULL),
+(13, 13, 3, 0, NULL),
+(14, 13, 3, 0, NULL),
+(19, 1, 3, 1, NULL),
+(20, 1, 4, 0, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -271,19 +300,19 @@ ALTER TABLE `validacion`
 -- AUTO_INCREMENT de la tabla `banco`
 --
 ALTER TABLE `banco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `datos`
 --
 ALTER TABLE `datos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `docs`
@@ -313,7 +342,7 @@ ALTER TABLE `usr`
 -- AUTO_INCREMENT de la tabla `validacion`
 --
 ALTER TABLE `validacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

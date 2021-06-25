@@ -163,7 +163,12 @@ include('prcd/conn.php');
               <i class="fas fa-file-alt"></i> Cédula proveedores
             </a>
           </li>
-          
+
+          <li class="nav-item">
+            <hr style="color: dimgrey;">
+            <a class="nav-link text-light" href="prcd/sort.php"><i class="bi bi-box-arrow-left"></i> CERRAR SESIÓN</a>
+          </li>
+
         </ul>
     
     </nav>
@@ -313,9 +318,17 @@ include('prcd/conn.php');
                   // elseif($c1 > 0){
                   //   echo '<a href="" ></a>';
                   // }
-                  
+                  if($tres == 0){
+                    echo'<a href="seccion3_grid.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar cuenta(s) bancaria(s)</a>';
+                  }
+                  if($tres == 1){
+                    echo'<a href="#" class="card-link"><i class="bi bi-plus-circle-fill"></i> Ver cuenta(s) bancaria(s)</a>';
+                  }
+                  if($tres == 2){
+                    echo'<a href="#" class="card-link"><i class="bi bi-plus-circle-fill"></i> Ver cuenta(s) bancaria(s)</a>';
+                  }
                 ?>
-                <a href="seccion3_grid.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Cuentas bancarias</a>
+                
 
 
                 

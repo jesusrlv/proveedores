@@ -175,6 +175,11 @@ include('prcd/qwery.php');
               <i class="fas fa-file-alt"></i> Cédula proveedores
             </a>
           </li>
+
+          <li class="nav-item">
+            <hr style="color: dimgrey;">
+            <a class="nav-link text-light" href="prcd/sort.php"><i class="bi bi-box-arrow-left"></i> CERRAR SESIÓN</a>
+          </li>
           
         </ul>
     
@@ -323,7 +328,7 @@ function abortHandler(event) {
     
                     ?>
                   
-                  <td>Emitida en el presente año en papel membretado por alguna institución, organismo, dependencia, agrupación, o bien proponerse a sí mismo. En ella se enumerarán los méritos del candidato(a) y deberá ser dirigida a él o la titular del Instituto de la Juventud del Estado de Zacatecas, precisando la modalidad y categoría en la que solicita su registro. Formato libre.</td>
+                  <td>Formato RCB-1 completado.</td>
                 </tr>
                 
                 <tr>
@@ -414,7 +419,7 @@ function abortHandler2(event) {
                                               
 <!--                  <td><span class="label label-warning">Pending</span></td>-->
                   
-                  <td>Documento actualizado, incluyendo datos generales (nombre completo, dirección, teléfono(s), correo electrónico, ocupación).</td>
+                  <td>Documento vigente emitido por la Secretaría de la Función Pública.</td>
                 </tr>
                 <tr>
                   <td>3</td>
@@ -496,7 +501,7 @@ function abortHandler3(event) {
     
                     ?>
                      
-                  <td>Documento con un máximo de una cuartilla.</td>
+                  <td>Documento vigente emitido por el Servicio de Administración Tributaria (SAT).</td>
                 </tr>
                 <tr>
                   <td>4</td>
@@ -577,7 +582,7 @@ function abortHandler4(event) {
             // }
     
                     ?> 
-                  <td>Copia o duplicado de materiales bibliográficos, audiovisuales, gráficos y otros que demuestren los motivos por los cuales se considera que él o la candidata (a) puede merecer el premio.</td>
+                  <td>Documento no mayor a 3 meses de vigencia.</td>
                 </tr>
                 <tr>
                   <td>5</td>
@@ -658,7 +663,7 @@ function abortHandler5(event) {
     
                     ?> 
                     
-                  <td>Deberán presentar una cápsula de 30 segundos como máximo, en digital, donde se explique brevemente por qué se considera acreedor del Premio Estatal de la Juventud. Se subirá por medio de youtube o un video de no más de 70 MB.</td>
+                  <td>Estado de cuenta no mayor a 3 meses de vigencia.</td>
                 </tr>
                 <tr>
                   <td>6</td>
@@ -821,12 +826,12 @@ function abortHandler7(event) {
             // }
     
                     ?> 
-                  <td>Documento escaneado (PDF) o imagen (JPG).</td>
+                  <td>Opinión de cumplimiento fiscal emitida por el SAT.</td>
                 </tr>
                 
                 <tr>
                   <td>8</td>
-                  <td>Opinión fiscal estatal</td>
+                  <td>Opinión fiscal estatal *</td>
                   <script type="text/javascript">
                 
                      function _(el8) {
@@ -903,7 +908,7 @@ function abortHandler8(event) {
             // }
     
                     ?> 
-                  <td>Documento escaneado (PDF) o imagen (JPG).</td>
+                  <td>Documento vigente emitido por la Secretaría de Finanzas del Estado de Zacatecas. <br><strong>* Requerido únicamente para proveedores con domicilio fiscal en el estado de Zacaecas.</strong></td>
                 </tr>               
                 
                 
@@ -964,15 +969,15 @@ function abortHandler8(event) {
                       <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
+                            <h5 class="modal-title text-danger" id="exampleModalLabel"><strong><i class="bi bi-exclamation-triangle-fill"></i> ¡Advertencia!</strong></h5>
                             <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                           </div>
                           <div class="modal-body text-center">
-                            <strong>Vas a terminar el proceso de la Sección 4, ¿quieres continuar?</strong>
+                          Si cargaste los 8 archivos. <strong>Vas a terminar el proceso de la Sección 4, ¿quieres continuar?</strong>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
-                            <button type="submit" class="btn btn-danger">Continuar <i class="bi bi-caret-right-fill"></i></button>
+                            <a href="prcd/proceso_seccion4.php" type="button" class="btn btn-danger">Continuar <i class="bi bi-caret-right-fill"></i></a>
                           </div>
                         </div>
                       </div>

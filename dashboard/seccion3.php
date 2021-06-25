@@ -176,6 +176,11 @@ include('prcd/conn.php');
               <i class="fas fa-file-alt"></i> Cédula proveedores
             </a>
           </li>
+
+          <li class="nav-item">
+            <hr style="color: dimgrey;">
+            <a class="nav-link text-light" href="prcd/sort.php"><i class="bi bi-box-arrow-left"></i> CERRAR SESIÓN</a>
+          </li>
           
         </ul>
     
