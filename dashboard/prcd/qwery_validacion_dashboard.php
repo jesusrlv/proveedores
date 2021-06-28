@@ -65,5 +65,12 @@
     $suma_validacion = $uno + $dos + $tres + $cuatro;
 
 
+    //Validación de edición físico o moral
+
+    $validacion_fisico_moral = "SELECT * FROM datos WHERE id_ext='$id'";
+    $resultado_fisico_moral= $conn->query($validacion_fisico_moral);
+    $row_fisico_moral = $resultado_fisico_moral->fetch_assoc();
+
+        $validacion_tipo = $row_fisico_moral['tipo_usr'];
 
     ?>

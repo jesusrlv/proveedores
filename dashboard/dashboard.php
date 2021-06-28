@@ -236,7 +236,14 @@ include('prcd/conn.php');
                     echo '<a href="seccion1_tipo.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
                   }
                   elseif($uno > 0){
-                    echo '<a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>';
+                    if($validacion_tipo == 1){
+                      echo '<a href="editar_seccion1.php" class="card-link"><i class="bi bi-pencil-square"></i> Editar persona física</a>';
+                    }
+                    elseif($validacion_tipo == 2){
+                      echo '<a href="editar_seccion1_morales.php" class="card-link"><i class="bi bi-pencil-square"></i> Editar persona moral</a>';
+                      echo '<a href="editar_seccion1_morales_acta.php" class="card-link"><i class="bi bi-pencil-square"></i> Editar acta</a>';
+                    }
+                    
                   }
                   
                 ?>

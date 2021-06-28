@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 25-06-2021 a las 21:57:59
+-- Tiempo de generación: 28-06-2021 a las 22:58:09
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.1
 
@@ -54,7 +54,8 @@ INSERT INTO `banco` (`id`, `banco`, `no_cuenta`, `no_clabe`, `sucursal`, `concep
 (8, 'BBVA BANCOMER', '5454332344555', '333224555', 'ZACATECAS', 'PAGO', 13, 0),
 (9, 'BANBAJÃO', '00987U654', '4567ER', 'TAHONA', 'PAGO EN LÃNEA', 1, 0),
 (10, 'BANBAJÃO', '5454332344555', '8384784573', 'ZACATECAS', 'Zacatecas', 1, 0),
-(11, 'BANORTE', '00987U654', 'QQA133ED4', 'TAHONA', 'PAGO EN LÃNEA', 1, 0);
+(11, 'BANORTE', '00987U654', 'QQA133ED4', 'TAHONA', 'PAGO EN LÃNEA', 1, 0),
+(12, 'SANTANDER', '00987U654342342342349999', '999999991', 'ZACATECAS', 'PAGO', 14, 0);
 
 -- --------------------------------------------------------
 
@@ -65,13 +66,13 @@ INSERT INTO `banco` (`id`, `banco`, `no_cuenta`, `no_clabe`, `sucursal`, `concep
 CREATE TABLE `datos` (
   `id` int(11) NOT NULL,
   `id_ext` int(11) NOT NULL,
-  `fisc_apellido` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `fisc_nombre` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
-  `fisc_curp` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `rfc` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `moral_razon` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `moral_denominacion` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `moral_archivo_acta` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `fisc_apellido` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fisc_nombre` varchar(70) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fisc_curp` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rfc` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `moral_razon` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `moral_denominacion` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `moral_archivo_acta` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tipo_usr` int(11) NOT NULL,
   `validacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -89,7 +90,8 @@ INSERT INTO `datos` (`id`, `id_ext`, `fisc_apellido`, `fisc_nombre`, `fisc_curp`
 (21, 13, 'LeaÃ±os V', 'JESUS RODOLFO', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', '', '', '', 1, 1),
 (22, 13, 'LeaÃ±os V', 'JESÃšS RODOLFO', 'MACN090109MZSRRZA6', 'LEVJ8109248K3', '', '', '', 1, 1),
 (23, 13, 'LeaÃ±os V', 'JESÃšS RODOLFO LEAÃ‘OS VILLEGAS', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', '', '', '', 1, 1),
-(24, 13, 'LeaÃ±os', 'JESÃšS RODOLFO', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', '', '', '', 1, 1);
+(24, 13, 'LeaÃ±os', 'JESÃšS RODOLFO', 'LEVJ810924HZSXLS04', 'LEVJ8109248K3', '', '', '', 1, 1),
+(25, 14, '', '', '', 'LEVJ8109248K3', 'Jesus Rodolfo', 'Rodolfo LeaÃ±os', '../archivos/acta_personas_morales_14.pdf', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -103,10 +105,10 @@ CREATE TABLE `direccion` (
   `colonia` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `cp` int(11) NOT NULL,
   `n_int` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `n_ext` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `n_ext` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `tel_of` int(11) NOT NULL,
-  `tel_cel` int(11) NOT NULL,
+  `tel_of` int(11) DEFAULT NULL,
+  `tel_cel` int(11) DEFAULT NULL,
   `validacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -117,7 +119,8 @@ CREATE TABLE `direccion` (
 INSERT INTO `direccion` (`id`, `id_ext`, `colonia`, `cp`, `n_int`, `n_ext`, `email`, `tel_of`, `tel_cel`, `validacion`) VALUES
 (1, 12, 'xss', 999999, '99999', '99999', 'jesusrlvrojo@gmail.com', 99999, 99999, 1),
 (2, 13, 'xss', 999999, '99999', '99999', 'jesusrlvrojo@gmail.com', 99999, 99999, 1),
-(3, 13, 'xss', 999999, '99999', '99999', 'jesusrlvrojo@gmail.com', 99999, 99999, 1);
+(3, 13, 'xss', 999999, '99999', '99999', 'jesusrlvrojo@gmail.com', 99999, 99999, 1),
+(4, 14, 'El Carmen', 98608, '12', 'A', 'jesusrlvrojo@gmail.com', 99999, 99999, 1);
 
 -- --------------------------------------------------------
 
@@ -149,7 +152,15 @@ INSERT INTO `docs` (`id`, `id_ext`, `ruta`, `tipo_doc`, `validacion`, `observaci
 (29, 12, '../archivos/archivo7_12.pdf', 7, 1, '', NULL, '2021-03-25 15:56:06', '0000-00-00 00:00:00'),
 (30, 12, '../archivos/archivo1_12.pdf', 1, 1, '', NULL, '2021-03-25 15:56:40', '0000-00-00 00:00:00'),
 (31, 12, '../archivos/archivo2_12.pdf', 2, 1, '', NULL, '2021-03-25 15:56:43', '0000-00-00 00:00:00'),
-(32, 12, '../archivos/archivo8_12.pdf', 8, 1, '', NULL, '2021-03-25 16:06:04', '0000-00-00 00:00:00');
+(32, 12, '../archivos/archivo8_12.pdf', 8, 1, '', NULL, '2021-03-25 16:06:04', '0000-00-00 00:00:00'),
+(33, 14, '../archivos/archivo1_14.pdf', 1, 1, '', NULL, '2021-06-28 10:02:59', '0000-00-00 00:00:00'),
+(34, 14, '../archivos/archivo2_14.pdf', 2, 1, '', NULL, '2021-06-28 10:03:04', '0000-00-00 00:00:00'),
+(35, 14, '../archivos/archivo3_14.pdf', 3, 1, '', NULL, '2021-06-28 10:03:11', '0000-00-00 00:00:00'),
+(36, 14, '../archivos/archivo4_14.pdf', 4, 1, '', NULL, '2021-06-28 10:03:16', '0000-00-00 00:00:00'),
+(37, 14, '../archivos/archivo5_14.pdf', 5, 1, '', NULL, '2021-06-28 10:03:20', '0000-00-00 00:00:00'),
+(38, 14, '../archivos/archivo6_14.pdf', 6, 1, '', NULL, '2021-06-28 10:03:24', '0000-00-00 00:00:00'),
+(39, 14, '../archivos/archivo7_14.pdf', 7, 1, '', NULL, '2021-06-28 10:03:35', '0000-00-00 00:00:00'),
+(40, 14, '../archivos/archivo8_14.pdf', 8, 1, '', NULL, '2021-06-28 10:03:57', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -208,7 +219,8 @@ INSERT INTO `usr` (`id`, `nombre`, `usuario`, `pwd`, `perfil`) VALUES
 (2, 'Rodolfo LeaÃ±os', '', 'd41d8cd98f00b204e9800998ecf8427e', 1),
 (6, 'Rodolfo LeaÃ±os', 'jesusrl@gmail.com.mx', '9a0c3013dbacdda1873e4a153346dc5c', 1),
 (12, 'JesusRLV', 'jesusr@gmail.com', '18a9f76e9e5f5d1237a02a27a3246a1c', 1),
-(13, 'Proveedor 1', 'jesusrlv_rojo@hotmail.com', '123456789qwerty', 1);
+(13, 'Proveedor 1', 'jesusrlv_rojo@hotmail.com', '123456789qwerty', 1),
+(14, 'Proveedor 2', 'jesusrlv@hotmail.com', '123456789qwerty', 1);
 
 -- --------------------------------------------------------
 
@@ -237,8 +249,12 @@ INSERT INTO `validacion` (`id`, `id_ext`, `tipo`, `validacion`, `observaciones`)
 (12, 13, 3, 1, NULL),
 (13, 13, 3, 0, NULL),
 (14, 13, 3, 0, NULL),
-(19, 1, 3, 1, NULL),
-(20, 1, 4, 0, NULL);
+(19, 1, 3, 0, NULL),
+(20, 1, 4, 0, NULL),
+(21, 14, 1, 1, NULL),
+(22, 14, 2, 1, NULL),
+(23, 14, 3, 1, NULL),
+(24, 14, 4, 1, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -300,25 +316,25 @@ ALTER TABLE `validacion`
 -- AUTO_INCREMENT de la tabla `banco`
 --
 ALTER TABLE `banco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `datos`
 --
 ALTER TABLE `datos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `docs`
 --
 ALTER TABLE `docs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `documentos`
@@ -336,13 +352,13 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de la tabla `usr`
 --
 ALTER TABLE `usr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `validacion`
 --
 ALTER TABLE `validacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
