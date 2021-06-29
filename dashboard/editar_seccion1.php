@@ -233,7 +233,7 @@ include('prcd/conn.php');
         <div class="row">
                 <div class="col-md-12 order-md-1">
             <h4 class="mb-3">Personas físicas</h4>
-            <form action="prcd/proceso_seccion_1.php" class="needs-validation" method="POST">
+            <form action="prcd/editar_secciones/proceso_seccion_1.php" class="needs-validation" method="POST">
                 <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">Apellido(s)</label>
@@ -280,7 +280,7 @@ include('prcd/conn.php');
                             <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                           </div>
                           <div class="modal-body text-center">
-                            <strong>Vas a terminar el proceso de la Sección 1, ¿quieres continuar?</strong>
+                            <strong>Vas a actualiar Sección 1, ¿quieres continuar?</strong>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
@@ -290,7 +290,7 @@ include('prcd/conn.php');
                       </div>
                     </div>
                 <!-- <a type="button" class="btn btn-danger btn-lg btn-block" href="seccion1_tipo.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a> -->
-                <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="seccion1_tipo.php"><i class="bi bi-house-fill"></i> Regresar</a>
+                <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="dashboard.php"><i class="bi bi-house-fill"></i> Regresar</a>
             </form>
             </div>
 

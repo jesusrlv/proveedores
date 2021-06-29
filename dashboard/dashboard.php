@@ -283,7 +283,7 @@ include('prcd/conn.php');
                     echo '<a href="seccion2.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
                   }
                   elseif($dos > 0){
-                    echo '<a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>';
+                    echo '<a href="editar_seccion2.php" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>';
                   }
                   
                 ?>
@@ -329,10 +329,10 @@ include('prcd/conn.php');
                     echo'<a href="seccion3_grid.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar cuenta(s) bancaria(s)</a>';
                   }
                   if($tres == 1){
-                    echo'<a href="#" class="card-link"><i class="bi bi-plus-circle-fill"></i> Ver cuenta(s) bancaria(s)</a>';
+                    echo'<a href="editar_seccion3_grid.php" class="card-link"><i class="bi bi-eye-fill"></i> Ver cuenta(s) bancaria(s)</a>';
                   }
                   if($tres == 2){
-                    echo'<a href="#" class="card-link"><i class="bi bi-plus-circle-fill"></i> Ver cuenta(s) bancaria(s)</a>';
+                    echo'<a href="editar_seccion3_grid" class="card-link"><i class="bi bi-eye-fill"></i> Ver cuenta(s) bancaria(s)</a>';
                   }
                 ?>
                 
@@ -381,7 +381,7 @@ include('prcd/conn.php');
                     echo '<a href="seccion4.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
                   }
                   elseif($cuatro > 0){
-                    echo '<a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>';
+                    echo '<a href="editar_seccion4.php" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>';
                   }
                   
                 ?>

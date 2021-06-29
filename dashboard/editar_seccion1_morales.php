@@ -266,7 +266,7 @@ $row_morales = $resultado_morales->fetch_assoc();
         <div class="row">
                 <div class="col-md-12 order-md-1">
             <h4 class="mb-3">Personas morales</h4>
-            <form class="needs-validation" method="POST" action="prcd/proceso_seccion_1_morales.php" enctype="multipart/form-data" name="envio_morales">
+            <form class="needs-validation" method="POST" action="prcd/editar_secciones/proceso_seccion_1_morales.php" enctype="multipart/form-data" name="envio_morales">
                 <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">RFC</label>
