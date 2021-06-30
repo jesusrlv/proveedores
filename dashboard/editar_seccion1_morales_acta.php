@@ -249,7 +249,7 @@ include('prcd/conn2.php');
       <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
         <div class="container-fluid">
           <h1 class="h1">SECCIÓN 1</h1>
-          <p class="lead">Datos</p>
+          <p class="lead">Actualizar acta constitutiva</p>
           <hr class="my-4">
           <!-- <p>Cargar documentos</p>
           <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a> -->
@@ -258,41 +258,49 @@ include('prcd/conn2.php');
         <!-- interno -->
         <div class="row">
                 <div class="col-md-12 order-md-1">
-            <h4 class="mb-3">Personas morales</h4>
+            <h4 class="mb-3"><i class="bi bi-people-fill"></i> Personas morales</h4>
             <form class="needs-validation" method="POST" action="prcd/editar_secciones/proceso_seccion_1_morales.php" enctype="multipart/form-data" name="envio_morales">
                 <div class="row">
                 
                 <div class="col-md-12 mb-3">
 
-                <div class="alert alert-info col-md-6 mb-3" role="alert">
-                   
-                        <a href=""><i class="bi bi-file-pdf-fill"></i> <strong>Acta anterior</strong></a>
-                
+                <?
+                  $acta = "SELECT * FROM datos WHERE id_ext = $id";
+                  $resultado_acta= $conn->query($acta);
+                  $row_acta = $resultado_acta->fetch_assoc();
+                ?>
+
+                <div class="alert alert-primary col-md-6 mb-3" role="alert">
+                    <p>
+                      <a href="<? echo $row_acta['moral_archivo_acta']?>" target="_blank"><i class="bi bi-file-pdf-fill"></i> <strong>Acta cargada en el sistema</strong></a>
+                    </p>
+                    <hr>
+                    <p>
+                      <label for="lastName"><strong><i class="bi bi-cloud-arrow-up-fill"></i> Cargar nueva acta constitutiva</strong></label>
+                    </p>
+
+                    
+
+                      <p>
+                        <form id="upload_form" enctype="multipart/form-data" method="post">
+                          <input type="file" name="acta" id="acta" onchange="uploadFile()"><br>
+                          <progress id="progressBar" value="0" max="100" style="width:81%;"></progress>
+                          <h3 id="status"></h4>
+                          <p id="loaded_n_total"></p>
+                        </form>
+                      </p>
                 </div>
                     
                     
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
-                </div>
-              
-                <div class="col-md-6 mb-3">
-                    <label for="lastName">Cargar nueva acta constitutiva</label>
-                    <input type="file" class="form-control" id="acta" name="acta">
-                    <div class="invalid-feedback">
-                    Valid last name is required.
                     </div>
-                </div>
 
-                </div>
-
-                <!-- div de usuario repetido -->
-                <p><div id="result-username"></div></p>
-                <!-- div de usuario repetido -->
                 
-                <!-- div de RFC validez -->
-                <p><div id="result-rfc"></div></p>
-                <!-- div de u RFC validez -->
+
+                </div>
+
 
                 <div class="row">
                  <div class="col-lg-12">
@@ -319,22 +327,22 @@ include('prcd/conn2.php');
                 <a type="button" class="btn btn-danger btn-lg btn-block" href="seccion1_tipo.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a> -->
 
                 <!-- <button class="btn btn-primary btn-lg btn-block" type="submit">Terminar Sección 1 <i class="bi bi-skip-forward-fill"></i></button> -->
-                <p><button class="btn btn-primary btn-lg btn-block" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-check-square-fill"></i> Actualizar acta constitutiva</button></p>
+                <!-- <p><button class="btn btn-primary btn-lg btn-block" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-check-square-fill"></i> Actualizar acta constitutiva</button></p> -->
               
                 <!-- modal -->
                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">¡Advertencia!</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Carga correcta</h5>
                             <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                           </div>
                           <div class="modal-body text-center">
-                            <strong>Vas a terminar el proceso de la Sección 1, ¿quieres continuar?</strong>
+                            <strong>Acta constitutiva cargada correctamente</strong>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
-                            <button type="submit" class="btn btn-danger">Continuar <i class="bi bi-caret-right-fill"></i></button>
+                            <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button> -->
+                            <button type="button" class="btn btn-danger" onclick="window.location.reload();">Continuar <i class="bi bi-caret-right-fill"></i></button>
                           </div>
                         </div>
                       </div>
@@ -407,3 +415,54 @@ function ValidaRfc(rfcStr) {
 }
 
 </script>
+
+<script type="text/javascript">
+                
+                function _(el) {
+return document.getElementById(el);
+}
+
+function uploadFile() {
+var file = _("acta").files[0];
+// alert(file.name+" | "+file.size+" | "+file.type);
+var formdata = new FormData();
+formdata.append("acta", file);
+var ajax = new XMLHttpRequest();
+ajax.upload.addEventListener("progress", progressHandler, false);
+ajax.addEventListener("load", completeHandler, false);
+ajax.addEventListener("error", errorHandler, false);
+ajax.addEventListener("abort", abortHandler, false);
+ajax.open("POST", "prcd/editar_secciones/proceso_seccion_1_morales_documento.php"); // http://www.developphp.com/video/JavaScript/File-Upload-Progress-Bar-Meter-Tutorial-Ajax-PHP
+//use file_upload_parser.php from above url
+//ARCHIVO CON EL PROCEDIMIENTO PARA MOVER EL DOCUMENTO AL SERVIDOR
+ajax.send(formdata);
+}
+
+function progressHandler(event) {
+_("loaded_n_total").innerHTML = "Cargado " + event.loaded + " bytes de " + event.total;
+var percent = (event.loaded / event.total) * 100;
+_("progressBar").value = Math.round(percent);
+_("status").innerHTML = Math.round(percent) + "% subido... espere un momento";
+
+
+}
+
+function completeHandler(event) {
+  // window.location.reload();
+_("status").innerHTML = event.target.responseText;
+_("progressBar").value = 0; //wil clear progress bar after successful upload
+_("acta").style.display='none';
+_("progressBar").style.display='none';
+$("#exampleModal").modal('show'); 
+// window.location.reload();
+}
+
+function errorHandler(event) {
+_("status").innerHTML = "Fallo en la subida";
+}
+
+function abortHandler(event) {
+_("status").innerHTML = "Fallo en la subida";
+}
+               
+           </script>

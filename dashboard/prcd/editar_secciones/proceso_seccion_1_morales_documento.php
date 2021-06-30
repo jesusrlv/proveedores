@@ -13,18 +13,24 @@ session_start();
 
 <?php
 
-include('conn.php');
+include('../conn.php');
 
-$razon = $_POST['razon'];
-$denominacion = $_POST['denominacion'];
+$id_ext = $_SESSION['id'];
+
+$archivo = "SELECT * FROM datos WHERE id_ext = $id_ext";
+$resultado_archivo= $conn->query($archivo);
+$row_archivo = $resultado_archivo->fetch_assoc();
+
+// $razon = $_POST['razon'];
+// $denominacion = $_POST['denominacion'];
 // $acta = $_POST['acta'];
 
-$rfc = $_POST['rfc'];
-$id_ext = $_SESSION['id'];
+// $rfc = $_POST['rfc'];
+
 $link= 'acta_personas_morales';
-$validacion = 1;
-$tipo_usr = 2;
-$tipo_seccion = 1;
+// $validacion = 1;
+// $tipo_usr = 2;
+// $tipo_seccion = 1;
 
 $fileName = $_FILES["acta"]["name"]; // The file name
 $fileTmpLoc = $_FILES["acta"]["tmp_name"]; // File in the PHP tmp folder
@@ -40,7 +46,7 @@ if (!$fileTmpLoc) { // if file not chosen
 $archivo_ext=$_FILES['acta']['name'];
 $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
 
-    if(move_uploaded_file($_FILES["acta"]["tmp_name"],"../../archivos/files_morales". $link .'_'. $id_ext .'.'.$extension)){
+    if(move_uploaded_file($_FILES["acta"]["tmp_name"],"../../archivos/". $link .'_'. $id_ext .'.'.$extension)){
     echo "$fileName carga completa";
     $ruta = "archivos/". $link .'_'. $id_ext .'.'.$extension;
 
@@ -53,13 +59,13 @@ $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
 // $resultado2= $conn->query($sql2);
 
 
-if($resultado){
+// if($resultado){
 
     echo "<script type=\"text/javascript\">Swal.fire(
         'Proceso exitoso',
-        'Datos agregados',
+        'Acta constitutiva actualizada',
         'success'
-      ).then(function(){location.href='../dashboard.php';}
+      ).then(function(){location.href='../../dashboard.php';}
     
       
     
@@ -79,8 +85,8 @@ else{
 
 }
 
-} else {
-  echo "move_uploaded_file function failed";
-}
+// } else {
+//   echo "move_uploaded_file function failed";
+// }
 
 ?>

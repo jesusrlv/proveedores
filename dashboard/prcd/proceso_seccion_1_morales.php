@@ -40,9 +40,9 @@ if (!$fileTmpLoc) { // if file not chosen
 $archivo_ext=$_FILES['acta']['name'];
 $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
 
-    if(move_uploaded_file($_FILES["acta"]["tmp_name"],"../archivos/files_morales". $link .'_'. $id_ext .'.'.$extension)){
+    if(move_uploaded_file($_FILES["acta"]["tmp_name"],"../archivos/". $link .'_'. $id_ext .'.'.$extension)){
     echo "$fileName carga completa";
-    $ruta = "../archivos/". $link .'_'. $id_ext .'.'.$extension;
+    $ruta = "archivos/". $link .'_'. $id_ext .'.'.$extension;
 
 $sql="INSERT INTO datos(rfc,moral_razon,moral_denominacion,moral_archivo_acta,id_ext,tipo_usr,validacion) 
 VALUES('$rfc','$razon','$denominacion','$ruta','$id_ext','$tipo_usr','$validacion')";

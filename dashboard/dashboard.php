@@ -382,6 +382,7 @@ include('prcd/conn.php');
                   }
                   elseif($cuatro > 0){
                     echo '<a href="editar_seccion4.php" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>';
+                    echo '<a href="editar_seccion4_vigencia.php" class="card-link"><i class="bi bi-pencil-square"></i> Vigencias</a>';
                   }
                   
                 ?>

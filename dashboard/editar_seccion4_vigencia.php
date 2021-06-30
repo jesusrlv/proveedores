@@ -26,6 +26,7 @@ session_start();
 // }
 
 include('prcd/conn.php');
+include('prcd/qwery.php');
 
 // variables de sesión
 
@@ -53,6 +54,10 @@ include('prcd/conn.php');
     <!-- íconos Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
+    <!-- bundle para swal -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/form-validation.css" rel="stylesheet">
@@ -60,9 +65,6 @@ include('prcd/conn.php');
 
     <!-- Scripts -->
     <script src="css/form-valdation.js"></script>
-
-    <!-- bundle para swal -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
     <style>
@@ -210,22 +212,31 @@ include('prcd/conn.php');
       <h2></h2>
     <div class="container-fluid ">
 
-            <!-- here -->
+    <!-- consulta para ver documentos -->
 
-            <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
+    <?
+
+      include('prcd/proceso_docs_editar.php')
+
+    ?>
+
+      <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
         <div class="container-fluid">
-          <h1 class="h1">SECCIÓN 3</h1>
-          <p class="lead">Cuenta(s) bancaria(s) agregada(s)</p>
-          <a href="seccion3.php" class="btn btn-outline-primary"><i class="bi bi-journal-plus"></i> Agregar cuenta</a>
-
+          <h1 class="h1">SECCIÓN 4</h1>
+          <p class="lead">Documentos</p>
           <hr class="my-4">
+          
+            <div class="alert alert-secondary" role="alert">
+                <a href=""><i class="bi bi-file-binary-fill"></i> Descargar Formato RCB-1</a>
+            </div>
+        <hr class="my-4">
 
         <!-- ROW -->
         <div class="row">
         <div class="col-md-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Lista de cuentas vigentes</h3>
+              <h3 class="box-title">Lista de archivos a cargar</h3>
 
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -235,139 +246,133 @@ include('prcd/conn.php');
                 </div>
               </div>
             </div>
-
-          <div class="container-fluid"><!--container-fluid-->
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-              <thead class="text-center">
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col"># Banco</th>
-                    <th scope="col"># Cuenta</th>
-                    <th scope="col"># CLABE</th>
-                    <th scope="col">Sucursal</th>
-                    <th scope="col">Concepto</th>
-                    <th scope="col">Validación</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>
-                    </tr>
+              <table class="table table-hover text-center">
+                
+                <thead>
+                  <th>#</th>
+                  <th>Nombre</th>
+                  <th>Ver</th>
+                  <th>Fecha de vigencia</th>
+                  <!-- <th>Status</th> -->
+                  <th>Descripción del archivo</th>
                 </thead>
 
-                <?php
-                $tabla="SELECT * FROM banco WHERE id_ext = '$id' ORDER BY id ASC";
-                $resultadotabla = $conn->query($tabla);
-                $numero=0;
-            while($row = $resultadotabla->fetch_assoc()){
-                $numero++;
+                <tr class="align-middle">
+                  <td>1</td>
+                  <td>Cédula de proveedores</td>
+                  <td><a href="<? echo $row_documentos2['ruta'] ?>" target="_blank"><i class="bi bi-eye-fill h3"></i></a></td>
+                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="badge bg-primary text-light">Fecha</span></a></td>
+                  <td>Documento vigente emitido por la Secretaría de la Función Pública.</td>
+                </tr>
                 
-                echo '<tr>';
-                    echo '<td><center>'.$numero.'</center></td>';
-                    echo '<td><center>'.$row['banco'].'</center></td>';
-                    echo '<td><center>'.$row['no_cuenta'].'</center></td>';
-                    echo '<td><center>'.$row['no_clabe'].'</center></td>';
-                    echo '<td><center>'.$row['sucursal'].'</center></td>';
-                    echo '<td><center>'.$row['concepto'].'</center></td>';
-                    if($row['validacion']==0){
-                      echo '<td><center><span class="badge badge-warning text-center"><i class="bi bi-exclamation-circle-fill"></i> En validación</span></center></td>';
-                    }
-                    elseif($row['validacion']==1){
-                      echo '<td><center><span class="badge badge-primary text-center"><i class="bi bi-check-square-fill"></i> Validado</span></center></td>';
-                    }
-                    elseif($row['validacion']==2){
-                      echo '<td><center><span class="badge badge-danger text-center"><i class="bi bi-x-circle-fill"></i> No Validado</span></center></td>';
-                    }
-                    
-                    
-                    echo '<td><a href="editar_seccion3.php?id='.$row['id'].'"><center><i class="bi bi-pencil-square"></i> Editar</center></a></td>';
-                    echo '<td><center><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalEliminar'.$row['id'].'"><i class="bi bi-trash-fill"></i> Eliminar</a></center></td>';
+                <tr>
+                  <td>2</td>
+                  <td>Formato D-32</td>
+                  <td><a href="<? echo $row_documentos7['ruta'] ?>" target="_blank"><i class="bi bi-eye-fill h3"></i></a></td>
+                  <td><span class="badge bg-primary text-light">Fecha</span></td>
+                  <td>Opinión de cumplimiento fiscal emitida por el SAT.</td>
+                </tr>
+                
+                <tr>
+                  <td>3</td>
+                  <td>Opinión fiscal estatal *</td>
+                  <td><a href="<? echo $row_documentos8['ruta'] ?>" target="_blank"><i class="bi bi-eye-fill h3"></i></a></td>
+                  <td><span class="badge bg-primary text-light">Fecha</span></td>
+                  <td>Documento vigente emitido por la Secretaría de Finanzas del Estado de Zacatecas. <br><strong>* Requerido únicamente para proveedores con domicilio fiscal en el estado de Zacatecas.</strong></td>
+                </tr>               
+                
+              </table>
+              
+              
+             <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-calendar-day"></i> Fecha de vigencia</h5>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar3"></i></span>
+                            <input type="date" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
+                        <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
 
-                    //modal eliminar
-
-                  
-                    echo '<div class="modal fade" style="background-color:rgba(220,53,69,.5)" id="exampleModalEliminar'.$row['id'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';                        
-                    echo '<div class="modal-dialog modal-dialog-centered">';
-                      echo '<div class="modal-content">';
-                            echo '<div class="modal-header">';
-                              echo '<h5 class="modal-title text-danger" id="exampleModalLabel"><strong><i class="bi bi-exclamation-triangle-fill"></i> ¡Advertencia!</strong></h5>';
-                              
-                            echo '</div>';
-                            echo '<div class="modal-body text-center">';
-                             echo ' Eliminar cuenta <strong>¿quieres continuar?</strong>';
-                           echo ' </div>';
-                           echo ' <div class="modal-footer">';
-                              echo '<button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>';
-                              echo '<a href="prcd/editar_secciones/proceso_eliminar_seccion_3.php?id='.$row['id'].'" type="button" class="btn btn-danger">Continuar <i class="bi bi-caret-right-fill"></i></a>';
-                            echo '</div>';
-                          echo '</div>';
-                        echo '</div>';
-                      echo '</div>';
-                    
-                echo '</tr>';
             
-            }
-
-            ?>
-
-                </table>
             <!-- /.box-body -->
           </div>
-        
           <!-- /.box -->
         </div>
       </div>
         <!-- ROW -->
 
-                <!-- <hr class="mb-4"> -->
+
+        
+        
+            
+
                 
-              </div>
-              
-              <hr class="mb-4">
-              
-        </div>
-        <!-- interno -->
-        <hr class="my-4">
-       
-        <p><button class="btn btn-primary btn-lg btn-block" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-check-square-fill"></i> Cerrar cuentas (Terminar Sección 3)</button></p>
-             
-              <!-- modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title text-danger" id="exampleModalLabel"><strong><i class="bi bi-exclamation-triangle-fill"></i> ¡Advertencia!</strong></h5>
-                          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-                        </div>
-                        <div class="modal-body text-center">
-                          Si cierras esta sección no podrás agregar más cuentas. <strong>Vas a terminar el proceso de la Sección 3, ¿quieres continuar?</strong>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
-                          <a href="prcd/proceso_seccion3_grid.php" type="button" class="btn btn-danger">Continuar <i class="bi bi-caret-right-fill"></i></a>
+                <hr class="mb-4">
+                <!-- <button class="btn btn-primary btn-lg btn-block" type="submit"><i class="bi bi-check-square-fill"></i> Terminar Sección 4</button> -->
+                <!-- <p><button class="btn btn-primary btn-lg btn-block" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-check-square-fill"></i> Terminar Sección 4</button></p> -->
+              <form action="" method="">
+                <!-- modal -->
+                <!-- <div class="modal-dialog modal-dialog-centered"> -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title text-danger" id="exampleModalLabel"><strong><i class="bi bi-exclamation-triangle-fill"></i> ¡Advertencia!</strong></h5>
+                            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                          </div>
+                          <div class="modal-body text-center">
+                          Si cargaste los 8 archivos. <strong>Vas a terminar el proceso de la Sección 4, ¿quieres continuar?</strong>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
+                            <a href="prcd/proceso_seccion4.php" type="button" class="btn btn-danger">Continuar <i class="bi bi-caret-right-fill"></i></a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-             
-              
+                  <!-- </div> -->
 
-                  <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="dashboard.php"><i class="bi bi-house-fill"></i> Regresar</a>
+                <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="dashboard.php"><i class="bi bi-house-fill"></i> Regresar</a>
+            </form>
+            </div>
 
-          </div><!-- container-fluid -->
+
         </div>
-      </div>
+        <!-- interno -->
 
-            <!-- here -->
 
+        </div>
       </div>
 
       <!-- card -->
       
       <!-- card -->
 
+      
+
       </div>
 
+      <!-- ROW -->
 
+
+
+      <!-- ROW -->
     </main>
   </div>
 </div>
@@ -384,3 +389,8 @@ https://startbootstrap.com/theme/sb-admin-pro-angular
 
 https://startbootstrap.com/themes/admin-dashboard
  -->
+
+
+<!-- aquiiiiiii -->
+<!-- CODIGO -->
+

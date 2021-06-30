@@ -52,6 +52,7 @@ include('prcd/conn.php');
 
     <!-- íconos Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -60,9 +61,10 @@ include('prcd/conn.php');
 
     <!-- Scripts -->
     <script src="css/form-valdation.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 
-    <!-- bundle para swal -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
     <style>
@@ -83,6 +85,7 @@ include('prcd/conn.php');
     </style>
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   </head>
 
   
@@ -210,160 +213,89 @@ include('prcd/conn.php');
       <h2></h2>
     <div class="container-fluid ">
 
-            <!-- here -->
 
-            <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
+      <div class="jumbotron jumbotron-fluid " style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:25px; padding-top:45px;">
         <div class="container-fluid">
           <h1 class="h1">SECCIÓN 3</h1>
-          <p class="lead">Cuenta(s) bancaria(s) agregada(s)</p>
-          <a href="seccion3.php" class="btn btn-outline-primary"><i class="bi bi-journal-plus"></i> Agregar cuenta</a>
-
+          <p class="lead">Cuenta(s) bancaria(s)</p>
           <hr class="my-4">
+          <!-- <p>Cargar documentos</p>
+          <a class="btn btn-primary btn-lg" href="agregar_bitacora.php" role="button"> <i class="fas fa-file-pdf"></i> Subir a bitácora -></a> -->
 
-        <!-- ROW -->
-        <div class="row">
-        <div class="col-md-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Lista de cuentas vigentes</h3>
-
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-
-                  <div class="input-group-btn">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          <div class="container-fluid"><!--container-fluid-->
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-              <thead class="text-center">
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col"># Banco</th>
-                    <th scope="col"># Cuenta</th>
-                    <th scope="col"># CLABE</th>
-                    <th scope="col">Sucursal</th>
-                    <th scope="col">Concepto</th>
-                    <th scope="col">Validación</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>
-                    </tr>
-                </thead>
-
-                <?php
-                $tabla="SELECT * FROM banco WHERE id_ext = '$id' ORDER BY id ASC";
-                $resultadotabla = $conn->query($tabla);
-                $numero=0;
-            while($row = $resultadotabla->fetch_assoc()){
-                $numero++;
-                
-                echo '<tr>';
-                    echo '<td><center>'.$numero.'</center></td>';
-                    echo '<td><center>'.$row['banco'].'</center></td>';
-                    echo '<td><center>'.$row['no_cuenta'].'</center></td>';
-                    echo '<td><center>'.$row['no_clabe'].'</center></td>';
-                    echo '<td><center>'.$row['sucursal'].'</center></td>';
-                    echo '<td><center>'.$row['concepto'].'</center></td>';
-                    if($row['validacion']==0){
-                      echo '<td><center><span class="badge badge-warning text-center"><i class="bi bi-exclamation-circle-fill"></i> En validación</span></center></td>';
-                    }
-                    elseif($row['validacion']==1){
-                      echo '<td><center><span class="badge badge-primary text-center"><i class="bi bi-check-square-fill"></i> Validado</span></center></td>';
-                    }
-                    elseif($row['validacion']==2){
-                      echo '<td><center><span class="badge badge-danger text-center"><i class="bi bi-x-circle-fill"></i> No Validado</span></center></td>';
-                    }
-                    
-                    
-                    echo '<td><a href="editar_seccion3.php?id='.$row['id'].'"><center><i class="bi bi-pencil-square"></i> Editar</center></a></td>';
-                    echo '<td><center><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalEliminar'.$row['id'].'"><i class="bi bi-trash-fill"></i> Eliminar</a></center></td>';
-
-                    //modal eliminar
-
-                  
-                    echo '<div class="modal fade" style="background-color:rgba(220,53,69,.5)" id="exampleModalEliminar'.$row['id'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';                        
-                    echo '<div class="modal-dialog modal-dialog-centered">';
-                      echo '<div class="modal-content">';
-                            echo '<div class="modal-header">';
-                              echo '<h5 class="modal-title text-danger" id="exampleModalLabel"><strong><i class="bi bi-exclamation-triangle-fill"></i> ¡Advertencia!</strong></h5>';
-                              
-                            echo '</div>';
-                            echo '<div class="modal-body text-center">';
-                             echo ' Eliminar cuenta <strong>¿quieres continuar?</strong>';
-                           echo ' </div>';
-                           echo ' <div class="modal-footer">';
-                              echo '<button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>';
-                              echo '<a href="prcd/editar_secciones/proceso_eliminar_seccion_3.php?id='.$row['id'].'" type="button" class="btn btn-danger">Continuar <i class="bi bi-caret-right-fill"></i></a>';
-                            echo '</div>';
-                          echo '</div>';
-                        echo '</div>';
-                      echo '</div>';
-                    
-                echo '</tr>';
-            
-            }
+            <?php
+                $id_banco = $_REQUEST['id'];
+                $banco = "SELECT * FROM banco WHERE id = $id_banco";
+                $resultado_banco= $conn->query($banco);
+                $row_banco = $resultado_banco->fetch_assoc();
 
             ?>
 
-                </table>
-            <!-- /.box-body -->
-          </div>
-        
-          <!-- /.box -->
-        </div>
-      </div>
-        <!-- ROW -->
-
-                <!-- <hr class="mb-4"> -->
+        <!-- interno -->
+        <div class="row">
+                <div class="col-md-12 order-md-1">
+            <h4 class="mb-3">Agregar cuenta bancaria</h4>
+            <form class="needs-validation" action="prcd/editar_secciones/proceso_seccion_3.php" method="POST">
+            <input type="text" value="<?echo $id_banco?>" name="id" hidden>
+                <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">Número de cuenta </label>
+                    <input type="text" class="form-control" id="no_cuenta" name="no_cuenta" placeholder="" value="<? echo $row_banco['no_cuenta']?>" required>
+                    <div class="invalid-feedback">
+                    Valid first name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Clave interbancaria (CLABE)</label>
+                    <input type="text" class="form-control" id="clabe" name="clabe" placeholder="" value="<? echo $row_banco['no_clabe']?>" onblur="ValidaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+                    <div class="invalid-feedback">
+                    Valid last name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">Nombre del banco</label>
+                    <input type="text" class="form-control" id="banco" name="banco" placeholder="" value="<? echo $row_banco['banco']?>" onblur="ValidaRfc(this.value)" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+                    <div class="invalid-feedback">
+                    Valid first name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Sucursal</label>
+                    <input type="text" class="form-control" id="sucursal" name="sucursal" placeholder="" value="<? echo $row_banco['sucursal']?>" required>
+                    <div class="invalid-feedback">
+                    Valid last name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Concepto</label>
+                    <input type="text" class="form-control" id="concepto" name="concepto" placeholder="" value="<? echo $row_banco['concepto']?>" required>
+                    <div class="invalid-feedback">
+                    Valid last name is required.
+                    </div>
+                </div>
                 
-              </div>
-              
-              <hr class="mb-4">
-              
+
+                </div>
+
+                
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit"><i class="bi bi-clipboard-check"></i> Actualizar cuenta bancaria</button>
+                <a type="button" class="btn btn-danger btn-lg btn-block" href="seccion3_grid.php"><i class="bi bi-x-circle-fill"></i> Cancelar</a>
+            </form>
+            </div>
+
+
         </div>
         <!-- interno -->
-        <hr class="my-4">
-       
-        <p><button class="btn btn-primary btn-lg btn-block" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-check-square-fill"></i> Cerrar cuentas (Terminar Sección 3)</button></p>
-             
-              <!-- modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title text-danger" id="exampleModalLabel"><strong><i class="bi bi-exclamation-triangle-fill"></i> ¡Advertencia!</strong></h5>
-                          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-                        </div>
-                        <div class="modal-body text-center">
-                          Si cierras esta sección no podrás agregar más cuentas. <strong>Vas a terminar el proceso de la Sección 3, ¿quieres continuar?</strong>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
-                          <a href="prcd/proceso_seccion3_grid.php" type="button" class="btn btn-danger">Continuar <i class="bi bi-caret-right-fill"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-             
-              
 
-                  <a type="button" class="btn btn-outline-primary btn-lg btn-block" href="dashboard.php"><i class="bi bi-house-fill"></i> Regresar</a>
 
-          </div><!-- container-fluid -->
         </div>
-      </div>
-
-            <!-- here -->
-
       </div>
 
       <!-- card -->
       
       <!-- card -->
+
+      
 
       </div>
 
