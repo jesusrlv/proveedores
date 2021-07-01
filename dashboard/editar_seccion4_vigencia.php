@@ -263,50 +263,104 @@ include('prcd/qwery.php');
                   <td>1</td>
                   <td>Cédula de proveedores</td>
                   <td><a href="<? echo $row_documentos2['ruta'] ?>" target="_blank"><i class="bi bi-eye-fill h3"></i></a></td>
-                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="badge bg-primary text-light">Fecha</span></a></td>
+                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCedula"><span class="badge bg-primary text-light">Fecha</span></a></td>
                   <td>Documento vigente emitido por la Secretaría de la Función Pública.</td>
                 </tr>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCedula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-calendar-day"></i> Fecha de vigencia (cédula proveedores)</h5>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+                    <form action="prcd/editar_secciones/proceso_seccion_4_vigencia.php" name="cedula" method="POST">
+                    <input type="text" name="doc" id="" value="2" hidden>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar3"></i></span>
+                            <input name="fecha" type="date" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Agregar vigencia</button>
+                    </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                 <!-- Modal -->
                 
                 <tr>
                   <td>2</td>
                   <td>Formato D-32</td>
                   <td><a href="<? echo $row_documentos7['ruta'] ?>" target="_blank"><i class="bi bi-eye-fill h3"></i></a></td>
-                  <td><span class="badge bg-primary text-light">Fecha</span></td>
+                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModald32"><span class="badge bg-primary text-light">Fecha</span></a></td>
                   <td>Opinión de cumplimiento fiscal emitida por el SAT.</td>
                 </tr>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModald32" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-calendar-day"></i> Fecha de vigencia (D-32)</h5>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+                    <form action="prcd/editar_secciones/proceso_seccion_4_vigencia.php" name="d32" method="POST">
+                    <div class="modal-body">
+                    <input type="text" name="doc" id="" value="7" hidden>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar3"></i></span>
+                            <input name="fecha" type="date" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Agregar vigencia</button>
+                    </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                 <!-- Modal -->
                 
                 <tr>
                   <td>3</td>
                   <td>Opinión fiscal estatal *</td>
                   <td><a href="<? echo $row_documentos8['ruta'] ?>" target="_blank"><i class="bi bi-eye-fill h3"></i></a></td>
-                  <td><span class="badge bg-primary text-light">Fecha</span></td>
+                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModaldOpinionEst"><span class="badge bg-primary text-light">Fecha</span></a></td>
                   <td>Documento vigente emitido por la Secretaría de Finanzas del Estado de Zacatecas. <br><strong>* Requerido únicamente para proveedores con domicilio fiscal en el estado de Zacatecas.</strong></td>
-                </tr>               
-                
-              </table>
-              
-              
-             <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                </tr>    
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModaldOpinionEst" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-calendar-day"></i> Fecha de vigencia</h5>
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-calendar-day"></i> Fecha de vigencia (opinión estatal)</h5>
                         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                     </div>
                     <div class="modal-body">
+                    <form action="prcd/editar_secciones/proceso_seccion_4_vigencia.php" name="opinionest" method="POST">
+                    <input type="text" name="doc" id="" value="8" hidden>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar3"></i></span>
-                            <input type="date" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
+                            <input name="fecha" type="date" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
-                        <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Agregar vigencia</button>
                     </div>
                     </div>
                 </div>
                 </div>
+                 <!-- Modal -->           
+                
+              </table>
+              
+              
+             
             </div>
 
             
