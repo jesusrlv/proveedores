@@ -17,7 +17,7 @@ $id_ext = $_SESSION['id'];
 $validador = $_POST['doc'];
 $fecha = $_POST['fecha'];
 
-$sql="UPDATE docs SET tipo_doc='$validador',vigencia='$fecha' WHERE tipo_doc='$validador' AND id_ext='$id_ext'";
+$sql="UPDATE docs SET vigencia='$fecha' WHERE tipo_doc='$validador' AND id_ext='$id_ext'";
 $resultado= $conn->query($sql);
 
 // $sql2 = "INSERT INTO validacion(id_ext,tipo,validacion)
@@ -28,7 +28,7 @@ if($resultado){
 
     echo "<script type=\"text/javascript\">Swal.fire(
         'Proceso exitoso',
-        'Banco actualizado',
+        'Vigencia actualizada',
         'success'
       ).then(function(){location.href='../../editar_seccion4_vigencia.php';}
     
@@ -40,7 +40,7 @@ if($resultado){
 else{
     echo "<script type=\"text/javascript\">Swal.fire(
         'Advertencia',
-        'No actualizado',
+        'Vigencia no actualizada',
         'warning'
       ).then(function(){window.location=history.go(-1);}
     
