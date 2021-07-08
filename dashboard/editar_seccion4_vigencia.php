@@ -255,15 +255,49 @@ include('prcd/qwery.php');
                   <th>Nombre</th>
                   <th>Ver</th>
                   <th>Fecha de vigencia</th>
-                  <!-- <th>Status</th> -->
+                  <th>Status</th>
                   <th>Descripción del archivo</th>
                 </thead>
+
+                <?
+                  $vigencia1 = "SELECT * FROM docs WHERE id_ext = '$id' AND tipo_doc = 2";
+                  $resultado_vigencia1= $conn->query($vigencia1);
+                  $row_vigencia1 = $resultado_vigencia1->fetch_assoc();
+
+                  $vigencia2 = "SELECT * FROM docs WHERE id_ext = '$id' AND tipo_doc = 7";
+                  $resultado_vigencia2= $conn->query($vigencia2);
+                  $row_vigencia2 = $resultado_vigencia2->fetch_assoc();
+
+                  $vigencia3 = "SELECT * FROM docs WHERE id_ext = '$id' AND tipo_doc = 8";
+                  $resultado_vigencia3= $conn->query($vigencia3);
+                  $row_vigencia3 = $resultado_vigencia3->fetch_assoc();
+
+                  date_default_timezone_set('America/Mexico_City');
+                  setlocale(LC_TIME, 'es_MX.UTF-8');
+                  $fecha_actual=strftime("%Y-%m-%d");
+                  $hora_actual=strftime("%H:%M:%S");
+
+                ?>
 
                 <tr class="align-middle">
                   <td>1</td>
                   <td>Cédula de proveedores</td>
                   <td><a href="<? echo $row_documentos2['ruta'] ?>" target="_blank"><i class="bi bi-eye-fill h3"></i></a></td>
-                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCedula"><span class="badge bg-primary text-light">Fecha</span></a></td>
+                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCedula"><span class="badge bg-primary text-light"><? echo $row_vigencia1['vigencia'] ?></span></a></td>
+                  <td>
+                    <?
+                    
+                    $fecha_doc = $row_vigencia1['vigencia'];
+                      if($fecha_doc<=$fecha_actual){
+                        echo '<span class="badge bg-success text-light"><i class="bi bi-check-circle-fill"></i> Vigente</span>';
+
+                      }
+                      else{
+                        echo '<span class="badge bg-danger text-light"><i class="bi bi-x-circle-fill"></i> No vigente</span>';
+                        
+                      }
+                    ?>
+                  </td>
                   <td>Documento vigente emitido por la Secretaría de la Función Pública.</td>
                 </tr>
                 <!-- Modal -->
@@ -280,6 +314,7 @@ include('prcd/qwery.php');
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar3"></i></span>
                             <input name="fecha" type="date" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
+                            <p><br><strong>Nota:</strong> Las fechas serán revisadas y deben coincidir con los documentos para ser validadas.</p>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -296,7 +331,19 @@ include('prcd/qwery.php');
                   <td>2</td>
                   <td>Formato D-32</td>
                   <td><a href="<? echo $row_documentos7['ruta'] ?>" target="_blank"><i class="bi bi-eye-fill h3"></i></a></td>
-                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModald32"><span class="badge bg-primary text-light">Fecha</span></a></td>
+                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModald32"><span class="badge bg-primary text-light"><? echo $row_vigencia2['vigencia'] ?></span></a></td>
+                  <td>
+                    <?
+                      $fecha_doc2 = $row_vigencia2['vigencia'];
+                      if($fecha_doc2<=$fecha_actual){
+                        echo '<span class="badge bg-success text-light"><i class="bi bi-check-circle-fill"></i> Vigente</span>';
+
+                      }
+                      else{
+                        echo '<span class="badge bg-danger text-light"><i class="bi bi-x-circle-fill"></i> No vigente</span>';
+                      }
+                    ?>
+                  </td>
                   <td>Opinión de cumplimiento fiscal emitida por el SAT.</td>
                 </tr>
                 <!-- Modal -->
@@ -313,6 +360,7 @@ include('prcd/qwery.php');
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar3"></i></span>
                             <input name="fecha" type="date" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
+                            <p><br><strong>Nota:</strong> Las fechas serán revisadas y deben coincidir con los documentos para ser validadas.</p>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -323,13 +371,25 @@ include('prcd/qwery.php');
                     </div>
                 </div>
                 </div>
-                 <!-- Modal -->
+                 <!-- Modal --> 
                 
                 <tr>
                   <td>3</td>
                   <td>Opinión fiscal estatal *</td>
                   <td><a href="<? echo $row_documentos8['ruta'] ?>" target="_blank"><i class="bi bi-eye-fill h3"></i></a></td>
-                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModaldOpinionEst"><span class="badge bg-primary text-light">Fecha</span></a></td>
+                  <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModaldOpinionEst"><span class="badge bg-primary text-light"><? echo $row_vigencia3['vigencia'] ?></span></a></td>
+                  <td>
+                    <?
+                      $fecha_doc3 = $row_vigencia3['vigencia'];
+                      if($fecha_doc3<=$fecha_actual){
+                        echo '<span class="badge bg-success text-light"><i class="bi bi-check-circle-fill"></i> Vigente</span>';
+
+                      }
+                      else{
+                        echo '<span class="badge bg-danger text-light"><i class="bi bi-x-circle-fill"></i> No vigente</span>';
+                      }
+                    ?>
+                  </td>
                   <td>Documento vigente emitido por la Secretaría de Finanzas del Estado de Zacatecas. <br><strong>* Requerido únicamente para proveedores con domicilio fiscal en el estado de Zacatecas.</strong></td>
                 </tr>    
                 <!-- Modal -->
@@ -347,6 +407,7 @@ include('prcd/qwery.php');
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar3"></i></span>
                             <input name="fecha" type="date" class="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1">
                         </div>
+                        <p><br><strong>Nota:</strong> Las fechas serán revisadas y deben coincidir con los documentos para ser validadas.</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cerrar</button>
