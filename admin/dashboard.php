@@ -253,7 +253,7 @@ include('prcd/conn.php');
                 
                 
                 <hr>
-                <a href="#" class="btn btn-primary"><i class="bi bi-view-list"></i> Consultar listado</a>
+                <a href="listado_completo.php" class="btn btn-primary"><i class="bi bi-view-list"></i> Consultar listado</a>
                 <?php
                   // if($uno == 0){
                   //   echo '<p class="card-text h5 text-center text-light"><span class="badge bg-danger">Sin información</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
@@ -274,7 +274,7 @@ include('prcd/conn.php');
             <div class="card text-dark bg-light mb-6" style="max-width: 100%; height: 18rem; box-shadow: 4px -1px 0px -1px #005eff;">
               <!-- <div class="card-header">Enero-Marzo 2020</div> -->
               <div class="card-body">
-                <h5 class="card-title text-primary"><i class="bi bi-list"></i> Listado proveedores físicos</h5>
+                <h5 class="card-title text-primary"><i class="bi bi-list"></i> Listado datos completos</h5>
                 <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
                 <p class="card-text">Dirección de su empresa</p>
                 

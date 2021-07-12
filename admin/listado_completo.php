@@ -206,6 +206,17 @@ include('prcd/conn.php');
           <h1 class="h1 text-secondary text-center">BIENVENIDO AL SISTEMA ADMINISTRADOR DE PROVEEDORES</h1>
           <p class="lead text-secondary text-center">LISTADO COMPLETO DE PROVEEDORES</p>
           <hr class="my-4">
+          <h5 class="lead text-secondary" style="margin-bottom:9px;">Proveedores físicos</h5>
+
+          <main class="container">
+            <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+              <img class="me-3" src="../assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38">
+              <div class="lh-1">
+                <h1 class="h6 mb-0 text-white lh-1">Bootstrap</h1>
+                <small>Since 2011</small>
+              </div>
+            </div>
+          </main>
 
             <!-- consulta de validación -->
             <?php
@@ -214,11 +225,11 @@ include('prcd/conn.php');
             <!-- consulta de validación -->
             <div class="table-responsive">
                 <table class="table table-striped align-middle table-hover">
-                    <thead class="table-dark">
+                    <thead class="bg-dark text-light">
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Nombre</th>
                         <th scope="col">Handle</th>
                         </tr>
                     </thead>
