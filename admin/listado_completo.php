@@ -56,6 +56,11 @@ include('prcd/conn.php');
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
+    <!-- Bootstrap core CSS -->
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/offcanvas.css" rel="stylesheet">
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -196,6 +201,18 @@ include('prcd/conn.php');
                   // echo 'Zacatecas, Zac., '.$hora_actual.', '. $fecha_actual;
               ?></h4>
 
+              <?php
+
+                $persona_fisica = "SELECT * FROM datos where tipo_usr = 1";
+                $resultado_persona_fisica= $conn->query($persona_fisica);
+                $row_fisica = $resultado_persona_fisica->num_rows;
+
+                $persona_moral = "SELECT * FROM datos where tipo_usr = 2";
+                $resultado_persona_moral= $conn->query($persona_moral);
+                $row_moral = $resultado_persona_moral->num_rows;
+
+              ?>
+
       <!-- <hr style="color: dimgrey;"> -->
       <h2></h2>
     <div class="container-fluid" style="max-height: 100%;">
@@ -206,24 +223,64 @@ include('prcd/conn.php');
           <h1 class="h1 text-secondary text-center">BIENVENIDO AL SISTEMA ADMINISTRADOR DE PROVEEDORES</h1>
           <p class="lead text-secondary text-center">LISTADO COMPLETO DE PROVEEDORES</p>
           <hr class="my-4">
-          <h5 class="lead text-secondary" style="margin-bottom:9px;">Proveedores físicos</h5>
-
           <main class="container">
-            <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
-              <img class="me-3" src="../assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38">
+            <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm bg-danger">
+              <img class="me-3" src="../img/logo_white_inju.png" alt="" width="48" height="48" style="margin-right:18px">
               <div class="lh-1">
-                <h1 class="h6 mb-0 text-white lh-1">Bootstrap</h1>
-                <small>Since 2011</small>
+                <h1 class="h6 mb-0 text-white lh-1 lead">Proveedores</h1>
+                <small><i class="bi bi-person"></i> Personas físicas</small>
               </div>
             </div>
+
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+              <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-list"></i> Listado</h6>
+              <div class="d-flex text-muted pt-3">
+              <i class="bi bi-person h2 text-primary" style="margin-right:9px"></i> 
+                <p class="pb-3 mb-0 small lh-sm border-bottom">
+                  <strong class="d-block text-gray-dark">Usuario</strong>
+                  Datos de la persona
+                </p>
+              </div>
+
+              
+              <small class="d-block text-end mt-3">
+                <a href="#">listado</a>
+              </small>
+            </div>
+            <hr>
+            <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm bg-danger">
+              <img class="me-3" src="../img/logo_white_inju.png" alt="" width="48" height="48" style="margin-right:18px">
+              <div class="lh-1">
+                <h1 class="h6 mb-0 text-white lh-1 lead">Proveedores</h1>
+                <small><i class="bi bi-people"></i> Personas morales</small>
+              </div>
+            </div>
+
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+              <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-list"></i> Listado</h6>
+              <div class="d-flex text-muted pt-3">
+              <i class="bi bi-people h2 text-primary" style="margin-right:18px"></i> 
+                <p class="pb-3 mb-0 small lh-sm border-bottom">
+                  <strong class="d-block text-gray-dark">Usuario</strong>
+                  Datos de la persona
+                </p>
+              </div>
+              
+              
+              <small class="d-block text-end mt-3">
+                <a href="#">All updates</a>
+              </small>
+            </div>
+
           </main>
 
+          <hr>
             <!-- consulta de validación -->
             <?php
                         
             ?>
             <!-- consulta de validación -->
-            <div class="table-responsive">
+            <!-- <div class="table-responsive">
                 <table class="table table-striped align-middle table-hover">
                     <thead class="bg-dark text-light">
                         <tr>
@@ -253,13 +310,12 @@ include('prcd/conn.php');
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
 
         </div> <!-- container -->
 
         
     
-        <hr>
       
         </div>
 
