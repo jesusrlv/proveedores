@@ -202,7 +202,7 @@ include('prcd/conn.php');
    
 
 
-      <div class="jumbotron jumbotron-fluid" style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:14%; padding-top:45px; ">
+      <div class="jumbotron jumbotron-fluid" style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:7%; padding-top:45px; ">
         <div class="container-fluid">
         
           <h1 class="h1 text-secondary text-center">BIENVENIDO AL SISTEMA ADMINISTRADOR DE PROVEEDORES</h1>

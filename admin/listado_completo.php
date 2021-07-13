@@ -62,6 +62,15 @@ include('prcd/conn.php');
     <link href="css/offcanvas.css" rel="stylesheet">
 
     <style>
+
+    a:link { text-decoration: none; }
+
+    a:visited { text-decoration: none; }
+
+    a:hover { text-decoration: none; }
+
+    a:active { text-decoration: none; }
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -205,11 +214,11 @@ include('prcd/conn.php');
 
                 $persona_fisica = "SELECT * FROM datos where tipo_usr = 1";
                 $resultado_persona_fisica= $conn->query($persona_fisica);
-                $row_fisica = $resultado_persona_fisica->num_rows;
+                // $row_fisica = $resultado_persona_fisica->num_rows;
 
                 $persona_moral = "SELECT * FROM datos where tipo_usr = 2";
                 $resultado_persona_moral= $conn->query($persona_moral);
-                $row_moral = $resultado_persona_moral->num_rows;
+                // $row_moral = $resultado_persona_moral->num_rows;
 
               ?>
 
@@ -217,30 +226,45 @@ include('prcd/conn.php');
       <h2></h2>
     <div class="container-fluid" style="max-height: 100%;">
    
-      <div class="jumbotron jumbotron-fluid" style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:3%; padding-top:45px; ">
+      <div class="jumbotron jumbotron-fluid" style="background-color:#f8f9fa; width:100%;border-radius:5px;  margin-top:0%; padding-top:45px; ">
         <div class="container-fluid">
         
           <h1 class="h1 text-secondary text-center">BIENVENIDO AL SISTEMA ADMINISTRADOR DE PROVEEDORES</h1>
-          <p class="lead text-secondary text-center">LISTADO COMPLETO DE PROVEEDORES</p>
+          <p class="lead text-secondary text-center">LISTADO COMPLETO</p>
           <hr class="my-4">
           <main class="container">
             <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm bg-danger">
               <img class="me-3" src="../img/logo_white_inju.png" alt="" width="48" height="48" style="margin-right:18px">
               <div class="lh-1">
-                <h1 class="h6 mb-0 text-white lh-1 lead">Proveedores</h1>
-                <small><i class="bi bi-person"></i> Personas físicas</small>
+                <h1 class="h6 mb-0 text-white lh-1 lead"><i class="bi bi-person"></i> | Personas físicas</h1>
+                <!-- <small><i class="bi bi-person"></i> Personas físicas</small> -->
               </div>
             </div>
 
             <div class="my-3 p-3 bg-body rounded shadow-sm">
               <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-list"></i> Listado</h6>
-              <div class="d-flex text-muted pt-3">
+              <!-- <div class="d-flex text-muted pt-3">
               <i class="bi bi-person h2 text-primary" style="margin-right:9px"></i> 
                 <p class="pb-3 mb-0 small lh-sm border-bottom">
                   <strong class="d-block text-gray-dark">Usuario</strong>
                   Datos de la persona
                 </p>
-              </div>
+              </div> -->
+
+              <?php
+
+                while($row_fisica = $resultado_persona_fisica->fetch_assoc()){
+                  echo '<div class="d-flex text-muted pt-3">';
+                  echo '<i class="bi bi-person h2 text-primary" style="margin-right:9px"></i>';
+                  echo '<p class="pb-3 mb-0 small lh-sm border-bottom">';
+                  echo '<strong class="d-block text-gray-dark"><a href="datos_proveedor.php?id='.$row_fisica['id_ext'].'" target="_self">'.$row_fisica['fisc_apellido'].' '.$row_fisica['fisc_nombre'].'</a></strong>';
+                  echo $row_fisica['fisc_curp'].' | '.$row_fisica['rfc'];
+                  echo '</p>';
+                 echo '</div>';
+
+                }
+
+              ?>
 
               
               <small class="d-block text-end mt-3">
@@ -251,22 +275,35 @@ include('prcd/conn.php');
             <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm bg-danger">
               <img class="me-3" src="../img/logo_white_inju.png" alt="" width="48" height="48" style="margin-right:18px">
               <div class="lh-1">
-                <h1 class="h6 mb-0 text-white lh-1 lead">Proveedores</h1>
-                <small><i class="bi bi-people"></i> Personas morales</small>
+                <h1 class="h6 mb-0 text-white lh-1 lead"><i class="bi bi-people"></i> | Personas morales</h1>
+                <!-- <small><i class="bi bi-people"></i> Personas morales</small> -->
               </div>
             </div>
 
             <div class="my-3 p-3 bg-body rounded shadow-sm">
               <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-list"></i> Listado</h6>
-              <div class="d-flex text-muted pt-3">
+              <!-- <div class="d-flex text-muted pt-3">
               <i class="bi bi-people h2 text-primary" style="margin-right:18px"></i> 
                 <p class="pb-3 mb-0 small lh-sm border-bottom">
                   <strong class="d-block text-gray-dark">Usuario</strong>
                   Datos de la persona
                 </p>
-              </div>
+              </div> -->
               
-              
+              <?php
+
+                while($row_moral = $resultado_persona_moral->fetch_assoc()){
+                  echo '<div class="d-flex text-muted pt-3">';
+                  echo '<i class="bi bi-person h2 text-primary" style="margin-right:9px"></i>';
+                  echo '<p class="pb-3 mb-0 small lh-sm border-bottom">';
+                  echo '<strong class="d-block text-gray-dark"><a href="datos_proveedor.php?id='.$row_moral['id_ext'].'" target="_self">'.$row_moral['moral_razon'].'</a></strong>';
+                  echo $row_moral['rfc'].' | '.$row_moral['moral_denominacion'];
+                  echo '</p>';
+                 echo '</div>';
+
+                }
+
+              ?>
               <small class="d-block text-end mt-3">
                 <a href="#">All updates</a>
               </small>
