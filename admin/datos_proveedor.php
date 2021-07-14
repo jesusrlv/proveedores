@@ -216,7 +216,7 @@ include('prcd/conn.php');
                 $resultado_consulta_banco= $conn->query($consulta_banco);
                 // $row_consulta_banco = $resultado_consulta_banco->fetch_assoc();
 
-                $consulta_documentos = "SELECT * FROM docs WHERE id_ext = $id_proveedor";
+                $consulta_documentos = "SELECT * FROM docs WHERE id_ext = $id_proveedor ORDER BY tipo_doc ASC";
                 $resultado_consulta_documentos= $conn->query($consulta_documentos);
                 // $row_consulta_documentos = $resultado_consulta_documentos->fetch_assoc();
 
@@ -303,7 +303,7 @@ include('prcd/conn.php');
             </div>
 
             <div class="my-3 p-3 bg-body rounded shadow-sm">
-              <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-person-lines-fill"></i> Domicilio</h6>
+              <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-building"></i> Domicilio</h6>
                 <?php
                     echo '<div class="d-flex text-muted pt-3">';
                     echo '<p class="pb-3 mb-0 lh-sm border-bottom">';
@@ -345,7 +345,7 @@ include('prcd/conn.php');
             </div>
            
             <div class="my-3 p-3 bg-body rounded shadow-sm">
-              <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-person-lines-fill"></i> Datos bancarios</h6>
+              <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-bank2"></i> Datos bancarios</h6>
                 <div class="table-responsive">
                     <table class="table table-striped align-middle table-hover">
                         <thead class="bg-dark text-light">
@@ -383,42 +383,78 @@ include('prcd/conn.php');
             </div>
 
             <div class="my-3 p-3 bg-body rounded shadow-sm">
-              <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-person-lines-fill"></i> Documentos</h6>
+              <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-file-post"></i> Documentos</h6>
                 <div class="table-responsive">
                     <table class="table table-striped align-middle table-hover">
                         <thead class="bg-dark text-light">
                             <tr>
-                            <th scope="col">RCB-1</th>
+                            <!-- <th scope="col">RCB-1</th>
                             <th scope="col">Cédula de proveedores</th>
                             <th scope="col">Constancia fiscal</th>
                             <th scope="col">Comprobante de domicilio</th>
                             <th scope="col">Carátula de estado de cuenta bancaria</th>
                             <th scope="col">INE</th>
                             <th scope="col">Formato D-32</th>
-                            <th scope="col">Opinión fiscal estatal *</th>
+                            <th scope="col">Opinión fiscal estatal *</th> -->
+                            <th>Tipo documento</th>
+                            <th>Documento</th>
                             </tr>
                         </thead>
                         <tbody>
+                        
                             <?php
                             $num = 0;
                             while($row_consulta_documentos = $resultado_consulta_documentos->fetch_assoc()){
-                                $num ++;
+                                // $num ++;
 
                                 echo '<tr>';
+                                
+                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
+                                
+                                if($row_consulta_documentos["tipo_doc"]==1){
+                                  echo '<td>RCB-1</td>';
+                                }
+                                elseif($row_consulta_documentos["tipo_doc"]==2){
+                                  echo '<td>Cédula de proveedores</td>';
+                                }
+                                elseif($row_consulta_documentos["tipo_doc"]==3){
+                                  echo '<td>Constancia fiscal</td>';
+                                }
+                                elseif($row_consulta_documentos["tipo_doc"]==4){
+                                  echo '<td>Comprobante de domicilio</td>';
+                                }
+                                elseif($row_consulta_documentos["tipo_doc"]==5){
+                                  echo '<td>Carátula de estado de cuenta bancaria</td>';
+                                }
+                                elseif($row_consulta_documentos["tipo_doc"]==6){
+                                  echo '<td>INE</td>';
+                                }
+                                elseif($row_consulta_documentos["tipo_doc"]==7){
+                                  echo '<td>Formato D-32</td>';
+                                }
+                                elseif($row_consulta_documentos["tipo_doc"]==8){
+                                  echo '<td>Opinión fiscal estatal *</td>';
+                                }
+                                // else{
+                                //   echo '<td>Archivo no cargado</td>';
+                                // }
 
                                 echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
+
+                                
+                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
+                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
+                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
+                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
+                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
+                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
+                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
                                 
                                 echo '</tr>';
                             }
                                 
                             ?>
+                          
                         </tbody>
                     </table>
                 </div>
