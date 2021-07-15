@@ -253,7 +253,7 @@ include('prcd/conn.php');
                 
                 
                 <hr>
-                <a href="listado_completo.php" class="btn btn-primary"><i class="bi bi-view-list"></i> Consultar listado</a>
+                <a href="listado_grid.php" class="btn btn-primary"><i class="bi bi-view-list"></i> Consultar listado</a>
                 <?php
                   // if($uno == 0){
                   //   echo '<p class="card-text h5 text-center text-light"><span class="badge bg-danger">Sin información</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
@@ -270,45 +270,7 @@ include('prcd/conn.php');
             </div>
           </div>
           
-          <div class="col mb-6" style="margin-bottom:9px;">
-            <div class="card text-dark bg-light mb-6" style="max-width: 100%; height: 18rem; box-shadow: 4px -1px 0px -1px #005eff;">
-              <!-- <div class="card-header">Enero-Marzo 2020</div> -->
-              <div class="card-body">
-                <h5 class="card-title text-primary"><i class="bi bi-list"></i> Listado datos completos</h5>
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-                <p class="card-text">Dirección de su empresa</p>
-                
-                <?php
-                  // if($dos == 0){
-                  //   echo '<a href="seccion2.php" class="card-link"><i class="bi bi-plus-circle-fill"></i> Agregar</a>';
-                  // }
-                  // elseif($dos > 0){
-                  //   echo '<a href="editar_seccion2.php" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a>';
-                  // }
-                  
-                ?>
-                
-                
-                
-                <hr>
-                <a href="#" class="btn btn-primary"><i class="bi bi-view-list"></i> Consultar listado</a>
-                <?php
-                  // if($dos == 0){
-                  //   echo '<p class="card-text h5 text-center text-light"><span class="badge bg-danger">Sin información</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';
-                  // }
-                  // elseif($dos==1){
-                  //   echo '<p class="card-text h5 text-center text-light"><span class="badge bg-warning">En revisión</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
-                  // }
-                  // if($dos == 2){
-                  //   echo '<p class="card-text h5 text-center text-light"><span class="badge bg-primary">Completado</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
-                  // }
-                ?>
-                <!-- <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p> -->
-
-
-              </div>
-            </div>
-          </div>
+          
 
           <div class="col mb-6" style="margin-bottom:9px;">
             <div class="card text-dark bg-light mb-6" style="max-width: 100%; height: 18rem; box-shadow: 4px -1px 0px -1px #005eff;">
@@ -343,7 +305,7 @@ include('prcd/conn.php');
 
                 <!-- <a href="#" class="card-link"><i class="bi bi-pencil-square"></i> Editar</a> -->
                 <hr>
-                <a href="#" class="btn btn-primary"><i class="bi bi-view-list"></i> Consultar listado</a>
+                <a href="listado_completo.php" class="btn btn-primary"><i class="bi bi-view-list"></i> Consultar listado</a>
                 <?php
                   // if($tres == 0){
                   //   echo '<p class="card-text h5 text-center text-light"><span class="badge bg-danger">Sin información</span></p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-x-circle-fill text-danger" style="font-size: 3rem; "></i></p>';

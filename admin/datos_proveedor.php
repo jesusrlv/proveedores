@@ -347,7 +347,7 @@ include('prcd/conn.php');
             <div class="my-3 p-3 bg-body rounded shadow-sm">
               <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-bank2"></i> Datos bancarios</h6>
                 <div class="table-responsive">
-                    <table class="table table-striped align-middle table-hover">
+                    <table class="table table-striped align-middle table-hover text-center">
                         <thead class="bg-dark text-light">
                             <tr>
                             <th scope="col">#</th>
@@ -396,8 +396,9 @@ include('prcd/conn.php');
                             <th scope="col">INE</th>
                             <th scope="col">Formato D-32</th>
                             <th scope="col">Opinión fiscal estatal *</th> -->
+                            <th class="text-center">#</th>
                             <th>Tipo documento</th>
-                            <th>Documento</th>
+                            <th class="text-center">Documento</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -405,9 +406,10 @@ include('prcd/conn.php');
                             <?php
                             $num = 0;
                             while($row_consulta_documentos = $resultado_consulta_documentos->fetch_assoc()){
-                                // $num ++;
+                                $num ++;
 
                                 echo '<tr>';
+                                echo '<td class="text-center">'.$num.'</td>';
                                 
                                 // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
                                 
@@ -439,7 +441,7 @@ include('prcd/conn.php');
                                 //   echo '<td>Archivo no cargado</td>';
                                 // }
 
-                                echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
+                                echo '<td class="text-center">'.$row_consulta_documentos["ruta"].'</td>';
 
                                 
                                 // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
