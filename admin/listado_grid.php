@@ -236,7 +236,7 @@ include('prcd/conn.php');
 
           <main class="container">
 
-          <p class="h6 text-secondary text-left">Personas Morales</p>
+          <p class="h6 text-secondary text-left">Personas físicas</p>
           
           <hr class="my-4">
           
@@ -246,22 +246,21 @@ include('prcd/conn.php');
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">Razón social</th>
+                        <th scope="col">CURP</th>
                         <th scope="col">RFC</th>
-                        <th scope="col">Denominación</th>
                         </tr>
                     </thead>
                     <tbody>
               <?php
                 $n=0;
-                while($row_moral = $resultado_persona_moral->fetch_assoc()){
+                while($row_fisica = $resultado_persona_fisica->fetch_assoc()){
                     $n++;
                   echo '<tr>';
                   echo '<td>'.$n.'</td>';
-                  echo '<td>'.$row_moral['moral_razon'].'</td>';
-                  echo '<td>'.$row_moral['rfc'].'</td>';
-                  echo '<td>'.$row_moral['moral_denominacion'].'</td>';
-                
-                 echo '</tr>';
+                  echo '<td>'.$row_fisica['fisc_apellido'].' '.$row_fisica['fisc_nombre'].'</td>';
+                  echo '<td>'.$row_fisica['fisc_curp'].'</td>';
+                  echo '<td>'.$row_fisica['rfc'].'</td>';
+                  echo '</tr>';
 
                 }
 
@@ -269,8 +268,8 @@ include('prcd/conn.php');
                 </tbody>
             </table>
             </div>
-            
-          <p class="h6 text-secondary text-left">Personas Morales</p>
+
+          <p class="h6 text-secondary text-left">Personas morales</p>
           
           <hr class="my-4">
           
