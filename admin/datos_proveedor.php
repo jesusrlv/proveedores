@@ -221,7 +221,27 @@ include('prcd/conn.php');
                 $consulta_documentos = "SELECT * FROM docs WHERE id_ext = $id_proveedor ORDER BY tipo_doc ASC";
                 $resultado_consulta_documentos= $conn->query($consulta_documentos);
                 // $row_consulta_documentos = $resultado_consulta_documentos->fetch_assoc();
-
+               
+                
+                $consulta_validacion01 ="SELECT * FROM validacion WHERE id_ext = '$id_proveedor' AND tipo = 1";
+                $resultado_consulta_validacion01= $conn->query($consulta_validacion01);
+                $row_consulta_validacion01 = $resultado_consulta_validacion01->fetch_assoc();
+                
+                $consulta_validacion02 ="SELECT * FROM validacion WHERE id_ext = '$id_proveedor' AND tipo = 2";
+                $resultado_consulta_validacion02= $conn->query($consulta_validacion02);
+                $row_consulta_validacion02 = $resultado_consulta_validacion02->fetch_assoc();
+                
+                $consulta_validacion03 ="SELECT * FROM validacion WHERE id_ext = '$id_proveedor' AND tipo = 3";
+                $resultado_consulta_validacion03= $conn->query($consulta_validacion03);
+                $row_consulta_validacion03 = $resultado_consulta_validacion03->fetch_assoc();
+                
+                $consulta_validacion04 ="SELECT * FROM validacion WHERE id_ext = '$id_proveedor' AND tipo = 4";
+                $resultado_consulta_validacion04= $conn->query($consulta_validacion04);
+                $row_consulta_validacion04 = $resultado_consulta_validacion04->fetch_assoc();
+                
+                $consulta_observaciones ="SELECT * FROM observaciones WHERE id_ext = '$id_proveedor' ORDER BY seccion ASC";
+                $resultado_consulta_observaciones= $conn->query($consulta_observaciones);
+                // $row_consulta_observaciones = $resultado_consulta_observaciones->fetch_assoc();
 
               ?>
 
@@ -302,8 +322,23 @@ include('prcd/conn.php');
                         }
                     ?>
                 <hr>
-                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong> </span>
+                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong> 
+                
+                <?php 
+                  if($row_consulta_validacion01['validacion'] == 0){
+                    echo '<span class="badge bg-secondary">No validado</span>';
+                  }
+                  elseif($row_consulta_validacion01['validacion'] == 1){
+                    echo '<span class="badge bg-warning">En revisión</span>';
+                  }
+                  elseif($row_consulta_validacion01['validacion'] == 2){
+                    echo '<span class="badge bg-primary">Validado</span>';
+                  }
+                ?>
+                
+                </span> | 
                 <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-check-circle"></i> Validar</button>
+                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalObservaciones1"><i class="bi bi-card-heading"></i> Observaciones</button>
               </small>    
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel01" aria-hidden="true">
@@ -316,19 +351,50 @@ include('prcd/conn.php');
                     <div class="modal-body">
 
                       <form action="prcd/validacion.php" method="POST">
-                        <input type="text" name="validacion1" id="validacion1" value="1" HIDDEN>
-                        <select class="form-select" aria-label="Default select example" name="caja_validacion_01">
-                          <option selected>Selecciona la validación</option>
-                          <option value="1">Válido</option>
-                          <option value="2">No válido</option>
-                        </select>
-                      </form>
+                        <input type="text" name="validacion" id="validacion" value="1" HIDDEN>
+                        <input type="text" name="proveedor" id="proveedor" value="<?echo $id_proveedor ?>" HIDDEN>
+                          <select class="form-select" aria-label="Default select example" name="caja_validacion">
+                            <option selected>Selecciona la validación</option>
+                            <option value="1">En revisión</option>
+                            <option value="2">Validado</option>
+                          </select>
+                      </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-primary">Guardar</button>
+                      
+                        </div>
+                        </form>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalObservaciones1" tabindex="-1" aria-labelledby="exampleModalObservaciones1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel01"><i class="bi bi-check-circle"></i> Observaciones datos</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Guardar</button>
-                    </div>
+                      <form action="prcd/observaciones.php" method="POST">
+                        <input type="text" name="validacion" id="validacion" value="1" HIDDEN>
+                        <input type="text" name="proveedor" id="proveedor" value="<?echo $id_proveedor ?>" HIDDEN>
+                         
+                        <div class="input-group">
+                          <span class="input-group-text">Observaciones:</span>
+                          <textarea class="form-control" aria-label="With textarea" name="observaciones"></textarea>
+                        </div>
+
+                      </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-primary">Guardar</button>
+                      
+                        </div>
+                        </form>
                   </div>
                 </div>
               </div>
@@ -375,8 +441,22 @@ include('prcd/conn.php');
                     echo '</div>';
                 ?>
                 <hr>
-                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong> </span>
+                <small class="d-block text-end mt-3"><span><strong> Estatus: </strong><?php 
+                  if($row_consulta_validacion02['validacion'] == 0){
+                    echo '<span class="badge bg-danger">No validado</span>';
+                  }
+                  elseif($row_consulta_validacion02['validacion'] == 1){
+                    echo '<span class="badge bg-warning">En revisión</span>';
+                  }
+                  elseif($row_consulta_validacion02['validacion'] == 2){
+                    echo '<span class="badge bg-primary">Validado</span>';
+                  }
+                ?>
+                
+                </span> | 
                 <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalLabel02"><i class="bi bi-check-circle"></i> Validar</button>
+                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalObservaciones2"><i class="bi bi-card-heading"></i> Observaciones</button>
+
               </small>    
               <!-- Modal -->
               <div class="modal fade" id="exampleModalLabel02" tabindex="-1" aria-labelledby="exampleModalLabel02" aria-hidden="true">
@@ -389,19 +469,50 @@ include('prcd/conn.php');
                     <div class="modal-body">
 
                       <form action="prcd/validacion.php" method="POST">
-                        <input type="text" name="validacion2" id="validacion2" value="2" HIDDEN>
-                        <select class="form-select" aria-label="Default select example" name="caja_validacion_02">
+                        <input type="text" name="validacion" id="validacion" value="2" HIDDEN>
+                        <input type="text" name="proveedor" id="proveedor" value="<?echo $id_proveedor ?>" HIDDEN>
+                        <select class="form-select" aria-label="Default select example" name="caja_validacion">
                           <option selected>Selecciona la validación</option>
-                          <option value="1">Válido</option>
-                          <option value="2">No válido</option>
+                          <option value="1">En revisión</option>
+                          <option value="2">Validado</option>
                         </select>
-                      </form>
-
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Guardar</button>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-primary">Guardar</button>
+                      
                     </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalObservaciones2" tabindex="-1" aria-labelledby="exampleModalObservaciones2" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel01"><i class="bi bi-check-circle"></i> Observaciones dirección</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                      <form action="prcd/observaciones.php" method="POST">
+                        <input type="text" name="validacion" id="validacion" value="2" HIDDEN>
+                        <input type="text" name="proveedor" id="proveedor" value="<?echo $id_proveedor ?>" HIDDEN>
+                         
+                        <div class="input-group">
+                          <span class="input-group-text">Observaciones:</span>
+                          <textarea class="form-control" aria-label="With textarea" name="observaciones"></textarea>
+                        </div>
+
+                      </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-primary">Guardar</button>
+                      
+                        </div>
+                        </form>
                   </div>
                 </div>
               </div>
@@ -445,8 +556,22 @@ include('prcd/conn.php');
                     </table>
                 </div>
                 <hr>
-                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong> </span>
+                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong><?php 
+                  if($row_consulta_validacion03['validacion'] == 0){
+                    echo '<span class="badge bg-danger">No validado</span>';
+                  }
+                  elseif($row_consulta_validacion03['validacion'] == 1){
+                    echo '<span class="badge bg-warning">En revisión</span>';
+                  }
+                  elseif($row_consulta_validacion03['validacion'] == 2){
+                    echo '<span class="badge bg-primary">Validado</span>';
+                  }
+                ?>
+                
+                </span> | 
                 <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalLabel03"><i class="bi bi-check-circle"></i> Validar</button>
+                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalObservaciones3"><i class="bi bi-card-heading"></i> Observaciones</button>
+
               </small>    
               <!-- Modal -->
               <div class="modal fade" id="exampleModalLabel03" tabindex="-1" aria-labelledby="exampleModalLabel03" aria-hidden="true">
@@ -459,19 +584,50 @@ include('prcd/conn.php');
                     <div class="modal-body">
 
                       <form action="prcd/validacion.php" method="POST">
-                        <input type="text" name="validacion3" id="validacion3" value="3" HIDDEN>
-                        <select class="form-select" aria-label="Default select example" name="caja_validacion_03">
+                        <input type="text" name="validacion" id="validacion" value="3" HIDDEN>
+                        <input type="text" name="proveedor" id="proveedor" value="<?echo $id_proveedor ?>" HIDDEN>
+                        <select class="form-select" aria-label="Default select example" name="caja_validacion">
                           <option selected>Selecciona la validación</option>
-                          <option value="1">Válido</option>
-                          <option value="2">No válido</option>
+                          <option value="1">En revisión</option>
+                          <option value="2">Validado</option>
                         </select>
-                      </form>
-
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Guardar</button>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-primary">Guardar</button>
+                      
+                        </div>
+                        </form>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalObservaciones3" tabindex="-1" aria-labelledby="exampleModalObservaciones3" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel01"><i class="bi bi-check-circle"></i> Observaciones cuentas bancarias</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+
+                      <form action="prcd/observaciones.php" method="POST">
+                        <input type="text" name="validacion" id="validacion" value="3" HIDDEN>
+                        <input type="text" name="proveedor" id="proveedor" value="<?echo $id_proveedor ?>" HIDDEN>
+                         
+                        <div class="input-group">
+                          <span class="input-group-text">Observaciones:</span>
+                          <textarea class="form-control" aria-label="With textarea" name="observaciones"></textarea>
+                        </div>
+
+                      </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-primary">Guardar</button>
+                      
+                        </div>
+                        </form>
                   </div>
                 </div>
               </div>
@@ -484,17 +640,12 @@ include('prcd/conn.php');
                     <table class="table table-striped align-middle table-hover">
                         <thead class="bg-dark text-light">
                             <tr>
-                            <!-- <th scope="col">RCB-1</th>
-                            <th scope="col">Cédula de proveedores</th>
-                            <th scope="col">Constancia fiscal</th>
-                            <th scope="col">Comprobante de domicilio</th>
-                            <th scope="col">Carátula de estado de cuenta bancaria</th>
-                            <th scope="col">INE</th>
-                            <th scope="col">Formato D-32</th>
-                            <th scope="col">Opinión fiscal estatal *</th> -->
+                           
                             <th class="text-center">#</th>
                             <th>Tipo documento</th>
                             <th class="text-center">Documento</th>
+                            <th class="text-center">Vigencia</th>
+                            <th class="text-center">Actualización</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -538,16 +689,9 @@ include('prcd/conn.php');
                                 // }
 
                                 echo '<td class="text-center"><a href="../dashboard/'.$row_consulta_documentos["ruta"].'" target="_blank"><i class="bi bi-cloud-arrow-down-fill h5"></i></a></td>';
+                                echo '<td class="text-center">'.$row_consulta_documentos["vigencia"].'</td>';
+                                echo '<td class="text-center">'.$row_consulta_documentos["fecha_actualizado"].'</td>';
 
-                                
-                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
-                                
                                 echo '</tr>';
                             }
                                 
@@ -557,8 +701,22 @@ include('prcd/conn.php');
                     </table>
                 </div>
                 <hr>
-                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong> </span>
+                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong><?php 
+                  if($row_consulta_validacion04['validacion'] == 0){
+                    echo '<span class="badge bg-danger">No validado</span>';
+                  }
+                  elseif($row_consulta_validacion04['validacion'] == 1){
+                    echo '<span class="badge bg-warning">En revisión</span>';
+                  }
+                  elseif($row_consulta_validacion04['validacion'] == 2){
+                    echo '<span class="badge bg-primary">Validado</span>';
+                  }
+                ?>
+                
+                </span> | 
                 <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalLabel04"><i class="bi bi-check-circle"></i> Validar</button>
+                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalObservaciones4"><i class="bi bi-card-heading"></i> Observaciones</button>
+
               </small>    
               <!-- Modal -->
               <div class="modal fade" id="exampleModalLabel04" tabindex="-1" aria-labelledby="exampleModalLabel04" aria-hidden="true">
@@ -571,22 +729,112 @@ include('prcd/conn.php');
                     <div class="modal-body">
 
                       <form action="prcd/validacion.php" method="POST">
-                        <input type="text" name="validacion4" id="validacion4" value="4" HIDDEN>
-                        <select class="form-select" aria-label="Default select example" name="caja_validacion_04">
+                        <input type="text" name="validacion" id="validacion" value="4" HIDDEN>
+                        <input type="text" name="proveedor" id="proveedor" value="<?echo $id_proveedor ?>" HIDDEN>
+                        <select class="form-select" aria-label="Default select example" name="caja_validacion">
                           <option selected>Selecciona la validación</option>
-                          <option value="1">Válido</option>
-                          <option value="2">No válido</option>
+                          <option value="1">En revisión</option>
+                          <option value="2">Validado</option>
                         </select>
-                      </form>
+                     
 
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Guardar</button>
-                    </div>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-primary">Guardar</button>
+                      
+                      </div>
+                      </form>
                   </div>
                 </div>
               </div>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalObservaciones4" tabindex="-1" aria-labelledby="exampleModalObservaciones4" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel01"><i class="bi bi-check-circle"></i> Observaciones documentos</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                      <form action="prcd/observaciones.php" method="POST">
+                        <input type="text" name="validacion" id="validacion" value="4" HIDDEN>
+                        <input type="text" name="proveedor" id="proveedor" value="<?echo $id_proveedor ?>" HIDDEN>
+                         
+                        <div class="input-group">
+                          <span class="input-group-text">Observaciones:</span>
+                          <textarea class="form-control" aria-label="With textarea" name="observaciones"></textarea>
+                        </div>
+
+                      </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-primary">Guardar</button>
+                      
+                        </div>
+                        </form>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+              <h6 class="border-bottom pb-2 mb-0"><i class="bi bi-card-heading"></i> Observaciones</h6>
+                <div class="table-responsive">
+                    <table class="table table-striped align-middle table-hover">
+                        <thead class="bg-dark text-light">
+                            <tr>
+                              <th class="text-center">#</th>
+                              <th>Sección</th>
+                              <th class="text-center">Observaciones</th>
+                              <th class="text-center">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            <?php
+                            $num = 0;
+                            while($row_consulta_observaciones = $resultado_consulta_observaciones->fetch_assoc()){
+                                $num ++;
+
+                                echo '<tr>';
+                                echo '<td class="text-center">'.$num.'</td>';
+                                
+                                // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
+                                
+                                if($row_consulta_observaciones["seccion"]==1){
+                                  echo '<td>Datos personales</td>';
+                                }
+                                elseif($row_consulta_observaciones["seccion"]==2){
+                                  echo '<td>Dirección</td>';
+                                }
+                                elseif($row_consulta_observaciones["seccion"]==3){
+                                  echo '<td>Cuentas bancarias</td>';
+                                }
+                                elseif($row_consulta_observaciones["seccion"]==4){
+                                  echo '<td>Documentos</td>';
+                                }
+
+                                echo '<td class="text-center">'.$row_consulta_observaciones["observaciones"].'</td>';
+                                echo '<td class="text-center"><i class="bi bi-trash-fill"></i></td>';
+                                echo '</tr>';
+                            }
+                                
+                            ?>
+                          
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                
+                
+                
+
+             
+             
 
             </div>
 

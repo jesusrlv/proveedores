@@ -447,20 +447,23 @@ include('prcd/conn.php');
                 <h1 class="card-title text-center"><i class="bi bi-exclamation-circle"></i> DICTAMEN</h1>
                 <p class="card-text">El siguiente dictamen para pertenecer al padrón de proveedores del <strong>Instituto de la Juventud del Estado de Zacatecas</strong> es el siguiente:</p>
                   
-                  <div class="alert alert-danger" role="alert">
-                    <p><?php echo $suma_validacion ?></p>
-                  </div>
+                 
                 
-                <p class="card-text h4 text-center">Estatus</p>
+                <p class="card-text h3 text-center">ESTATUS</p>
+                <hr class="bg-light">
                   <?php
                     if($suma_validacion == 8){
-                        echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
+                        echo '<p class="card-text h4 text-center" style="aligment-item:center;">Validación correcta</p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p>';
                     }
                     else{
-                      echo '<p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
+                      echo '<p class="card-text h4 text-center" style="aligment-item:center;">En revisión</p><p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i></p>';
                     }
                   ?>
 
+                  <div class="alert alert-danger" role="alert">
+                        <p><?php echo $suma_validacion ?></p>
+                  </div>
+                  <hr class="bg-light">
                 <!-- <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-smile-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-neutral-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-frown-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p> -->
                 <!-- <p><a href="trimestre1.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->
               </div>

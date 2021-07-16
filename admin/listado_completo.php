@@ -267,9 +267,9 @@ include('prcd/conn.php');
               ?>
 
               
-              <small class="d-block text-end mt-3">
+              <!-- <small class="d-block text-end mt-3">
                 <a href="#">listado</a>
-              </small>
+              </small> -->
             </div>
             <hr>
             <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm bg-danger">
@@ -304,9 +304,9 @@ include('prcd/conn.php');
                 }
 
               ?>
-              <small class="d-block text-end mt-3">
+              <!-- <small class="d-block text-end mt-3">
                 <a href="#">All updates</a>
-              </small>
+              </small> -->
             </div>
 
           </main>
