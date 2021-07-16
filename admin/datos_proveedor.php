@@ -49,6 +49,8 @@ include('prcd/conn.php');
     <link rel="icon" type="image/png" href="../img/icon.ico"/>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 
     <!-- íconos Bootstrap -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> -->
@@ -299,7 +301,38 @@ include('prcd/conn.php');
                             echo '</div>';
                         }
                     ?>
-                   
+                <hr>
+                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong> </span>
+                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-check-circle"></i> Validar</button>
+              </small>    
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel01" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel01"><i class="bi bi-check-circle"></i> Validar datos</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                      <form action="prcd/validacion.php" method="POST">
+                        <input type="text" name="validacion1" id="validacion1" value="1" HIDDEN>
+                        <select class="form-select" aria-label="Default select example" name="caja_validacion_01">
+                          <option selected>Selecciona la validación</option>
+                          <option value="1">Válido</option>
+                          <option value="2">No válido</option>
+                        </select>
+                      </form>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
             </div>
 
             <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -341,6 +374,37 @@ include('prcd/conn.php');
                     echo '</p>';
                     echo '</div>';
                 ?>
+                <hr>
+                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong> </span>
+                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalLabel02"><i class="bi bi-check-circle"></i> Validar</button>
+              </small>    
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalLabel02" tabindex="-1" aria-labelledby="exampleModalLabel02" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel02"><i class="bi bi-check-circle"></i> Validar dirección</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                      <form action="prcd/validacion.php" method="POST">
+                        <input type="text" name="validacion2" id="validacion2" value="2" HIDDEN>
+                        <select class="form-select" aria-label="Default select example" name="caja_validacion_02">
+                          <option selected>Selecciona la validación</option>
+                          <option value="1">Válido</option>
+                          <option value="2">No válido</option>
+                        </select>
+                      </form>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             </div>
            
@@ -380,6 +444,38 @@ include('prcd/conn.php');
                         </tbody>
                     </table>
                 </div>
+                <hr>
+                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong> </span>
+                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalLabel03"><i class="bi bi-check-circle"></i> Validar</button>
+              </small>    
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalLabel03" tabindex="-1" aria-labelledby="exampleModalLabel03" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel03"><i class="bi bi-check-circle"></i> Validar cuentas bancarias</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                      <form action="prcd/validacion.php" method="POST">
+                        <input type="text" name="validacion3" id="validacion3" value="3" HIDDEN>
+                        <select class="form-select" aria-label="Default select example" name="caja_validacion_03">
+                          <option selected>Selecciona la validación</option>
+                          <option value="1">Válido</option>
+                          <option value="2">No válido</option>
+                        </select>
+                      </form>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
             <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -441,7 +537,7 @@ include('prcd/conn.php');
                                 //   echo '<td>Archivo no cargado</td>';
                                 // }
 
-                                echo '<td class="text-center">'.$row_consulta_documentos["ruta"].'</td>';
+                                echo '<td class="text-center"><a href="../dashboard/'.$row_consulta_documentos["ruta"].'" target="_blank"><i class="bi bi-cloud-arrow-down-fill h5"></i></a></td>';
 
                                 
                                 // echo '<td>'.$row_consulta_documentos["ruta"].'</td>';
@@ -460,6 +556,38 @@ include('prcd/conn.php');
                         </tbody>
                     </table>
                 </div>
+                <hr>
+                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong> </span>
+                <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalLabel04"><i class="bi bi-check-circle"></i> Validar</button>
+              </small>    
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalLabel04" tabindex="-1" aria-labelledby="exampleModalLabel04" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel04"><i class="bi bi-check-circle"></i> Validar documentos</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                      <form action="prcd/validacion.php" method="POST">
+                        <input type="text" name="validacion4" id="validacion4" value="4" HIDDEN>
+                        <select class="form-select" aria-label="Default select example" name="caja_validacion_04">
+                          <option selected>Selecciona la validación</option>
+                          <option value="1">Válido</option>
+                          <option value="2">No válido</option>
+                        </select>
+                      </form>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
           </main>
