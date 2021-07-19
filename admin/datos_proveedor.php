@@ -326,7 +326,7 @@ include('prcd/conn.php');
                 
                 <?php 
                   if($row_consulta_validacion01['validacion'] == 0){
-                    echo '<span class="badge bg-secondary">No validado</span>';
+                    echo '<span class="badge bg-danger">No validado</span>';
                   }
                   elseif($row_consulta_validacion01['validacion'] == 1){
                     echo '<span class="badge bg-warning">En revisión</span>';
@@ -556,19 +556,22 @@ include('prcd/conn.php');
                     </table>
                 </div>
                 <hr>
-                <small class="d-block text-end mt-3"><span><strong> Estatus:</strong><?php 
+                <small class="d-block text-end mt-3"><span><strong> Estatus: </strong><?php 
                   if($row_consulta_validacion03['validacion'] == 0){
                     echo '<span class="badge bg-danger">No validado</span>';
                   }
                   elseif($row_consulta_validacion03['validacion'] == 1){
-                    echo '<span class="badge bg-warning">En revisión</span>';
+                    echo '<span class="badge bg-warning">En revisión</span>  | ';
+                    echo ' <a class="btn btn-danger btn-sm" href="prcd/reset_validacion.php?id='.$row_consulta_validacion03['id'].'">Eliminar validación</a>';
                   }
                   elseif($row_consulta_validacion03['validacion'] == 2){
                     echo '<span class="badge bg-primary">Validado</span>';
+                    echo ' <a class="btn btn-danger btn-sm" href="prcd/reset_validacion.php?id='.$row_consulta_validacion03['id'].'&ext='.$row_consulta_validacion03['id_ext'].'">Eliminar validación</a>';
                   }
                 ?>
                 
                 </span> | 
+                
                 <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalLabel03"><i class="bi bi-check-circle"></i> Validar</button>
                 <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalObservaciones3"><i class="bi bi-card-heading"></i> Observaciones</button>
 
@@ -819,12 +822,12 @@ include('prcd/conn.php');
                                 }
 
                                 echo '<td class="text-center">'.$row_consulta_observaciones["observaciones"].'</td>';
-                                echo '<td class="text-center"><i class="bi bi-trash-fill"></i></td>';
+                                echo '<td class="text-center"> <a href="prcd/eliminar_comentario.php?id='.$row_consulta_observaciones['id'].'&ext='.$row_consulta_observaciones['id_ext'].'"><i class="bi bi-trash-fill"></i></a></td>';
                                 echo '</tr>';
                             }
                                 
                             ?>
-                          
+                         
                         </tbody>
                     </table>
                 </div>

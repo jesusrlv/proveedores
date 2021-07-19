@@ -332,7 +332,7 @@ include('prcd/conn.php');
                     echo'<a href="editar_seccion3_grid.php" class="card-link"><i class="bi bi-eye-fill"></i> Ver cuenta(s) bancaria(s)</a>';
                   }
                   if($tres == 2){
-                    echo'<a href="editar_seccion3_grid" class="card-link"><i class="bi bi-eye-fill"></i> Ver cuenta(s) bancaria(s)</a>';
+                    echo'<a href="editar_seccion3_grid.php" class="card-link"><i class="bi bi-eye-fill"></i> Ver cuenta(s) bancaria(s)</a>';
                   }
                 ?>
                 
