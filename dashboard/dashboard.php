@@ -51,7 +51,9 @@ include('prcd/conn.php');
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
     <!-- íconos Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -460,9 +462,44 @@ include('prcd/conn.php');
                     }
                   ?>
 
-                  <div class="alert alert-danger" role="alert">
-                        <p><?php echo $suma_validacion ?></p>
-                  </div>
+                  <!-- <div class="alert alert-danger" role="alert"> -->
+
+                    <?php
+
+                      $observaciones ="SELECT * FROM observaciones WHERE id_ext = '$id' ORDER BY seccion ASC";
+                      $resultado_observaciones= $conn->query($observaciones);
+                      while($row_observaciones = $resultado_observaciones->fetch_assoc()){
+                        echo '<p>';
+                        echo '<div class="alert alert-danger" role="alert">';
+                        // echo '<strong>'.$row_observaciones['seccion'].'</strong>';
+                        if($row_observaciones["seccion"]==1){
+                          echo '<strong><i class="bi bi-person-lines-fill"></i> Datos personales</strong>';
+                        }
+                        elseif($row_observaciones["seccion"]==2){
+                          echo '<strong><i class="bi bi-building"></i> Dirección</strong>';
+                        }
+                        elseif($row_observaciones["seccion"]==3){
+                          echo '<strong><i class="bi bi-bank2"></i> Cuentas bancarias</strong>';
+                        }
+                        elseif($row_observaciones["seccion"]==4){
+                          echo '<strong><i class="bi bi-file-post"></i> Documentos</strong>';
+                        }
+                        echo '<hr>';
+                        echo '</p>';
+                        echo '<p>';
+                        echo $row_observaciones['observaciones'];
+                        echo '</div>';
+                        echo '</p>';
+                        
+                      }
+
+                    ?>
+                        <!-- <p> -->
+                          <?php 
+                        // echo $suma_validacion 
+                        ?>
+                        <!-- </p> -->
+                  <!-- </div> -->
                   <hr class="bg-light">
                 <!-- <p class="card-text h4 text-center" style="aligment-item:center;"><i class="bi bi-check-circle-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-smile-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-neutral-fill" style="font-size: 3rem; color: cornflowerblue;"></i> <i class="bi bi-emoji-frown-fill" style="font-size: 3rem; color: cornflowerblue;"></i></p> -->
                 <!-- <p><a href="trimestre1.php" type="button" class="btn btn-warning"><i class="fas fa-edit"></i> Editar...</a></p> -->

@@ -332,7 +332,7 @@ include('prcd/conn.php');
                     echo '<span class="badge bg-warning">En revisión</span>';
                   }
                   elseif($row_consulta_validacion01['validacion'] == 2){
-                    echo '<span class="badge bg-primary">Validado</span>';
+                    echo '<span class="badge bg-primary h3">Validado</span>';
                   }
                 ?>
                 
