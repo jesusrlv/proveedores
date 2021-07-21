@@ -290,6 +290,20 @@ include('prcd/conn2.php');
                     </div>
                 </div>
 
+                <div class="col-md-6 mb-3">
+                    <select class="form-select" aria-label="Default select example" id="actividad" name="actividad" required>
+                      <option selected>Seleccionar actividad ...</option>
+                      <?php
+                        $select ="SELECT * FROM actividad";
+                        $resultado_select = $conn->query($select);
+                        
+                        while($row_select = $resultado_select->fetch_assoc()){
+                          echo '<option value="'.$row_select['id'].'">'.$row_select['actividad'].'</option>';
+                        }
+                      ?>
+                    </select>
+                </div>
+
                 </div>
 
                 <!-- div de usuario repetido -->

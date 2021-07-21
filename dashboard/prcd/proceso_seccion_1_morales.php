@@ -18,6 +18,7 @@ include('conn.php');
 $razon = $_POST['razon'];
 $denominacion = $_POST['denominacion'];
 // $acta = $_POST['acta'];
+$actividad = $_POST['actividad'];
 
 $rfc = $_POST['rfc'];
 $id_ext = $_SESSION['id'];
@@ -44,8 +45,8 @@ $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
     echo "$fileName carga completa";
     $ruta = "archivos/". $link .'_'. $id_ext .'.'.$extension;
 
-$sql="INSERT INTO datos(rfc,moral_razon,moral_denominacion,moral_archivo_acta,id_ext,tipo_usr,validacion) 
-VALUES('$rfc','$razon','$denominacion','$ruta','$id_ext','$tipo_usr','$validacion')";
+$sql="INSERT INTO datos(rfc,moral_razon,moral_denominacion,moral_archivo_acta,id_ext,tipo_usr,validacion,actividad) 
+VALUES('$rfc','$razon','$denominacion','$ruta','$id_ext','$tipo_usr','$validacion'.'$actividad')";
 $resultado= $conn->query($sql);
 
 $sql2 = "INSERT INTO validacion(id_ext,tipo,validacion)

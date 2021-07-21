@@ -19,9 +19,10 @@ $razon = $_POST['razon'];
 $denominacion = $_POST['denominacion'];
 $rfc = $_POST['rfc'];
 $id_ext = $_SESSION['id'];
+$actividad = $_POST['actividad'];
 
 
-$sql="UPDATE datos SET moral_razon='$razon',moral_denominacion='$denominacion',rfc='$rfc' WHERE id_ext='$id_ext'";
+$sql="UPDATE datos SET moral_razon='$razon',moral_denominacion='$denominacion',rfc='$rfc',actividad='$actividad' WHERE id_ext='$id_ext'";
 $resultado= $conn->query($sql);
 
 

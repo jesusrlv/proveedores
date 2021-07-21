@@ -48,6 +48,8 @@ include('prcd/conn.php');
 
     <link rel="icon" type="image/png" href="../img/icon.ico"/>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <script src="https://kit.fontawesome.com/4d63b5ef28.js" crossorigin="anonymous"></script>
 
     <!-- íconos Bootstrap -->
@@ -262,6 +264,30 @@ include('prcd/conn.php');
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                <label for="actividad">Actividad</label>
+                    <select class="form-select" aria-label="Default select example" id="actividad" name="actividad" required>
+                      <option selected value="<?php echo $row_fisica['actividad'] ?>">
+                      
+                          <?php 
+                              $nombre_actividad=$row_fisica['actividad'];
+                              $consulta_actividad="SELECT * FROM actividad WHERE id ='$nombre_actividad'";
+                              $resultadotabla_actividad = $conn->query($consulta_actividad);
+                              $row_actividad = $resultadotabla_actividad->fetch_assoc();
+                              echo $row_actividad['actividad'];
+                          ?></option>     
+
+
+                      <?php
+                        $select ="SELECT * FROM actividad";
+                        $resultado_select = $conn->query($select);
+                        
+                        while($row_select = $resultado_select->fetch_assoc()){
+                          echo '<option value="'.$row_select['id'].'">'.$row_select['actividad'].'</option>';
+                        }
+                      ?>
+                    </select>
                 </div>
 
                 </div>

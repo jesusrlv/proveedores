@@ -294,6 +294,12 @@ include('prcd/conn.php');
                             echo '<strong>RFC: </strong>'.$row_consulta_proveedor["rfc"];
                             echo '</p>';
                             echo '</div>';
+                            
+                            echo '<div class="d-flex text-muted pt-3">';
+                            echo '<p class="pb-3 mb-0 lh-sm border-bottom">';
+                            echo '<strong>Actividad: </strong>'.$row_consulta_proveedor["actividad"];
+                            echo '</p>';
+                            echo '</div>';
                         }
                         else{
                             echo '<div class="d-flex text-muted pt-3">';
@@ -317,6 +323,12 @@ include('prcd/conn.php');
                             echo '<div class="d-flex text-muted pt-3">';
                             echo '<p class="pb-3 mb-0 lh-sm border-bottom">';
                             echo '<strong>Acta constitutiva: </strong> <a href="../dashboard/'.$row_consulta_proveedor["moral_archivo_acta"].'" target="_blank"><i class="bi bi-file-earmark-pdf-fill"></i> Documento </a>';
+                            echo '</p>';
+                            echo '</div>';
+
+                            echo '<div class="d-flex text-muted pt-3">';
+                            echo '<p class="pb-3 mb-0 lh-sm border-bottom">';
+                            echo '<strong>Actividad: </strong>'.$row_consulta_proveedor["actividad"];
                             echo '</p>';
                             echo '</div>';
                         }

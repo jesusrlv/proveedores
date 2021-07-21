@@ -17,11 +17,12 @@ $nombre = $_POST['nombre'];
 $curp = $_POST['curp'];
 $rfc = $_POST['rfc'];
 $id_ext = $_SESSION['id'];
+$actividad = $_POST['actividad'];
 // $tipo_usr = 1;
 // $validacion = 1;
 // $tipo_seccion = 1;
 
-$sql="UPDATE datos SET fisc_apellido='$apellido',fisc_nombre='$nombre',fisc_curp='$curp',rfc='$rfc' WHERE id_ext='$id_ext'";
+$sql="UPDATE datos SET fisc_apellido='$apellido',fisc_nombre='$nombre',fisc_curp='$curp',rfc='$rfc',actividad='$actividad' WHERE id_ext='$id_ext'";
 $resultado= $conn->query($sql);
 
 // $sql2 = "INSERT INTO validacion(id_ext,tipo,validacion)

@@ -290,13 +290,30 @@ $row_morales = $resultado_morales->fetch_assoc();
                     Valid first name is required.
                     </div>
                 </div>
-                <!-- <div class="col-md-6 mb-3">
-                    <label for="lastName">Acta constitutiva</label>
-                    <input type="file" class="form-control" id="acta" name="acta" value="<?php echo $row_morales['moral_archivo_acta'] ?>">
-                    <div class="invalid-feedback">
-                    Valid last name is required.
-                    </div>
-                </div> -->
+                <div class="col-md-6 mb-3">
+                <label for="actividad">Actividad</label>
+                    <select class="form-select" aria-label="Default select example" id="actividad" name="actividad" required>
+                      <option selected value="<?php echo $row_fisica['actividad'] ?>">
+                      
+                          <?php 
+                              $nombre_actividad=$row_fisica['actividad'];
+                              $consulta_actividad="SELECT * FROM actividad WHERE id ='$nombre_actividad'";
+                              $resultadotabla_actividad = $conn->query($consulta_actividad);
+                              $row_actividad = $resultadotabla_actividad->fetch_assoc();
+                              echo $row_actividad['actividad'];
+                          ?></option>     
+
+
+                      <?php
+                        $select ="SELECT * FROM actividad";
+                        $resultado_select = $conn->query($select);
+                        
+                        while($row_select = $resultado_select->fetch_assoc()){
+                          echo '<option value="'.$row_select['id'].'">'.$row_select['actividad'].'</option>';
+                        }
+                      ?>
+                    </select>
+                </div>
 
                 </div>
 
